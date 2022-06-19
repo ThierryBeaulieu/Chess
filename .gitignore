@@ -1,0 +1,16 @@
+
+# ignoring the build folder.
+/build/
+
+# ignoring visual studio files
+*.sln
+*.vcxproj.user
+*.vcxproj.user.*
+*.vcxproj.filters
+*.vcxproj.filters.*
+*.vcxproj.filters.user
+*.vcxproj.filters.user.*
+*.vcxproj.filters.user.debug
+*.vcxproj.filters.user.debug.*
+*.vcxproj.filters.user.release
+*.vcxproj.filters.user.release.*
