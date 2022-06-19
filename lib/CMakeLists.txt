@@ -27,6 +27,7 @@ set(Header
     GameManager/GameManager.h
     GameManager/Position.h
     GameManager/Color.h
+    GameManager/State.h
     Player/Player.h
     Tile/Tile.h
 )

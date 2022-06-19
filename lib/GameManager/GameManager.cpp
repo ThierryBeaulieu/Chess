@@ -4,6 +4,7 @@
 
 GameManager::GameManager()
 {
+    state_ = State::none;
 }
 
 GameManager::~GameManager()
@@ -11,5 +12,13 @@ GameManager::~GameManager()
 }
 
 void GameManager::initialize(){
-    board_.getSize();
+    
+}
+
+int GameManager::getPlayersTurn(){
+    
+}
+
+void GameManager::endPlayersTurn(){
+    
 }
