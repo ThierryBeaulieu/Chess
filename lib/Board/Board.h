@@ -1,7 +1,11 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-template<int N, typename T>
+
+#include "../Tile/Tile.h"
+#include "../Pieces/Piece.h"
+
+template<int N>
 class Board
 {
 public:
@@ -9,20 +13,25 @@ public:
         // initialise the array
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
-                array_[i][j] = nullptr;
+                array_[i][j].setContent(nullptr);
             }
         }
     }
+    
     int getSize() {
         return N;
     }
     
-    T* getElement(int x, int y){
-        return array_[x][y];
+    void setElement(int x, int y, std::unique_ptr<Piece> content){
+        array_[x][y].setContent(content);
+    }
+    
+    std::shared_ptr<Piece> getElement(int x, int y){
+        return array_[x][y].getContent();
     }
     
 private:
-    T* array_[N][N];
+    Tile array_[N][N];
 };
 
 #endif // BOARD_H

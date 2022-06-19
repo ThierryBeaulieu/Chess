@@ -5,7 +5,7 @@
 GameManager::GameManager()
 {
     std::cout << board_.getSize() << std::endl;
-    std::cout << board_.getElement(5,3) << std::endl;
+    std::cout << board_.getElement(4,4) << std::endl;
 }
 
 GameManager::~GameManager()

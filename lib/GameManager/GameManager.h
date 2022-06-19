@@ -16,7 +16,9 @@ public:
     
 private:
     Player players_;
-    Board<8, int> board_;
+    
+    static const int boardSize_ = 8;
+    Board<boardSize_> board_;
 };
 
 #endif // GAMEMANAGER_H
