@@ -14,3 +14,6 @@
 *.vcxproj.filters.user.debug.*
 *.vcxproj.filters.user.release
 *.vcxproj.filters.user.release.*
+
+# ignoring mac files
+.DS_Store
