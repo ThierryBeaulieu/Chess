@@ -3,6 +3,7 @@
 
 #include "../Player/Player.h"
 #include "../Board/Board.h"
+#include "../Tile/Tile.h"
 #include "../Position/Position.h"
 
 class GameManager
@@ -15,7 +16,7 @@ public:
     
 private:
     Player players_;
-    Board board_;
+    Board<8, Tile> board_;
 };
 
 #endif // GAMEMANAGER_H

@@ -10,7 +10,6 @@ set(Source
     Pieces/Pawn.cpp
     Pieces/Piece.cpp
     Pieces/Rook.cpp
-    Board/Board.cpp
     GameManager/GameManager.cpp
     Player/Player.cpp
     Tile/Tile.cpp
