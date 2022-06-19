@@ -16,7 +16,7 @@ public:
     
 private:
     Player players_;
-    Board<8, Tile> board_;
+    Board<8, int> board_;
 };
 
 #endif // GAMEMANAGER_H
