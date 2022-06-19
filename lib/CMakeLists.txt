@@ -25,9 +25,10 @@ set(Header
     Pieces/Rook.h
     Board/Board.h
     GameManager/GameManager.h
+    GameManager/Position.h
+    GameManager/Color.h
     Player/Player.h
     Tile/Tile.h
-    Position/Position.h
 )
 
 add_library(

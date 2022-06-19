@@ -15,8 +15,8 @@ public:
     void initialize();
     
 private:
-    Player players_;
     
+    Player players_;
     static const int boardSize_ = 8;
     Board<boardSize_> board_;
 };
