@@ -28,6 +28,7 @@ set(Header
     GameManager/GameManager.h
     Player/Player.h
     Tile/Tile.h
+    Position/Position.h
 )
 
 add_library(
