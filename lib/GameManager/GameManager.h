@@ -4,7 +4,7 @@
 #include "../Player/Player.h"
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
-#include "../Position/Position.h"
+#include "../GameManager/Position.h"
 
 class GameManager
 {
@@ -15,9 +15,9 @@ public:
     void initialize();
     
 private:
-    
-    Player players_;
     static const int boardSize_ = 8;
+    static const int nbPlayers_ = 2;
+    Player players_[nbPlayers_];
     Board<boardSize_> board_;
 };
 
