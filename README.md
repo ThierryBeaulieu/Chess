@@ -6,4 +6,4 @@
 
 ### 2. Transform the c++ in WebAssembly
 
-### 3. Use the Web in a React Web Application
+### 3. Use the WebAssembly generated in a React app.
