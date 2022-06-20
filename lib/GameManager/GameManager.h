@@ -1,6 +1,9 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include <cstdlib>
+#include <time.h>
+
 #include "../Player/Player.h"
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
@@ -27,7 +30,11 @@ private:
     
     Player player_[nbPlayers_];
     Board<boardSize_> board_;
+    bool playersTurn_;
     State state_;
+    
+private:
+    bool chosePlayerAtRandom();
 };
 
 #endif // GAMEMANAGER_H
