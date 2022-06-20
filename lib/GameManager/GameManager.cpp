@@ -4,11 +4,8 @@
 
 GameManager::GameManager()
 {
-    time_t t;
-    srand((unsigned) time(&t));
     state_ = State::none;
-    
-    chosePlayerAtRandom();
+    playersTurn_ = Random::Instance()->generateRandomNumber(0, 1);
 }
 
 GameManager::~GameManager()

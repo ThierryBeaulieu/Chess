@@ -1,14 +1,12 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
-#include <cstdlib>
-#include <time.h>
-
 #include "../Player/Player.h"
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
 #include "../GameManager/Position.h"
 #include "../GameManager/State.h"
+#include "../Random/Random.h"
 
 class GameManager
 {

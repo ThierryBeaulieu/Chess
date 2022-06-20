@@ -13,6 +13,7 @@ set(Source
     GameManager/GameManager.cpp
     Player/Player.cpp
     Tile/Tile.cpp
+    Random/Random.cpp
 )
 
 set(Header 
@@ -30,6 +31,7 @@ set(Header
     GameManager/State.h
     Player/Player.h
     Tile/Tile.h
+    Random/Random.h
 )
 
 add_library(

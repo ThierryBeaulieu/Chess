@@ -6,6 +6,7 @@
 #include "../lib/Pieces/Piece.h"
 #include "../lib/GameManager/GameManager.h"
 
+
 // should return random numbers between 1 and 0
 TEST(GameManagerTest, generateRandomTurns){
 
