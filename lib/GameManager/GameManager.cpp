@@ -7,6 +7,8 @@ GameManager::GameManager()
     time_t t;
     srand((unsigned) time(&t));
     state_ = State::none;
+    
+    chosePlayerAtRandom();
 }
 
 GameManager::~GameManager()
@@ -17,14 +19,14 @@ void GameManager::initialize(){
     
 }
 
-bool GameManager::chosePlayerAtRandom(){
-    return rand() % nbPlayers_;
+void GameManager::chosePlayerAtRandom(){
+    playersTurn_ = rand() % nbPlayers_;
 }
 
-int GameManager::getPlayersTurn(){
+bool GameManager::getPlayersTurn(){
     return playersTurn_;
 }
 
 void GameManager::endPlayersTurn(){
-    playersTurn_ += 1 % 2;
+    playersTurn_ = !playersTurn_;
 }

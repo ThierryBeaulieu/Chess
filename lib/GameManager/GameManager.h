@@ -18,7 +18,7 @@ public:
     
     void initialize();
     
-    int getPlayersTurn();
+    bool getPlayersTurn();
     void endPlayersTurn();
     
 private:
@@ -34,7 +34,7 @@ private:
     State state_;
     
 private:
-    bool chosePlayerAtRandom();
+    void chosePlayerAtRandom();
 };
 
 #endif // GAMEMANAGER_H
