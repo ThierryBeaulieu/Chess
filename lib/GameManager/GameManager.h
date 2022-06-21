@@ -20,7 +20,9 @@ public:
 
     const Player& getFirstPlayer() const;
     const Player& getSecondPlayer() const;
-    
+
+    State getState();
+
 private:
     const int first = 0;
     const int second = 1;
@@ -37,6 +39,7 @@ private:
 
 private:
     void setPlayersName();
+    void setPlayersColor();
 };
 
 #endif // GAMEMANAGER_H

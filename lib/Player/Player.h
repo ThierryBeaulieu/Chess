@@ -13,11 +13,13 @@ public:
     Player();
     ~Player();
     
+    void play();
+
     const std::string& getName() const;
     void setName(const std::string& name);
     
     const Color& getColor() const;
-    void setColor(const Color& name);
+    void setColor(const Color& color);
     
 private:
     Color color_;

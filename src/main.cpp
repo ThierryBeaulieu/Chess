@@ -9,7 +9,6 @@
 
 int main()
 {
-    
     GameManager gameManager;
     
     std::cout << "Begin of the Game" << std::endl;
@@ -17,9 +16,14 @@ int main()
     std::cout << "First player: " << gameManager.getFirstPlayer().getName() << std::endl;
     std::cout << "Second player: " << gameManager.getSecondPlayer().getName() << std::endl;
     
-    Player player = *gameManager.getPlayersTurn();
+    while (gameManager.getState() != State::checkmate) {
 
+        Player player = *gameManager.getPlayersTurn();
 
+        player.play();
+
+        gameManager.endPlayersTurn();
+    }
 
     return 0;
 }
