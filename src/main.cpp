@@ -17,7 +17,8 @@ int main()
     std::cout << "First player: " << gameManager.getFirstPlayer().getName() << std::endl;
     std::cout << "Second player: " << gameManager.getSecondPlayer().getName() << std::endl;
     
-    const std::string player;
+    Player player = *gameManager.getPlayersTurn();
+
 
 
     return 0;

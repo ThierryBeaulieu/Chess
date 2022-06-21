@@ -4,8 +4,10 @@
 GameManager::GameManager()
 {
     state_ = State::none;
-    playersTurn_ = Random::Instance()->generateRandomColor();
-
+    int minInterval = 0;
+    int maxInterval = 1;
+    indexOfCurrentPlayer_ = Random::Instance()->generateRandomNumber(minInterval, maxInterval);
+    currentPlayer_ = &player_[indexOfCurrentPlayer_];
     setPlayersName();
 }
 
@@ -18,18 +20,19 @@ void GameManager::setPlayersName(){
     player_[second].setName("Unknown");
 }
 
-Color GameManager::getPlayersTurn(){
-    return playersTurn_;
+Player * GameManager::getPlayersTurn() const{
+    return currentPlayer_;
 }
 
 void GameManager::endPlayersTurn(){
-    playersTurn_ = (Color)(!(bool)playersTurn_);
+    indexOfCurrentPlayer_ = (1 + indexOfCurrentPlayer_) % 2;
+    currentPlayer_ = &player_[indexOfCurrentPlayer_];
 }
 
-const Player& GameManager::getFirstPlayer(){
+const Player& GameManager::getFirstPlayer() const{
     return player_[first];
 }
 
-const Player& GameManager::getSecondPlayer(){
+const Player& GameManager::getSecondPlayer() const{
     return player_[second];
 }

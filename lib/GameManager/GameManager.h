@@ -15,11 +15,11 @@ public:
     GameManager();
     ~GameManager();
         
-    Color getPlayersTurn();
+    Player* getPlayersTurn() const;
     void endPlayersTurn();
 
-    const Player& getFirstPlayer();
-    const Player& getSecondPlayer();
+    const Player& getFirstPlayer() const;
+    const Player& getSecondPlayer() const;
     
 private:
     const int first = 0;
@@ -28,7 +28,9 @@ private:
     static const int boardSize_ = 8;
     static const int nbPlayers_ = 2;
 
-    Color playersTurn_;
+    int indexOfCurrentPlayer_ = 0;
+
+    Player* currentPlayer_;
     Player player_[nbPlayers_];
     Board<boardSize_> board_;
     State state_;
