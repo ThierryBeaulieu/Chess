@@ -1,23 +1,20 @@
 
 #include "GameManager.h"
-#include <iostream>
 
 GameManager::GameManager()
 {
     state_ = State::none;
     playersTurn_ = Random::Instance()->generateRandomNumber(0, 1);
+    setPlayersName();
 }
 
 GameManager::~GameManager()
 {
 }
 
-void GameManager::initialize(){
-    
-}
-
-void GameManager::chosePlayerAtRandom(){
-    playersTurn_ = rand() % nbPlayers_;
+void GameManager::setPlayersName(){
+    player_[first].setName("Unknown");
+    player_[second].setName("Unknown");
 }
 
 bool GameManager::getPlayersTurn(){
@@ -26,4 +23,12 @@ bool GameManager::getPlayersTurn(){
 
 void GameManager::endPlayersTurn(){
     playersTurn_ = !playersTurn_;
+}
+
+const Player& GameManager::getFirstPlayer(){
+    return player_[first];
+}
+
+const Player& GameManager::getSecondPlayer(){
+    return player_[second];
 }

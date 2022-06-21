@@ -13,26 +13,27 @@ class GameManager
 public:
     GameManager();
     ~GameManager();
-    
-    void initialize();
-    
+        
     bool getPlayersTurn();
     void endPlayersTurn();
+
+    const Player& getFirstPlayer();
+    const Player& getSecondPlayer();
     
 private:
-    const int firstPlayer = 0;
-    const int secondPlayer = 1;
+    const int first = 0;
+    const int second = 1;
     
     static const int boardSize_ = 8;
     static const int nbPlayers_ = 2;
-    
+    bool playersTurn_;
+
     Player player_[nbPlayers_];
     Board<boardSize_> board_;
-    bool playersTurn_;
     State state_;
-    
+
 private:
-    void chosePlayerAtRandom();
+    void setPlayersName();
 };
 
 #endif // GAMEMANAGER_H
