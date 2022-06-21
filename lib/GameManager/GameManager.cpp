@@ -9,6 +9,8 @@ GameManager::GameManager()
     int maxInterval = 1;
     indexOfCurrentPlayer_ = Random::Instance()->generateRandomNumber(minInterval, maxInterval);
     currentPlayer_ = &player_[indexOfCurrentPlayer_];
+
+    initializeBoard();
     
     setPlayersColor();
     setPlayersName();
@@ -16,6 +18,10 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
+}
+
+void GameManager::initializeBoard() {
+
 }
 
 void GameManager::setPlayersColor() {

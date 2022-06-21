@@ -7,8 +7,10 @@
 class Pawn : public Piece
 {
 public:
-    Pawn();
+    Pawn(const int x, const int y);
     ~Pawn();
+private:
+    Pawn() = default;
 };
 
 #endif // PAWN_H

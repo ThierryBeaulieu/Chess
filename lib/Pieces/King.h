@@ -7,8 +7,10 @@
 class King : public Piece
 {
 public:
-    King();
+    King(const int x, const int y);
     ~King();
+private:
+    King() = default;
 };
 
 #endif // KING_H

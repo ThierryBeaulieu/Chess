@@ -40,6 +40,7 @@ private:
 private:
     void setPlayersName();
     void setPlayersColor();
+    void initializeBoard();
 };
 
 #endif // GAMEMANAGER_H

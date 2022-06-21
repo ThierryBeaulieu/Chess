@@ -7,8 +7,10 @@
 class Bishop : public Piece
 {
 public:
-    Bishop();
+    Bishop(const int x, const int y);
     ~Bishop();
+private:
+    Bishop() = default;
 };
 
 #endif // BISHOP_H

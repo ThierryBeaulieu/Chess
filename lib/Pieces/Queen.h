@@ -6,8 +6,10 @@
 class Queen : public Piece
 {
 public:
-    Queen();
+    Queen(const int x, const int y);
     ~Queen();
+private:
+    Queen() = default;
 };
 
 #endif // QUEEN_H

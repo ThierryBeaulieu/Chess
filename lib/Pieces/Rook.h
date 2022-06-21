@@ -7,8 +7,10 @@
 class Rook : public Piece
 {
 public:
-    Rook();
+    Rook(const int x, const int y);
     ~Rook();
+private:
+    Rook();
 };
 
 #endif // ROOK_H

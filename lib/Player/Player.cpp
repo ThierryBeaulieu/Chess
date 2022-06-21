@@ -9,7 +9,6 @@ Player::~Player()
 {
 }
 
-
 const Color& Player::getColor() const {
     return color_;
 }

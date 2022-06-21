@@ -7,8 +7,10 @@
 class Knight : public Piece
 {
 public:
-    Knight();
+    Knight(const int x, const int y);
     ~Knight();
+private:
+    Knight() = default;
 };
 
 #endif // KNIGHT_H
