@@ -22,3 +22,11 @@ int Random::generateRandomNumber(int min, int max)
 {
     return rand() % (max - min + 1) + min;
 }
+
+Color Random::generateRandomColor() {
+
+    int minInterval = 0;
+    int maxInterval = 1;
+
+    return (Color)(this->generateRandomNumber(minInterval, maxInterval));
+}

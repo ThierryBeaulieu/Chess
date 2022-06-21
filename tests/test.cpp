@@ -5,6 +5,7 @@
 #include "../lib/Board/Board.h"
 #include "../lib/Pieces/Piece.h"
 #include "../lib/GameManager/GameManager.h"
+#include "../lib/GameManager/Color.h"
 
 
 // should return random numbers between 1 and 0
@@ -14,9 +15,9 @@ TEST(GameManagerTest, generateRandomTurns){
     int maxCicle = 10000;
     int sum = 0;
     
-    for(unsigned int i = 0; i < maxCicle; i++){
+    for(int i = 0; i < maxCicle; i++){
         GameManager * manager = new GameManager();
-        sum += manager->getPlayersTurn();
+        sum += (int) manager->getPlayersTurn();
         delete manager;
     }
     
@@ -25,8 +26,8 @@ TEST(GameManagerTest, generateRandomTurns){
     
     bool isInRange = false;
     GameManager manager;
-    if (manager.getPlayersTurn() == 1
-        || manager.getPlayersTurn() == 0) {
+    if ((int) manager.getPlayersTurn() == 1
+        || (int) manager.getPlayersTurn() == 0) {
         isInRange = true;
     }
     
@@ -48,7 +49,7 @@ TEST(BoardTest, BoardBaseConstructor){
 // verify if the players turn will end
 TEST(GameMangerTest, endPlayersTurn){
     GameManager manager;
-    bool playersTurn = manager.getPlayersTurn();
+    Color playersTurn = manager.getPlayersTurn();
     manager.endPlayersTurn();
-    EXPECT_EQ(playersTurn, !manager.getPlayersTurn());
+    EXPECT_NE(playersTurn, manager.getPlayersTurn());
 }

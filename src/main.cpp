@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <string>
 
 #include <../lib/Pieces/Piece.h>
 #include <../lib/Board/Board.h>
@@ -15,6 +16,8 @@ int main()
 
     std::cout << "First player: " << gameManager.getFirstPlayer().getName() << std::endl;
     std::cout << "Second player: " << gameManager.getSecondPlayer().getName() << std::endl;
+    
+    const std::string player;
 
 
     return 0;

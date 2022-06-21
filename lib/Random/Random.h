@@ -4,12 +4,14 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "../GameManager/Color.h"
+
 class Random
 {
 public:
     static Random *Instance();
     int generateRandomNumber(int min, int max);
-
+    Color generateRandomColor();
 protected:
     Random();
 

@@ -7,6 +7,7 @@
 #include "../GameManager/Position.h"
 #include "../GameManager/State.h"
 #include "../Random/Random.h"
+#include "../GameManager/Color.h"
 
 class GameManager
 {
@@ -14,7 +15,7 @@ public:
     GameManager();
     ~GameManager();
         
-    bool getPlayersTurn();
+    Color getPlayersTurn();
     void endPlayersTurn();
 
     const Player& getFirstPlayer();
@@ -26,8 +27,8 @@ private:
     
     static const int boardSize_ = 8;
     static const int nbPlayers_ = 2;
-    bool playersTurn_;
 
+    Color playersTurn_;
     Player player_[nbPlayers_];
     Board<boardSize_> board_;
     State state_;
