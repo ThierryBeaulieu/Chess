@@ -8,3 +8,7 @@ Piece::Piece(const int x, const int y) {
 Piece::~Piece()
 {
 }
+
+Position Piece::getPosition() {
+	return position_;
+}

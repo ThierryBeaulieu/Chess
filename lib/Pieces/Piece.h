@@ -8,7 +8,9 @@ class Piece
 public:
     Piece() = default;
     Piece(int x, int y);
-    ~Piece();
+    virtual ~Piece();
+
+    Position getPosition();
 protected:
     Position position_;
 };

@@ -2,7 +2,7 @@
 
 Pawn::Pawn(const int x, const int y)
 {
-	position_ = { x, y };
+	position_ = { x,y };
 }
 
 Pawn::~Pawn()
