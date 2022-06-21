@@ -1,6 +1,6 @@
 # Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
 
-Welcome to this Chess project!
+Welcome to this chess project!
 
 ## Installation
 The project depends on [CMake](https://cmake.org/install/). For beginners, CMake can be use to general Visual Studio solutions, projects for XCode, Makefiles, etc. You can generate and build your project from the platform that you want. I recommend you download the CMake GUI (it makes things that much easier!). Once you're done with that bit, you should also download or fork this github repository. 
