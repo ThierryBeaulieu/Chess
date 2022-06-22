@@ -1,4 +1,3 @@
-
 #include "GameManager.h"
 
 GameManager::GameManager()
@@ -8,12 +7,10 @@ GameManager::GameManager()
     int minInterval = 0;
     int maxInterval = 1;
     indexOfCurrentPlayer_ = Random::Instance()->generateRandomNumber(minInterval, maxInterval);
-    currentPlayer_ = &player_[indexOfCurrentPlayer_];
+    currentPlayer_ = player_[indexOfCurrentPlayer_];
 
     initializeBoard();
-    
-    setPlayersColor();
-    setPlayersName();
+    initializePlayers();
 }
 
 GameManager::~GameManager()
@@ -21,22 +18,30 @@ GameManager::~GameManager()
 }
 
 void GameManager::initializeBoard() {
+// TODO: set pieces at their necessary position
 
+}
+
+void GameManager::initializePlayers() {
+    player_[first] = std::make_shared<Player>();
+    player_[second] = std::make_shared<Player>();
+    setPlayersColor();
+    setPlayersName();
 }
 
 void GameManager::setPlayersColor() {
-    player_[indexOfCurrentPlayer_].setColor(Color::white);
+    player_[indexOfCurrentPlayer_]->setColor(Color::white);
     
     int indexOfSecondPlayer = (indexOfCurrentPlayer_ + 1) % 2;
-    player_[indexOfSecondPlayer].setColor(Color::black);
+    player_[indexOfSecondPlayer]->setColor(Color::black);
 }
 
 void GameManager::setPlayersName(){
-    player_[first].setName("Unknown");
-    player_[second].setName("Unknown");
+    player_[first]->setName("Unknown");
+    player_[second]->setName("Unknown");
 }
 
-Player * GameManager::getPlayersTurn() const{
+std::shared_ptr<Player> GameManager::getPlayersTurn() const{
     return currentPlayer_;
 }
 
@@ -45,14 +50,14 @@ State GameManager::getState() {
 }
 
 void GameManager::endPlayersTurn(){
-    indexOfCurrentPlayer_ = (1 + indexOfCurrentPlayer_) % 2;
-    currentPlayer_ = &player_[indexOfCurrentPlayer_];
+    indexOfCurrentPlayer_ = (indexOfCurrentPlayer_ + 1) % 2;
+    currentPlayer_ = player_[indexOfCurrentPlayer_];
 }
 
-const Player& GameManager::getFirstPlayer() const{
+std::shared_ptr<Player> GameManager::getFirstPlayer() const{
     return player_[first];
 }
 
-const Player& GameManager::getSecondPlayer() const{
+std::shared_ptr<Player> GameManager::getSecondPlayer() const{
     return player_[second];
 }

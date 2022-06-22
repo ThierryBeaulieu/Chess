@@ -1,6 +1,8 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include <memory>
+
 #include "../Player/Player.h"
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
@@ -15,11 +17,11 @@ public:
     GameManager();
     ~GameManager();
         
-    Player* getPlayersTurn() const;
+    std::shared_ptr<Player> getPlayersTurn() const;
     void endPlayersTurn();
 
-    const Player& getFirstPlayer() const;
-    const Player& getSecondPlayer() const;
+    std::shared_ptr<Player> getFirstPlayer() const;
+    std::shared_ptr<Player> getSecondPlayer() const;
 
     State getState();
 
@@ -32,8 +34,8 @@ private:
 
     int indexOfCurrentPlayer_ = 0;
 
-    Player* currentPlayer_;
-    Player player_[nbPlayers_];
+    std::shared_ptr<Player> currentPlayer_;
+    std::shared_ptr<Player> player_[nbPlayers_];
     Board<boardSize_> board_;
     State state_;
 
@@ -41,6 +43,7 @@ private:
     void setPlayersName();
     void setPlayersColor();
     void initializeBoard();
+    void initializePlayers();
 };
 
 #endif // GAMEMANAGER_H

@@ -1,4 +1,3 @@
-
 #include "Random.h"
 
 Random *Random::instance_ = 0;

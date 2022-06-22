@@ -1,11 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../Pieces/Piece.h"
-#include "../GameManager/Color.h"
-
 #include <vector>
 #include <string>
+
+#include "../Pieces/Piece.h"
+#include "../GameManager/Color.h"
 
 class Player
 {
