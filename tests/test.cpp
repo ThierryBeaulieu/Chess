@@ -27,7 +27,7 @@ TEST(BoardTest, BoardBaseConstructor){
 // verify if the players turn will end
 TEST(GameManagerTest, endPlayersTurn){
     GameManager manager;
-    Player * playersTurn = manager.getPlayersTurn();
+    std::shared_ptr<Player> playersTurn = manager.getPlayersTurn();
     manager.endPlayersTurn();
     EXPECT_NE(playersTurn, manager.getPlayersTurn());
 }
