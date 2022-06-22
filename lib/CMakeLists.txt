@@ -14,6 +14,7 @@ set(Source
     Player/Player.cpp
     Tile/Tile.cpp
     Random/Random.cpp
+    InputHandler/InputHandler.cpp
 )
 
 set(Header 
@@ -26,13 +27,13 @@ set(Header
     Pieces/Rook.h
     Board/Board.h
     GameManager/GameManager.h
-    GameManager/InputHandler.h
     GameManager/Position.h
     GameManager/Color.h
     GameManager/State.h
     Player/Player.h
     Tile/Tile.h
     Random/Random.h
+    InputHandler/InputHandler.h
 )
 
 add_library(
