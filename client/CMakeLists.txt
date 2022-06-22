@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.6)
 
-set(This "TestExecutable")
+set(This "client")
 
 set(Sources
-    test.cpp
+    client.cpp
 )
 
 add_executable(
@@ -16,7 +16,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/lib)
 target_link_libraries(
     ${This}
     PUBLIC
-    gtest_main
     ChessLib
 )
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.6)
 
 set(This Chess)
 project(${This} C CXX)
@@ -16,6 +16,10 @@ add_subdirectory(src)
 add_subdirectory(lib)
 add_subdirectory(tests)
 add_subdirectory(server)
+add_subdirectory(client)
+
+# Default executable project is Chess on Visual Studio
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${This})
 
 # Google Test
 enable_testing()
