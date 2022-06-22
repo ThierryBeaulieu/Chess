@@ -8,3 +8,7 @@ King::King(const int x, const int y)
 King::~King()
 {
 }
+
+const std::vector<Position>& King::showPossibleMoves() {
+	return possibleMoves_;
+}

@@ -8,6 +8,9 @@ class Rook : public Piece
 public:
     Rook(const int x, const int y);
     ~Rook();
+
+    virtual const std::vector<Position>& showPossibleMoves();
+
 private:
     Rook();
 };

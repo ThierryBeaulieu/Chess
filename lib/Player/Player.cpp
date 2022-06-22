@@ -24,9 +24,10 @@ void Player::setName(const std::string& name) {
     name_ = name;
 }
 
+
 std::shared_ptr<Piece> Player::getPieceToMove() {
     // ask the user for the wanted piece
-    return nullptr;
+    return std::make_shared<King>(0, 0);
 }
 
 void Player::play() {

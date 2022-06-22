@@ -8,3 +8,7 @@ Bishop::Bishop(const int x, const int y)
 Bishop::~Bishop()
 {
 }
+
+const std::vector<Position>& Bishop::showPossibleMoves() {
+	return possibleMoves_;
+}

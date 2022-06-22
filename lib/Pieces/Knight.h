@@ -9,6 +9,9 @@ class Knight : public Piece
 public:
     Knight(const int x, const int y);
     ~Knight();
+
+    virtual const std::vector<Position>& showPossibleMoves();
+
 private:
     Knight() = default;
 };

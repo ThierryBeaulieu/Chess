@@ -9,12 +9,11 @@ class Piece
 {
 public:
     Piece() = default;
-    Piece(int x, int y);
     virtual ~Piece();
 
     Position getPosition();
 
-    const std::vector<Position>& showPossibleMoves();
+    virtual const std::vector<Position>& showPossibleMoves() = 0;
 
 protected:
     std::vector<Position> possibleMoves_;

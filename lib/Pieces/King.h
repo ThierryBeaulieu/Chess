@@ -9,6 +9,9 @@ class King : public Piece
 public:
     King(const int x, const int y);
     ~King();
+
+    virtual const std::vector<Position>& showPossibleMoves();
+
 private:
     King() = default;
 };

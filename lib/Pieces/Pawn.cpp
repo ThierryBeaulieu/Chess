@@ -8,3 +8,7 @@ Pawn::Pawn(const int x, const int y)
 Pawn::~Pawn()
 {
 }
+
+const std::vector<Position>& Pawn::showPossibleMoves() {
+	return possibleMoves_;
+}
