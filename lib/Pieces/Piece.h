@@ -1,6 +1,8 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <vector>
+
 #include "../GameManager/Position.h"
 
 class Piece
@@ -11,6 +13,9 @@ public:
     virtual ~Piece();
 
     Position getPosition();
+
+    const std::vector<Position>& showPossibleMoves();
+
 protected:
     Position position_;
 };

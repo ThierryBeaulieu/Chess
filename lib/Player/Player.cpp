@@ -24,9 +24,23 @@ void Player::setName(const std::string& name) {
     name_ = name;
 }
 
+std::shared_ptr<Piece> Player::getPieceToMove() {
+    // ask the user for the wanted piece
+    return nullptr;
+}
+
 void Player::play() {
 
     // Ask the user what piece he wants
+    bool playerEntryIsInvalid = true;
+
+    while (playerEntryIsInvalid) {
+
+        std::shared_ptr<Piece> pieceToMove = getPieceToMove();
+
+        pieceToMove->showPossibleMoves();
+
+    }
 
     // tell the user the available positions
 

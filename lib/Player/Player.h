@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 #include "../Pieces/Piece.h"
 #include "../GameManager/Color.h"
@@ -20,6 +21,8 @@ public:
     
     const Color& getColor() const;
     void setColor(const Color& color);
+
+    std::shared_ptr<Piece> Player::getPieceToMove();
     
 private:
     Color color_;
