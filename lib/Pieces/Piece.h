@@ -17,6 +17,7 @@ public:
     const std::vector<Position>& showPossibleMoves();
 
 protected:
+    std::vector<Position> possibleMoves_;
     Position position_;
 };
 

@@ -2,8 +2,10 @@
 
 namespace InputHandler
 {
-    int getUserInput()
+    Position getUserInput()
     {
-        return 0;
+        // TODO: return the correct selected position
+        Position position = { 0, 0 };
+        return position;
     }
 }

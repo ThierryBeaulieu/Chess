@@ -15,7 +15,5 @@ Position Piece::getPosition() {
 
 const std::vector<Position>& Piece::showPossibleMoves() {
 	// TODO: Add the possible positions
-	std::vector<Position> possibleMoves;
-
-	return possibleMoves;
+	return possibleMoves_;
 }

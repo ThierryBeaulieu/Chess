@@ -40,6 +40,7 @@ void Player::play() {
 
         pieceToMove->showPossibleMoves();
 
+        Position position = InputHandler::getUserInput();
     }
 
     // tell the user the available positions
