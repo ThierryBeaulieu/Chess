@@ -26,6 +26,7 @@ set(Header
     Pieces/Rook.h
     Board/Board.h
     GameManager/GameManager.h
+    GameManager/InputHandler.h
     GameManager/Position.h
     GameManager/Color.h
     GameManager/State.h
