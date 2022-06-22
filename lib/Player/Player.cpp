@@ -1,5 +1,8 @@
-
 #include "Player.h"
+
+Player::Player() : name_("Unknown"), color_(Color::unknown) {
+
+}
 
 Player::~Player()
 {

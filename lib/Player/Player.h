@@ -10,7 +10,7 @@
 class Player
 {
 public:
-    Player() = default;
+    Player();
     ~Player();
     
     void play();
