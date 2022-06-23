@@ -87,13 +87,7 @@ Then, we will need to create a virtual envrionnement:
 Chess\server\ChessServer>python -m venv python_venv\venv
 ```
 
-If you are on windows, you should be able to activate your virtual environnement using the following command:
-
-```
-Chess\server\ChessServer>python_venv\venv\Scripts\activate.bat
-```
-
-If you are on linux or on mac, you should use this command instead:
+You should be able to activate your virtual environnement using the following command:
 
 ```
 Chess\server\ChessServer>python_venv\venv\Scripts\activate
