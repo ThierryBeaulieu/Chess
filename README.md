@@ -111,6 +111,17 @@ If the libraries are correctly installed, you can close the command line window 
 (venv) Chess\server\ChessServer>deactivate
 ```
 
+### Running your code
+
+For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute ```app.py```.
+
+```
+Chess\server\ChessServer>python_venv/venv/Scripts/activate
+(venv) Chess\server\ChessServer> python app.py
+```
+
+You should now be able to connect yourself to the localhost written in the terminal.
+
 # React front-end
 
 ### Summary
