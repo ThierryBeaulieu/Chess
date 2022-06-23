@@ -57,7 +57,7 @@ Chess/server/cppLib/build/
 
 The last thing that you need to do is to specify your project's configuration. You should have a Chess game working on your computer.
 
-# Python server
+## Python server
 
 ### Summary
 
