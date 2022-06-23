@@ -6,9 +6,14 @@ set(Sources
     server.cpp
 )
 
+set(Header
+    httplib.h
+)
+
 add_executable(
     ${This}
     ${Sources}
+    ${Headers}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/lib)
