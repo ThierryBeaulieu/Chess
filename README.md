@@ -76,44 +76,45 @@ Once that this is doen, you will need to install the Python requirements contain
 First, let's create a server repository:
 
 ```
-Chess/>cd server
-Chess/server/ChessServer>mkdir python_venv
+Chess>cd server
+Chess\server>cd ChessServer
+Chess\server\ChessServer>mkdir python_venv
 ```
 
 Then, we will need to create a virtual envrionnement:
 
 ```
-Chess/server/ChessServer>python -m venv python_venv\venv
+Chess\server\ChessServer>python -m venv python_venv\venv
 ```
 
 If you are on windows, you should be able to activate your virtual environnement using the following command:
 
 ```
-Chess/server/ChessServer>python_venv\venv\Scripts\activate.bat
+Chess\server\ChessServer>python_venv/venv/Scripts/activate.bat
 ```
 
 If you are on linux or on mac, you should use this command instead:
 
 ```
-Chess/server/ChessServer>python_venv\venv\Scripts\activate
+Chess\server\ChessServer>python_venv/venv/Scripts/activate
 ```
 
 We are now able to install the requirements:
 
 ```
-Chess/server/ChessServer>pip install -r requirements.txt
+Chess\server\ChessServer>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
 ```
-Chess/server/ChessServer>pip list
+Chess\server\ChessServer>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
 ```
-Chess/server/ChessServer>deactivate
+Chess\server\ChessServer>deactivate
 ```
 
 # React front-end
@@ -129,8 +130,8 @@ React depends on [Node.js](https://nodejs.org/en/download/). Once that this is d
 To start the front-end, you can use the following command in your terminal:
 
 ```
-Chess/>cd client
-Chess/client/>npm start
+Chess>cd client
+Chess\client>npm start
 ```
 
 The front-end server should be running accordingly.
