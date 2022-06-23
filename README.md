@@ -1,10 +1,9 @@
 # Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
 
 ##### Table of Contents  
-[Headers](#headers)  
-[Emphasis](#emphasis)    
-<a name="headers"/>
-## Headers
+[Overview](#Overview)      
+<a name="Overview"/>
+
 
 Welcome to this chess project! If you want to install this project, you can clone it on your computer with:
 
