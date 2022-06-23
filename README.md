@@ -1,11 +1,5 @@
 # Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
 
-## Table of Contents  
-[#Overview](#Overview)
-[#The C++ source code](#The C++ source code)
-[#Summary](#Summary)
-[#Prerequisites and installation](#Prerequisites and installation)
-
 Welcome to this chess project! If you want to install this project, you can clone it on your computer with:
 
 ```
