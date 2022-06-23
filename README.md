@@ -57,7 +57,7 @@ Chess/server/cppLib/build/
 
 The last thing that you need to do is to specify your project's configuration. You should have a Chess game working on your computer.
 
-# Python server
+## Python server
 
 ### Summary
 
@@ -87,35 +87,40 @@ Then, we will need to create a virtual envrionnement:
 Chess\server\ChessServer>python -m venv python_venv\venv
 ```
 
-If you are on windows, you should be able to activate your virtual environnement using the following command:
+You should be able to activate your virtual environnement using the following command:
 
 ```
-Chess\server\ChessServer>python_venv/venv/Scripts/activate.bat
-```
-
-If you are on linux or on mac, you should use this command instead:
-
-```
-Chess\server\ChessServer>python_venv/venv/Scripts/activate
+Chess\server\ChessServer>python_venv\venv\Scripts\activate
 ```
 
 We are now able to install the requirements:
 
 ```
-Chess\server\ChessServer>pip install -r requirements.txt
+(venv) Chess\server\ChessServer>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
 ```
-Chess\server\ChessServer>pip list
+(venv) Chess\server\ChessServer>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
 ```
-Chess\server\ChessServer>deactivate
+(venv) Chess\server\ChessServer>deactivate
 ```
+
+### Running your code
+
+For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute ```app.py```.
+
+```
+Chess\server\ChessServer>python_venv/venv/Scripts/activate
+(venv) Chess\server\ChessServer> python app.py
+```
+
+You should now be able to connect yourself to the localhost written in the terminal.
 
 # React front-end
 
