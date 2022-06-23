@@ -102,19 +102,19 @@ Chess\server\ChessServer>python_venv\venv\Scripts\activate
 We are now able to install the requirements:
 
 ```
-Chess\server\ChessServer>pip install -r requirements.txt
+(venv) Chess\server\ChessServer>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
 ```
-Chess\server\ChessServer>pip list
+(venv) Chess\server\ChessServer>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
 ```
-Chess\server\ChessServer>deactivate
+(venv) Chess\server\ChessServer>deactivate
 ```
 
 # React front-end
