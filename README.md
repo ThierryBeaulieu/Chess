@@ -8,7 +8,7 @@ git clone https://github.com/ThierryBeaulieu/Chess
 
 Once that this is done, I invite you to continue your reading to learn more about the mains sections of this project.
 
-## Overview
+# Overview
 
 The project is divided into three main sections:
 
