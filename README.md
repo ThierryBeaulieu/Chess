@@ -12,9 +12,9 @@ Once that this is done, I invite you to continue your reading to learn more abou
 
 The project is divided into three main sections:
 
-1. The C++ source code (model)
-2. The Python source code for the server (controller)
-3. The React front-end (view)
+1. [The C++ source code (model)](#exemple)
+2. [The Python source code for the server (controller)](#exemple2)
+3. [The React front-end (view)](#exemple-three)
 
 To make a long story short, the C++ source code serves as the backbone of the web application. C++ is used so that the object oriented development can be more easy that on Python where the concept of classes doesn't really exists.
 
@@ -22,7 +22,7 @@ The Python is used to make the link between the C++ model and the React front-en
 
 React is used because it's well known and easy to learn. This makes it the right choice for what we need to do.
 
-# The C++ source code
+## The C++ source code (model)
 
 ### Summary
 
@@ -57,7 +57,7 @@ Chess/server/cppLib/build/
 
 The last thing that you need to do is to specify your project's configuration. You should have a Chess game working on your computer.
 
-# Python server
+## The Python source code for the server (controller)
 
 ### Summary
 
@@ -113,7 +113,7 @@ If the libraries are correctly installed, you can close the command line window 
 
 ### Running your code
 
-For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute ```app.py```.
+For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute `app.py`.
 
 ```bat
 Chess\server\ChessServer>python_venv/venv/Scripts/activate
@@ -122,7 +122,7 @@ Chess\server\ChessServer>python_venv/venv/Scripts/activate
 
 You should now be able to connect yourself to the localhost written in the terminal.
 
-# React front-end
+## The React front-end (view)
 
 ### Summary
 
