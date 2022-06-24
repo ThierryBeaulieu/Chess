@@ -22,7 +22,7 @@ The Python is used to make the link between the C++ model and the React front-en
 
 React is used because it's well known and easy to learn. This makes it the right choice for what we need to do.
 
-## The C++ source code
+# The C++ source code
 
 ### Summary
 
@@ -57,7 +57,7 @@ Chess/server/cppLib/build/
 
 The last thing that you need to do is to specify your project's configuration. You should have a Chess game working on your computer.
 
-## Python server
+# Python server
 
 ### Summary
 
