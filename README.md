@@ -12,7 +12,7 @@ Once that this is done, I invite you to continue your reading to learn more abou
 
 The project is divided into three main sections:
 
-1. [The C++ source code (model)](#exemple)
+1. [The C++ source code (model)](## The C++ source code (model))
 2. [The Python source code for the server (controller)](#exemple2)
 3. [The React front-end (view)](#exemple-three)
 
