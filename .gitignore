@@ -1,6 +1,6 @@
 
 # ignoring the build folder.
-/build/
+build/
 
 # ignoring visual studio files
 *.sln
@@ -17,3 +17,22 @@
 
 # ignoring mac files
 .DS_Store
+
+# ignoring python virtual environments
+venv/
+
+# Python Flask
+instance/
+.webassets-cache
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+
