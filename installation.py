@@ -1,10 +1,12 @@
 import subprocess
 import os
 
-currentPat = os.getcwd()
+initialDir = os.getcwd() + '/server/flask/'
+os.chdir(initialDir)
 
-os.chdir(currentPat + '/server/flask/')
-
+# TODO
 subprocess.run('python -m venv python_venv/venv', shell=True)
-subprocess.run('python_venv/venv/Scripts/activate', shell=True)
-subprocess.run('pip install -r requirements.txt', shell=True)
+
+result = subprocess.run('pip install -r requirements.txt', shell=True)
+
+
