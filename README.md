@@ -1,4 +1,4 @@
-# Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ThierryBeaulieu/Chess/LICENSE)
+# Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ThierryBeaulieu/Chess/blob/master/LICENSE)
 
 Welcome to this chess project! If you want to install this project, you can clone it on your computer with:
 
