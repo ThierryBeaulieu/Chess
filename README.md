@@ -84,31 +84,31 @@ Chess\server\ChessServer>mkdir python_venv
 Then, we will need to create a virtual envrionnement:
 
 ```bat
-Chess\server\ChessServer>python -m venv python_venv\venv
+Chess\server\flask>python -m venv python_venv\venv
 ```
 
 You should be able to activate your virtual environnement using the following command:
 
 ```bat
-Chess\server\ChessServer>python_venv\venv\Scripts\activate
+Chess\server\flask>python_venv\venv\Scripts\activate
 ```
 
 We are now able to install the requirements:
 
 ```bat
-(venv) Chess\server\ChessServer>pip install -r requirements.txt
+(venv) Chess\server\flask>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
 ```bat
-(venv) Chess\server\ChessServer>pip list
+(venv) Chess\server\flask>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
 ```bat
-(venv) Chess\server\ChessServer>deactivate
+(venv) Chess\server\flask>deactivate
 ```
 
 ### Running your code
@@ -117,7 +117,7 @@ For running the python web server, you will first need to activate the virtual e
 
 ```bat
 Chess\server\ChessServer>python_venv/venv/Scripts/activate
-(venv) Chess\server\ChessServer> python app.py
+(venv) Chess\server\flask> python app.py
 ```
 
 You should now be able to connect yourself to the localhost written in the terminal.
