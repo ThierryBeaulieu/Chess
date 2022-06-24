@@ -12,9 +12,9 @@ Once that this is done, I invite you to continue your reading to learn more abou
 
 The project is divided into three main sections:
 
-1. [The C++ source code (model)](#exemple)
-2. [The Python source code for the server (controller)](#exemple2)
-3. [The React front-end (view)](#exemple-three)
+1. [The C++ source code (model)](https://github.com/ThierryBeaulieu/Chess#the-c-source-code-model)
+2. [The Python source code for the server (controller)](https://github.com/ThierryBeaulieu/Chess#the-python-source-code-for-the-server-controller)
+3. [The React front-end (view)](https://github.com/ThierryBeaulieu/Chess#the-react-front-end-view)
 
 To make a long story short, the C++ source code serves as the backbone of the web application. C++ is used so that the object oriented development can be more easy that on Python where the concept of classes doesn't really exists.
 
@@ -77,38 +77,38 @@ First, let's create a server repository:
 
 ```bat
 Chess>cd server
-Chess\server>cd ChessServer
-Chess\server\ChessServer>mkdir python_venv
+Chess\server>cd flask
+Chess\server\flask>mkdir python_venv
 ```
 
 Then, we will need to create a virtual envrionnement:
 
 ```bat
-Chess\server\ChessServer>python -m venv python_venv\venv
+Chess\server\flask>python -m venv python_venv\venv
 ```
 
 You should be able to activate your virtual environnement using the following command:
 
 ```bat
-Chess\server\ChessServer>python_venv\venv\Scripts\activate
+Chess\server\flask>python_venv\venv\Scripts\activate
 ```
 
 We are now able to install the requirements:
 
 ```bat
-(venv) Chess\server\ChessServer>pip install -r requirements.txt
+(venv) Chess\server\flask>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
 ```bat
-(venv) Chess\server\ChessServer>pip list
+(venv) Chess\server\flask>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
 ```bat
-(venv) Chess\server\ChessServer>deactivate
+(venv) Chess\server\flask>deactivate
 ```
 
 ### Running your code
@@ -117,7 +117,7 @@ For running the python web server, you will first need to activate the virtual e
 
 ```bat
 Chess\server\ChessServer>python_venv/venv/Scripts/activate
-(venv) Chess\server\ChessServer> python app.py
+(venv) Chess\server\flask> python app.py
 ```
 
 You should now be able to connect yourself to the localhost written in the terminal.
