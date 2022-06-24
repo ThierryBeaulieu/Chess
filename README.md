@@ -136,6 +136,7 @@ To start the front-end, you can use the following command in your terminal:
 
 ```
 Chess>cd client
+Chess>client>npm install
 Chess\client>npm start
 ```
 
