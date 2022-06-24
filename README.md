@@ -77,8 +77,8 @@ First, let's create a server repository:
 
 ```bat
 Chess>cd server
-Chess\server>cd ChessServer
-Chess\server\ChessServer>mkdir python_venv
+Chess\server>cd flask
+Chess\server\flask>mkdir python_venv
 ```
 
 Then, we will need to create a virtual envrionnement:
