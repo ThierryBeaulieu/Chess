@@ -84,7 +84,7 @@ Chess\server\flask>mkdir python_venv
 Then, we will need to create a virtual envrionnement:
 
 ```bat
-Chess\server\flask>python -m venv python_venv/venv
+Chess\server\flask>python -m venv python_venv\venv
 ```
 
 You should be able to activate your virtual environnement using the following command:
