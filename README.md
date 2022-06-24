@@ -37,7 +37,7 @@ TestExecutable uses the Google Test as a framework to run its tests. Chess is on
 
 If you haven't already I encourage you to install this repository.
 
-```
+```console
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
@@ -45,13 +45,13 @@ The project depends on [CMake](https://cmake.org/install/). For beginners, CMake
 
 If you are using the CMake GUI, you need to select as a root:
 
-```
+```console
 Chess/server/cppLib/
 ```
 
 After that, you need to specify the location of the build folder (this can be anywhere on your computer, but I recommend you keep it somewhat close, as this is where the generated files will end up). Let's say:
 
-```
+```console
 Chess/server/cppLib/build/
 ```
 
@@ -67,7 +67,7 @@ In this first section, you will learn that the [Python](https://www.python.org/d
 
 If you haven't already I encourage you to install this repository.
 
-```
+```console
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
@@ -75,7 +75,7 @@ Once that this is doen, you will need to install the Python requirements contain
 
 First, let's create a server repository:
 
-```
+```console
 Chess>cd server
 Chess\server>cd ChessServer
 Chess\server\ChessServer>mkdir python_venv
@@ -83,31 +83,31 @@ Chess\server\ChessServer>mkdir python_venv
 
 Then, we will need to create a virtual envrionnement:
 
-```
+```console
 Chess\server\ChessServer>python -m venv python_venv\venv
 ```
 
 You should be able to activate your virtual environnement using the following command:
 
-```
+```console
 Chess\server\ChessServer>python_venv\venv\Scripts\activate
 ```
 
 We are now able to install the requirements:
 
-```
+```console
 (venv) Chess\server\ChessServer>pip install -r requirements.txt
 ```
 
 You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
 
-```
+```console
 (venv) Chess\server\ChessServer>pip list
 ```
 
 If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
 
-```
+```console
 (venv) Chess\server\ChessServer>deactivate
 ```
 
@@ -115,7 +115,7 @@ If the libraries are correctly installed, you can close the command line window 
 
 For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute ```app.py```.
 
-```
+```console
 Chess\server\ChessServer>python_venv/venv/Scripts/activate
 (venv) Chess\server\ChessServer> python app.py
 ```
@@ -134,7 +134,7 @@ React depends on [Node.js](https://nodejs.org/en/download/). Once that this is d
 
 To start the front-end, you can use the following command in your terminal:
 
-```
+```console
 Chess>cd client
 Chess>client>npm install
 Chess\client>npm start
