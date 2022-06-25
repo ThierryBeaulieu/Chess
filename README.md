@@ -71,44 +71,26 @@ If you haven't already I encourage you to install this repository.
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
-Once that this is doen, you will need to install the Python requirements contained in the requirements.txt file.
+Once that this is done, you will need to install the Python requirements contained in the requirements.txt file.
 
-First, let's create a server repository:
+First, let's download Anaconda: https://www.anaconda.com/
+
+Go to /Chess/server, you should be able to create your virtual environnement using the following command:
 
 ```bat
-Chess>cd server
-Chess\server>cd flask
-Chess\server\flask>mkdir python_venv
+conda env create -f environment.yml
 ```
 
-Then, we will need to create a virtual envrionnement:
+We are now able to activate the environment:
 
 ```bat
-Chess\server\flask>python -m venv python_venv\venv
+conda activate chess
 ```
 
-You should be able to activate your virtual environnement using the following command:
+You should now be able to see the same dependencies contained in the environment.yml file using the command line:
 
 ```bat
-Chess\server\flask>python_venv\venv\Scripts\activate
-```
-
-We are now able to install the requirements:
-
-```bat
-(venv) Chess\server\flask>pip install -r requirements.txt
-```
-
-You should now be able to see the same dependencies contained in the requirements.txt file using the command line:
-
-```bat
-(venv) Chess\server\flask>pip list
-```
-
-If the libraries are correctly installed, you can close the command line window or use deactivate your virtual environnement.
-
-```bat
-(venv) Chess\server\flask>deactivate
+conda list
 ```
 
 ### Running your code
