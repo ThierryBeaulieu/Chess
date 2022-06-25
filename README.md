@@ -46,13 +46,13 @@ The project depends on [CMake](https://cmake.org/install/). For beginners, CMake
 If you are using the CMake GUI, you need to select as a root:
 
 ```bat
-Chess/server/cppLib/
+Chess/
 ```
 
 After that, you need to specify the location of the build folder (this can be anywhere on your computer, but I recommend you keep it somewhat close, as this is where the generated files will end up). Let's say:
 
 ```bat
-Chess/server/cppLib/build/
+Chess/build/
 ```
 
 The last thing that you need to do is to specify your project's configuration. You should have a Chess game working on your computer.
