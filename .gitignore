@@ -14,6 +14,8 @@ build/
 *.vcxproj.filters.user.debug.*
 *.vcxproj.filters.user.release
 *.vcxproj.filters.user.release.*
+*.vcxproj
+*.stamp
 
 # ignoring mac files
 .DS_Store
