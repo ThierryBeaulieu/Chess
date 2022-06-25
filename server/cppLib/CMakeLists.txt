@@ -34,3 +34,8 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(googletest)
+
+# pybind11
+add_subdirectory(${PROJECT_SOURCE_DIR}/externals/pybind11)
+
+pybind11_add_module(example ${PROJECT_SOURCE_DIR}/lib/Example/example.cpp)
