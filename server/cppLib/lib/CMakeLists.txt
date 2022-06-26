@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.6)
 
+# activate pybind for the lib
+add_compile_definitions(PYBIND)
+
 set(This ChessLib)
 
 set(Source 
