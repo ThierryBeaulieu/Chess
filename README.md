@@ -41,7 +41,7 @@ If you haven't already I encourage you to install this repository.
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
-The project depends on [CMake](https://cmake.org/install/). For beginners, CMake can be used to generate Visual Studio solutions (Windows), projects for XCode (Mac), Makefiles (Linux), etc. You can generate and build your project from the platform that you want. I recommend you to download the CMake GUI if possible (it makes things that much easier!). Once you're done with that bit, you should also download or fork this github repository.
+The project depends on [CMake](https://cmake.org/install/). For beginners, CMake can be used to generate Visual Studio solutions (Windows) and projects for XCode (Mac). However, be carefull, this project requires to generate You can generate and build your project from the platform that you want. I recommend you to download the CMake GUI if possible (it makes things that much easier!). Once you're done with that bit, you should also download or fork this github repository.
 
 If you are using the CMake GUI, you need to select as a root:
 
@@ -70,7 +70,7 @@ If you haven't already I encourage you to install this repository.
 ```bat
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
-Once that this is done, you should be able to run
+Now that this is done, you will need to install ```Python 3.10``` if you haven't already. Once that this is done, you should be able to run
 
 ```bat
 Chess>python installation.py
@@ -78,15 +78,13 @@ Chess>python installation.py
 
 If there are no errors, you should be good to go. Congrats!
 
-### Running your code
+### Running the server
 
 For running the python web server, you will first need to activate the virtual envrionnement if it's not already done. Once that this is done, you should be able to execute `app.py`.
 
 ```bat
-Chess\server\ChessServer>python_venv/venv/Scripts/activate
-(venv) Chess\server\flask> python app.py
+Chess\server\flask> python app.py
 ```
-
 You should now be able to connect yourself to the localhost written in the terminal.
 
 ## The React front-end (view)
