@@ -6,6 +6,8 @@ project(${This} C CXX)
 # activate PYBIND macro for C++
 add_compile_definitions(PYBIND)
 
+# set the path of the output library
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/pybind/)
 
 # Set the build directory
 set(CMAKE_C_STANDARD 99)
