@@ -1,13 +1,10 @@
 cmake_minimum_required(VERSION 3.6)
 
-set(This Chess)
-project(${This} C CXX)
-
 # activate PYBIND macro for C++
 add_compile_definitions(PYBIND)
 
 # set the path of the output library
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/pybind/)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/server/flask/)
 
 # Set the build directory
 set(CMAKE_C_STANDARD 99)
@@ -61,6 +58,6 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # pybind11
-add_subdirectory(${PROJECT_SOURCE_DIR}/externals/pybind11)
+add_subdirectory(${PROJECT_SOURCE_DIR}/server/cppLib/externals/pybind11)
 
-pybind11_add_module(example ${PROJECT_SOURCE_DIR}/lib/Example/example.cpp)
+pybind11_add_module(example ${PROJECT_SOURCE_DIR}/server/cppLib/lib/Example/example.cpp)
