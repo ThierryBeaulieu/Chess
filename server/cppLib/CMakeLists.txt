@@ -8,6 +8,9 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# set config types
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;" CACHE STRING "" FORCE)
+
 # Indicates the conguration type of the project.
 message("Generated with config types: ${CMAKE_CONFIGURATION_TYPES}")
 
