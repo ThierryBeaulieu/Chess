@@ -3,13 +3,36 @@ cmake_minimum_required(VERSION 3.6)
 set(This Chess)
 project(${This} C CXX)
 
+# activate PYBIND macro for C++
+add_compile_definitions(PYBIND)
+
+
 # Set the build directory
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# set config types
-set(CMAKE_CONFIGURATION_TYPES "Debug;Release;" CACHE STRING "" FORCE)
+# verify if the generator can create multiple executables.
+if(NOT SET_UP_CONFIGURATIONS_DONE)
+    set(SET_UP_CONFIGURATIONS_DONE TRUE)
+
+    # the generator needs to be a multiconfig generator
+    get_property(isMultiConfig GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+    if(isMultiConfig)
+        set(CMAKE_CONFIGURATION_TYPES "Debug;Release;" CACHE STRING "" FORCE) 
+    else()
+        if(NOT CMAKE_BUILD_TYPE)
+        message( FATAL_ERROR "CMake will exit, the generator is not a multiconfig generator")
+        endif()
+        set_property(CACHE CMAKE_BUILD_TYPE PROPERTY HELPSTRING "Choose the type of build")
+        # set the valid options for cmake-gui drop-down list
+        set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug;Release;")
+    endif()
+    # now set up the Profile configuration
+    set(CMAKE_C_FLAGS_PROFILE "...")
+    set(CMAKE_CXX_FLAGS_PROFILE "...")
+    set(CMAKE_EXE_LINKER_FLAGS_PROFILE "...")
+endif()
 
 # Indicates the conguration type of the project.
 message("Generated with config types: ${CMAKE_CONFIGURATION_TYPES}")
@@ -18,9 +41,6 @@ message("Generated with config types: ${CMAKE_CONFIGURATION_TYPES}")
 add_subdirectory(src)
 add_subdirectory(lib)
 add_subdirectory(tests)
-
-# Default executable project is Chess on Visual Studio
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${This})
 
 # Google Test
 enable_testing()
