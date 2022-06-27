@@ -10,9 +10,9 @@ git clone https://github.com/ThierryBeaulieu/Chess
 
 Before continuating, you will need to install a couple of prerequisites 📖. 
 
-&middot; [Python 3](https://www.python.org/downloads/)
-&middot; [CMake and its GUI](https://cmake.org/install/)
-&middot; [Node.js](https://nodejs.org/en/download/)
+1. [Python 3](https://www.python.org/downloads/)
+2. [CMake and its GUI](https://cmake.org/install/)
+3. [Node.js](https://nodejs.org/en/download/)
 
 Once that this is done ✔️, you should good to go! You will now be able to proceed to the installation 🚀
 
