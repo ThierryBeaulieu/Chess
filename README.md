@@ -60,3 +60,4 @@ Chess/client> npm start
 ```
 Open your browser ⬆️ to ```localhost:5001``` and you should be good to go! If you want to learn more about the different ways that you can contribute, I invite you to click on this link: [Documentation](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md)
 
+You can also have acces to the figma via this link: https://www.figma.com/file/G9VtXcxGd05AFdtMY9puYi/Chess?node-id=1%3A5
