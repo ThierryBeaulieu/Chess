@@ -1,6 +1,6 @@
 # Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ &middot; [![GitHub license](https://badgen.net/badge/Lisence/MIT/blue)](https://github.com/ThierryBeaulieu/Chess/blob/master/LICENSE) &middot; <img src="https://badgen.net/badge/icon/Cross%20platform/blue?icon=awesome&label"/>
 
-# Installation
+# Prerequisite
 
 Welcome 👋 to this chess project! If you want to install this project, you can clone it on your computer with:
 
@@ -15,6 +15,8 @@ Before continuating, you will need to install a couple of prerequisites 📖.
 3. [Node.js](https://nodejs.org/en/download/)
 
 Once that this is done ✔️, you should good to go! You will now be able to proceed to the installation 🚀
+
+# Installation
 
 If you are on mac or linux, you should use the command:
 ```bat
@@ -52,5 +54,5 @@ The server should be running 🏃. You will now need to run the front-end with t
 ```bat
 Chess/client> npm start
 ```
-Open your browser ⬆️ to ```localhost:5001``` and you should be good to go! If you want to learn more about the different ways that you can contribute, I invite you to click on this link: [Documentation[]()](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md)
+Open your browser ⬆️ to ```localhost:5001``` and you should be good to go! If you want to learn more about the different ways that you can contribute, I invite you to click on this link: [Documentation](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md)
 
