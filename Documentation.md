@@ -2,9 +2,9 @@
 
 The project is divided into three main sections:
 
-1. [The C++ source code (model)](https://github.com/ThierryBeaulieu/Chess#the-c-source-code-model)
-2. [The Python source code for the server (controller)](https://github.com/ThierryBeaulieu/Chess#the-python-source-code-for-the-server-controller)
-3. [The React front-end (view)](https://github.com/ThierryBeaulieu/Chess#the-react-front-end-view)
+1. [The C++ source code (model)](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md#the-c-source-code-model)
+2. [The Python source code for the server (controller)](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md#the-python-source-code-for-the-server-controller)
+3. [The React front-end (view)](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md#the-react-front-end-view)
 
 To make a long story short, the C++ source code serves as the backbone of the web application. C++ is used so that the object oriented development can be more easy that on Python where the concept of classes doesn't really exists.
 
