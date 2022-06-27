@@ -24,7 +24,7 @@ public:
     const Color& getColor() const;
     void setColor(const Color& color);
 
-    std::shared_ptr<Piece> Player::getPieceToMove();
+    std::shared_ptr<Piece> getPieceToMove();
     
 private:
     Color color_;
