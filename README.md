@@ -1,6 +1,6 @@
 # Chess ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ &middot; [![GitHub license](https://badgen.net/badge/Lisence/MIT/blue)](https://github.com/ThierryBeaulieu/Chess/blob/master/LICENSE) &middot; <img src="https://badgen.net/badge/icon/Cross%20platform/blue?icon=awesome&label"/>
 
-# Prerequisite
+## Prerequisites
 
 Welcome 👋 to this chess project! If you want to install this project, you can clone it on your computer with:
 
@@ -16,7 +16,7 @@ Before continuating, you will need to install a couple of prerequisites 📖.
 
 Once that this is done ✔️, you should good to go! You will now be able to proceed to the installation 🚀
 
-# Installation
+## Installation
 
 If you are on mac or linux, you should use the command:
 ```bat
@@ -43,7 +43,11 @@ Chess/build/
 ```
 The dynamic libraries are in the folder ```build/server/cpplib/Debug```. There should be .exp, lib and .pyd files. Take those and manually place them in the folder ```Chess/build/server/cppBin/```. 
 
-You should be good to go! To activate the server 🖥️ simply do the command:
+You should be good to go!
+
+## Running the web application
+
+To activate the server 🖥️ simply do the command:
 
 ```bat
 Chess/server/flask> python3 app.py
