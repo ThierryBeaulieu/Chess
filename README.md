@@ -8,7 +8,7 @@ Welcome 👋 to this chess project! If you want to install this project, you can
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
-Before continuating, you will need to install a couple of prerequisites 📖. 
+Before continuing, you will need to install a couple of prerequisites 📖. 
 
 1. [Python 3](https://www.python.org/downloads/)
 2. [CMake and its GUI](https://cmake.org/install/)
