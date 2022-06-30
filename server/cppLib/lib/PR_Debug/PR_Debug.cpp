@@ -17,7 +17,6 @@ namespace PR_Debug
                 if (piece != nullptr)
                 {
                     pieceName = piece->getName();
-                    // TODO: Make a method that fills the names with spaces to make them looks equal
                 }
 
                 std::cout << "[" + pieceName + "(";

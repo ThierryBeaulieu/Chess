@@ -15,6 +15,7 @@ set(Source
     Tile/Tile.cpp
     Random/Random.cpp
     InputHandler/InputHandler.cpp
+    InputHandler/InputManager.cpp
     PR_Debug/PR_Debug.cpp
 )
 
@@ -35,6 +36,7 @@ set(Header
     Tile/Tile.h
     Random/Random.h
     InputHandler/InputHandler.h
+    InputHandler/InputManager.h
     PR_Debug/PR_Debug.h
 )
 

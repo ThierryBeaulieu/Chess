@@ -36,13 +36,10 @@ void Player::play() {
     bool playerEntryIsInvalid = true;
 
     while (playerEntryIsInvalid) {
+        std::string userInput = InputHandler::getUserInput();
 
-        std::shared_ptr<Piece> pieceToMove = getPieceToMove();
-
-        pieceToMove->showPossibleMoves();
-
-        Position position = InputHandler::getUserInput();
     }
+
 
     // tell the user the available positions
 
