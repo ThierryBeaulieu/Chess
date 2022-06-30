@@ -10,7 +10,7 @@ public:
     ~Queen();
 
     virtual const std::vector<Position>& showPossibleMoves();
-
+    virtual const std::string getName() const;
 private:
     Queen() = default;
 };

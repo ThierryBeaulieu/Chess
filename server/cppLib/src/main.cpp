@@ -7,17 +7,25 @@
 #include "../lib/Board/Board.h"
 #include "../lib/GameManager/GameManager.h"
 
+#if DEBUG
+#include "../lib/Debug/Debug.h"
+#endif
 
 int main()
 {
     GameManager gameManager;
-    
+
     std::cout << "Begin of the Game" << std::endl;
 
     std::cout << "First player: " << gameManager.getFirstPlayer()->getName() << std::endl;
     std::cout << "Second player: " << gameManager.getSecondPlayer()->getName() << std::endl;
-    
-    while (gameManager.getState() != State::checkmate) {
+
+#if DEBUG
+    Debug::printGameInTerminal(gameManager);
+#endif
+
+    while (gameManager.getState() != State::checkmate)
+    {
 
         std::shared_ptr<Player> player = gameManager.getPlayersTurn();
 

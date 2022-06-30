@@ -2,6 +2,7 @@
 #define PIECE_H
 
 #include <vector>
+#include <string>
 
 #include "../GameManager/Position.h"
 
@@ -13,6 +14,8 @@ public:
 
     Position getPosition();
     void setPosition(Position newPosition);
+
+    virtual const std::string getName() const = 0;
 
     virtual const std::vector<Position>& showPossibleMoves() = 0;
 

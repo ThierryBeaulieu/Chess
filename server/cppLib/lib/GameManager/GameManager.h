@@ -19,6 +19,8 @@
 #include "../Pieces/Rook.h"
 #include "../Pieces/Piece.h"
 
+static const int boardSize_ = 8;
+
 class GameManager
 {
 public:
@@ -40,10 +42,12 @@ private:
     std::shared_ptr<Player> currentPlayer_;
     
     // Board
-    static const int boardSize_ = 8;
     Board<boardSize_> board_;
     State state_;
-  
+public:
+    const Board<boardSize_> getBoard() const;
+private:
+
     // players
     int indexOfCurrentPlayer_ = 0;
     static const int nbPlayers_ = 2;

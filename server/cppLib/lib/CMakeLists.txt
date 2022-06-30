@@ -15,6 +15,7 @@ set(Source
     Tile/Tile.cpp
     Random/Random.cpp
     InputHandler/InputHandler.cpp
+    Debug/Debug.cpp
 )
 
 set(Header 
@@ -34,6 +35,7 @@ set(Header
     Tile/Tile.h
     Random/Random.h
     InputHandler/InputHandler.h
+    Debug/Debug.h
 )
 
 add_library(

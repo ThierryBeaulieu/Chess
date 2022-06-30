@@ -10,7 +10,7 @@ public:
     ~Bishop();
 
     virtual const std::vector<Position>& showPossibleMoves();
-
+    virtual const std::string getName() const;
 private:
     Bishop() = default;
 };

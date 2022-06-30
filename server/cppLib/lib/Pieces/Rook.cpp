@@ -12,3 +12,7 @@ Rook::~Rook()
 const std::vector<Position>& Rook::showPossibleMoves() {
 	return possibleMoves_;
 }
+
+const std::string Rook::getName() const {
+	return "Rook  ";
+}

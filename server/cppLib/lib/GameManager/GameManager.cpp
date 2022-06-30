@@ -19,8 +19,8 @@ GameManager::~GameManager()
 
 void GameManager::initializeBoard() {
 // TODO: set pieces at their necessary position
-    board_.setTileContent(std::make_unique<Rook>(0,0));
-
+    board_.setTileContent(std::make_shared<Rook>(0, 0));
+    board_.setTileContent(std::make_shared<Rook>(0, 0));
 }
 
 void GameManager::initializePlayers() {
@@ -61,4 +61,8 @@ std::shared_ptr<Player> GameManager::getFirstPlayer() const{
 
 std::shared_ptr<Player> GameManager::getSecondPlayer() const{
     return player_[second];
+}
+
+const Board<boardSize_> GameManager::getBoard() const {
+    return board_;
 }
