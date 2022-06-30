@@ -7,8 +7,8 @@
 #include "../lib/Board/Board.h"
 #include "../lib/GameManager/GameManager.h"
 
-#if DEBUG
-#include "../lib/Debug/Debug.h"
+#if PR_DEBUG
+#include "../lib/PR_Debug/PR_Debug.h"
 #endif
 
 int main()
@@ -20,8 +20,8 @@ int main()
     std::cout << "First player: " << gameManager.getFirstPlayer()->getName() << std::endl;
     std::cout << "Second player: " << gameManager.getSecondPlayer()->getName() << std::endl;
 
-#if DEBUG
-    Debug::printGameInTerminal(gameManager);
+#if PR_DEBUG
+    PR_Debug::printGameInTerminal(gameManager);
 #endif
 
     while (gameManager.getState() != State::checkmate)
