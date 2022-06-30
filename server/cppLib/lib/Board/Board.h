@@ -23,9 +23,14 @@ public:
     int getSize() {
         return N;
     }
-    
+
+
+    // The methode should only be used to initialize board
     void setTileContent(std::shared_ptr<Piece> piece){
         const Position position = piece->getPosition();
+        if (tile_[position.x][position.y].getContent() != nullptr) {
+            exit(1); // stop intialization
+        }
         tile_[position.x][position.y].setContent(piece);
     }
     

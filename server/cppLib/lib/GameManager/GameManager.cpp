@@ -18,9 +18,44 @@ GameManager::~GameManager()
 }
 
 void GameManager::initializeBoard() {
-// TODO: set pieces at their necessary position
-    board_.setTileContent(std::make_shared<Rook>(0, 0));
-    board_.setTileContent(std::make_shared<Rook>(0, 0));
+    // white
+    board_.setTileContent(std::make_shared<Rook>  (0, 0));
+    board_.setTileContent(std::make_shared<Knight>(1, 0));
+    board_.setTileContent(std::make_shared<Bishop>(2, 0));
+    board_.setTileContent(std::make_shared<King>  (3, 0));
+    board_.setTileContent(std::make_shared<Queen> (4, 0));
+    board_.setTileContent(std::make_shared<Bishop>(5, 0));
+    board_.setTileContent(std::make_shared<Knight>(6, 0));
+    board_.setTileContent(std::make_shared<Rook>  (7, 0));
+
+    board_.setTileContent(std::make_shared<Pawn>(0, 1));
+    board_.setTileContent(std::make_shared<Pawn>(1, 1));
+    board_.setTileContent(std::make_shared<Pawn>(2, 1));
+    board_.setTileContent(std::make_shared<Pawn>(3, 1));
+    board_.setTileContent(std::make_shared<Pawn>(4, 1));
+    board_.setTileContent(std::make_shared<Pawn>(5, 1));
+    board_.setTileContent(std::make_shared<Pawn>(6, 1));
+    board_.setTileContent(std::make_shared<Pawn>(7, 1));
+
+    // black
+    board_.setTileContent(std::make_shared<Rook>  (0, 7));
+    board_.setTileContent(std::make_shared<Knight>(1, 7));
+    board_.setTileContent(std::make_shared<Bishop>(2, 7));
+    board_.setTileContent(std::make_shared<King>  (3, 7));
+    board_.setTileContent(std::make_shared<Queen> (4, 7));
+    board_.setTileContent(std::make_shared<Bishop>(5, 7));
+    board_.setTileContent(std::make_shared<Knight>(6, 7));
+    board_.setTileContent(std::make_shared<Rook>  (7, 7));
+
+    board_.setTileContent(std::make_shared<Pawn>(0, 6));
+    board_.setTileContent(std::make_shared<Pawn>(1, 6));
+    board_.setTileContent(std::make_shared<Pawn>(2, 6));
+    board_.setTileContent(std::make_shared<Pawn>(3, 6));
+    board_.setTileContent(std::make_shared<Pawn>(4, 6));
+    board_.setTileContent(std::make_shared<Pawn>(5, 6));
+    board_.setTileContent(std::make_shared<Pawn>(6, 6));
+    board_.setTileContent(std::make_shared<Pawn>(7, 6));
+
 }
 
 void GameManager::initializePlayers() {
