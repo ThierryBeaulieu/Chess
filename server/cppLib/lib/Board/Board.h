@@ -1,6 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <utility>
+
 
 #include "../Tile/Tile.h"
 #include "../Pieces/Piece.h"
@@ -13,7 +15,7 @@ public:
         // initialise the array
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
-                array_[i][j].setContent(nullptr);
+                tile_[i][j].setContent(nullptr);
             }
         }
     }
@@ -22,17 +24,44 @@ public:
         return N;
     }
     
-    void setElement(std::shared_ptr<Piece> content){
-        const Position position = content->getPosition();
-        array_[position.x][position.y].setContent(content);
+    void setTileContent(std::shared_ptr<Piece> piece){
+        const Position position = piece->getPosition();
+        tile_[position.x][position.y].setContent(piece);
     }
     
-    std::shared_ptr<Piece> getElement(int x, int y){
-        return array_[x][y].getContent();
+    std::shared_ptr<Piece> getTileContent(int x, int y){
+        return tile_[x][y].getContent();
     }
+
+    /*
+    * bool: if the move was permited
+    * std::shared_ptr<Piece>: piece eaten if there's one
+    */
+    std::pair<bool, std::shared_ptr<Piece>> movePiece(std::shared_ptr<Piece> piece, Position newPosition) {
+
+        bool isMoveLegit = verifyMoveValidity();
+        std::shared_ptr<Piece> piecesAdr = nullptr;
+
+        if (!isMoveLegit || piece == nullptr) {
+            return std::make_pair(isMoveLegit, piecesAdr);
+        }
+        
+        std::shared_ptr<Piece> currentPieceOnTile = this->getTileContent(newPosition.x, newPosition.y);
+        piece->setPosition(newPosition);
+        this->setTileContent(piece);
+
+        return std::make_pair(isMoveLegit, piecesAdr);
+    }
+
+    bool verifyMoveValidity(Position newPosition) {
+        if (newPosition.x >= 8 || newPosition.x < 0 || newPosition.y >= 8 || newPosition.y < 0)
+            return false;
+        return true;
+    }
+
     
 private:
-    Tile array_[N][N];
+    Tile tile_[N][N];
 };
 
 #endif // BOARD_H

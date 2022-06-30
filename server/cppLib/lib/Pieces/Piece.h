@@ -12,6 +12,7 @@ public:
     virtual ~Piece();
 
     Position getPosition();
+    void setPosition(Position newPosition);
 
     virtual const std::vector<Position>& showPossibleMoves() = 0;
 

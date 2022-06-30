@@ -19,7 +19,7 @@ GameManager::~GameManager()
 
 void GameManager::initializeBoard() {
 // TODO: set pieces at their necessary position
-    board_.setElement(std::make_unique<Rook>(0,0));
+    board_.setTileContent(std::make_unique<Rook>(0,0));
 
 }
 
