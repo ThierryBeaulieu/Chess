@@ -11,6 +11,14 @@
 #include "../Random/Random.h"
 #include "../GameManager/Color.h"
 
+#include "../Pieces/Bishop.h"
+#include "../Pieces/King.h"
+#include "../Pieces/Knight.h"
+#include "../Pieces/Pawn.h"
+#include "../Pieces/Queen.h"
+#include "../Pieces/Rook.h"
+#include "../Pieces/Piece.h"
+
 class GameManager
 {
 public:
@@ -26,18 +34,20 @@ public:
     State getState();
 
 private:
+    // id of players
     const int first = 0;
     const int second = 1;
-    
-    static const int boardSize_ = 8;
-    static const int nbPlayers_ = 2;
-
-    int indexOfCurrentPlayer_ = 0;
-
     std::shared_ptr<Player> currentPlayer_;
-    std::shared_ptr<Player> player_[nbPlayers_];
+    
+    // Board
+    static const int boardSize_ = 8;
     Board<boardSize_> board_;
     State state_;
+  
+    // players
+    int indexOfCurrentPlayer_ = 0;
+    static const int nbPlayers_ = 2;
+    std::shared_ptr<Player> player_[nbPlayers_];
 
 private:
     void setPlayersName();

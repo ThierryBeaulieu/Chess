@@ -3,9 +3,9 @@
 #include <string>
 #include <memory>
 
-#include <../lib/Pieces/Piece.h>
-#include <../lib/Board/Board.h>
-#include <../lib/GameManager/GameManager.h>
+#include "../lib/Pieces/Piece.h"
+#include "../lib/Board/Board.h"
+#include "../lib/GameManager/GameManager.h"
 
 
 int main()
