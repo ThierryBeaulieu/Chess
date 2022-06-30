@@ -36,6 +36,10 @@ private:
     // id of players
     const int first = 0;
     const int second = 1;
+
+    int white_ = -1;
+    int black_ = -1;
+
     std::shared_ptr<Player> currentPlayer_;
     
     // Board
@@ -54,6 +58,7 @@ private:
     void setPlayersColor();
     void initializeBoard();
     void initializePlayers();
+    void initializePlayersBoard(Color color);
 };
 
 #endif // GAMEMANAGER_H

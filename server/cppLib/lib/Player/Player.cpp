@@ -1,11 +1,15 @@
 #include "Player.h"
 
 Player::Player() : name_("Unknown"), color_(Color::unknown), state_(State::firstMove) {
-
+    
 }
 
 Player::~Player()
 {
+}
+
+void Player::addPersonnalPiece(std::shared_ptr<Piece> piece) {
+    pieces_.push_back(piece);
 }
 
 const Color& Player::getColor() const {

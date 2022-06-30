@@ -29,11 +29,14 @@ public:
     
     State getState();
     void setState(State state);
+    
+    void addPersonnalPiece(std::shared_ptr<Piece> piece);
 
 private:
     Color color_;
     std::string name_;
-    std::vector<Piece> pieces_;
+    std::vector<std::shared_ptr<Piece>> pieces_;
     State state_;
 };
+
 #endif // PLAYER_H
