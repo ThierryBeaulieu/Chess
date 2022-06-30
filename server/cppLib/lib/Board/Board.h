@@ -22,8 +22,9 @@ public:
         return N;
     }
     
-    void setElement(int x, int y, std::unique_ptr<Piece> content){
-        array_[x][y].setContent(content);
+    void setElement(std::shared_ptr<Piece> content){
+        const Position position = content->getPosition();
+        array_[position.x][position.y].setContent(content);
     }
     
     std::shared_ptr<Piece> getElement(int x, int y){
