@@ -9,7 +9,7 @@ Bishop::~Bishop()
 {
 }
 
-const std::vector<Position>& Bishop::showPossibleMoves() {
+const std::vector<Position>& Bishop::getPossibleMoves() {
 	return possibleMoves_;
 }
 const std::string Bishop::getName() const {

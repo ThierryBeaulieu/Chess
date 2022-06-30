@@ -42,6 +42,7 @@ void Player::play() {
     while (!playerEntryIsValid) {
         std::shared_ptr<Piece> pieceToMove = InputManager::getPiece();
         Position positionWanted = InputManager::getPosition();
+        const std::vector<Position> possiblePosition = pieceToMove->getPossibleMoves();
         playerEntryIsValid = true;
     }
 

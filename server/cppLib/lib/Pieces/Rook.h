@@ -9,7 +9,7 @@ public:
     Rook(const int x, const int y);
     ~Rook();
 
-    virtual const std::vector<Position>& showPossibleMoves();
+    virtual const std::vector<Position>& getPossibleMoves();
     virtual const std::string getName() const;
 private:
     Rook();

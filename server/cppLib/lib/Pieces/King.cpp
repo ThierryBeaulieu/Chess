@@ -9,7 +9,7 @@ King::~King()
 {
 }
 
-const std::vector<Position>& King::showPossibleMoves() {
+const std::vector<Position>& King::getPossibleMoves() {
 	return possibleMoves_;
 }
 

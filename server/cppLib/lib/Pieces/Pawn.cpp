@@ -9,7 +9,7 @@ Pawn::~Pawn()
 {
 }
 
-const std::vector<Position>& Pawn::showPossibleMoves() {
+const std::vector<Position>& Pawn::getPossibleMoves() {
 	return possibleMoves_;
 }
 

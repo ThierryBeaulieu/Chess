@@ -17,7 +17,7 @@ public:
 
     virtual const std::string getName() const = 0;
 
-    virtual const std::vector<Position>& showPossibleMoves() = 0;
+    virtual const std::vector<Position>& getPossibleMoves() = 0;
 
 protected:
     std::vector<Position> possibleMoves_;

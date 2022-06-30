@@ -9,7 +9,7 @@ Rook::~Rook()
 {
 }
 
-const std::vector<Position>& Rook::showPossibleMoves() {
+const std::vector<Position>& Rook::getPossibleMoves() {
 	return possibleMoves_;
 }
 
