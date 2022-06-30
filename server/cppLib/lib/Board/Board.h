@@ -29,7 +29,7 @@ public:
     void setTileContent(std::shared_ptr<Piece> piece){
         const Position position = piece->getPosition();
         if (tile_[position.x][position.y].getContent() != nullptr) {
-            exit(1); // stop intialization
+            exit(EXIT_FAILURE); // stop intialization
         }
         tile_[position.x][position.y].setContent(piece);
     }
