@@ -7,12 +7,18 @@
 #include "../lib/Board/Board.h"
 #include "../lib/GameManager/GameManager.h"
 
+#include "../lib/InputHandler/InputHandler.h"
+
 #if PR_DEBUG
 #include "../lib/PR_Debug/PR_Debug.h"
 #endif
 
 int main()
 {
+
+    InputHandler::verifyUserInput("^i");
+    InputHandler::verifyUserInput("A8");
+
     GameManager gameManager;
 
     std::cout << "Begin of the Game" << std::endl;

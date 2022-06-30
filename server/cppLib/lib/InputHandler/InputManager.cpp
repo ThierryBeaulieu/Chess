@@ -8,11 +8,11 @@ Position InputManager::getPosition()
 
     while (!isInputCorrect)
     {
-        std::cout << "Position > ";
+        std::cout << "Position (A3)> ";
         std::string userInput;
         userInput = InputHandler::getUserInput();
         std::cout << std::endl;
-        isInputCorrect = verifyUserInput(userInput);
+        isInputCorrect = InputHandler::verifyUserInput(userInput);
     }
     return piecePosition;
 }
@@ -20,13 +20,8 @@ Position InputManager::getPosition()
 std::shared_ptr<Piece> InputManager::getPiece()
 {
     std::shared_ptr<Piece> piece = nullptr;
-    std::cout << "Piece (x, y) > ";
+    std::cout << "Piece (A3) > ";
     std::string userInput;
     userInput = InputHandler::getUserInput();
     return piece;
-}
-
-bool InputManager::verifyUserInput(const std::string &userInput)
-{
-    return false;
 }

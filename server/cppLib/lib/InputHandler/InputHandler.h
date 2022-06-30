@@ -6,9 +6,12 @@
 
 #include "../GameManager/Position.h"
 
-namespace InputHandler
+class InputHandler
 {
-	std::string getUserInput();
-}
+public:
+	static std::string getUserInput();
+	static bool verifyUserInput(const std::string& userInput);
+private:
+};
 
 #endif // INPUTHANDLER_H

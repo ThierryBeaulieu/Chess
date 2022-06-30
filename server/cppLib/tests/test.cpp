@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include "../lib/InputHandler/InputManager.h"
+
 #include "../lib/Board/Board.h"
 #include "../lib/Pieces/Piece.h"
 #include "../lib/GameManager/GameManager.h"
@@ -19,7 +21,7 @@ TEST(BoardTest, BoardBaseConstructor){
     
     for(int i = 0; i < boardWidth; i++){
         for(int j = 0; j < boardWidth; j++){
-            EXPECT_EQ(board.getElement(i, j), nullptr);
+            EXPECT_EQ(board.getTileContent(i,j), nullptr);
         }
     }
 }
@@ -67,4 +69,19 @@ TEST(PiecesTest, constructor) {
     Position pawnPos = pawn.getPosition();
     EXPECT_EQ(pawnPos.x, xPos);
     EXPECT_EQ(pawnPos.y, yPos);
+}
+
+// Verify if the userInput can be taken correctly
+TEST(InputManagerTest, verifyUserInput) {
+    EXPECT_EQ(InputHandler::verifyUserInput("A1"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("H8"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("g8"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("H1"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("a8"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("b8"), true);
+    EXPECT_EQ(InputHandler::verifyUserInput("h1"), true);
+
+    EXPECT_EQ(InputHandler::verifyUserInput("^1"), false);
+    EXPECT_EQ(InputHandler::verifyUserInput("i1"), false);
+    EXPECT_EQ(InputHandler::verifyUserInput("a9"), false);
 }
