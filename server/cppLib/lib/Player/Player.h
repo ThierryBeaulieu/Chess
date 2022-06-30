@@ -8,6 +8,7 @@
 #include "../Pieces/Piece.h"
 #include "../GameManager/Color.h"
 #include "../InputHandler/InputManager.h"
+#include "../GameManager/State.h"
 #include "../Pieces/King.h"
 
 class Player
@@ -26,9 +27,13 @@ public:
 
     std::shared_ptr<Piece> getPieceToMove();
     
+    State getState();
+    void setState(State state);
+
 private:
     Color color_;
     std::string name_;
     std::vector<Piece> pieces_;
+    State state_;
 };
 #endif // PLAYER_H

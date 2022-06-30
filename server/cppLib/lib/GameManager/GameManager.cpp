@@ -2,8 +2,6 @@
 
 GameManager::GameManager()
 {
-    state_ = State::none;
-
     int minInterval = 0;
     int maxInterval = 1;
     indexOfCurrentPlayer_ = Random::Instance()->generateRandomNumber(minInterval, maxInterval);
@@ -79,10 +77,6 @@ void GameManager::setPlayersName(){
 
 std::shared_ptr<Player> GameManager::getPlayersTurn() const{
     return currentPlayer_;
-}
-
-State GameManager::getState() {
-    return state_;
 }
 
 void GameManager::endPlayersTurn(){

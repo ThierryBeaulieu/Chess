@@ -7,7 +7,6 @@
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
 #include "../GameManager/Position.h"
-#include "../GameManager/State.h"
 #include "../Random/Random.h"
 #include "../GameManager/Color.h"
 
@@ -33,8 +32,6 @@ public:
     std::shared_ptr<Player> getFirstPlayer() const;
     std::shared_ptr<Player> getSecondPlayer() const;
 
-    State getState();
-
 private:
     // id of players
     const int first = 0;
@@ -43,7 +40,6 @@ private:
     
     // Board
     Board<boardSize_> board_;
-    State state_;
 public:
     const Board<boardSize_> getBoard() const;
 private:

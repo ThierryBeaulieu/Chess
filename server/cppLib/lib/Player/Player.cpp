@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() : name_("Unknown"), color_(Color::unknown) {
+Player::Player() : name_("Unknown"), color_(Color::unknown), state_(State::firstMove) {
 
 }
 
@@ -50,3 +50,12 @@ void Player::play() {
     // end the users turn.
 
 }
+
+State Player::getState() {
+    return state_;
+}
+
+void Player::setState(State state) {
+    state_ = state;
+}
+

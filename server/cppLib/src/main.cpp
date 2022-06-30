@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <stdlib.h>
 
 #include "../lib/Pieces/Piece.h"
 #include "../lib/Board/Board.h"
@@ -15,27 +16,25 @@
 
 int main()
 {
-
     GameManager gameManager;
 
-    std::cout << "Begin of the Game" << std::endl;
+    while (gameManager.getFirstPlayer()->getState() != State::checkmate && gameManager.getSecondPlayer()->getState() != State::checkmate) {
 
-    std::cout << "First player: " << gameManager.getFirstPlayer()->getName() << std::endl;
-    std::cout << "Second player: " << gameManager.getSecondPlayer()->getName() << std::endl;
+        std::cout << "The game has started" << std::endl;
+
+        std::cout << "First player: " << gameManager.getFirstPlayer()->getName() << std::endl;
+        std::cout << "Second player: " << gameManager.getSecondPlayer()->getName() << std::endl;
 
 #if PR_DEBUG
-    PR_Debug::printGameInTerminal(gameManager);
+        PR_Debug::printGameInTerminal(gameManager);
 #endif
-
-    while (gameManager.getState() != State::checkmate)
-    {
 
         std::shared_ptr<Player> player = gameManager.getPlayersTurn();
 
         player->play();
 
         gameManager.endPlayersTurn();
+        system("CLS");
     }
-
     return 0;
 }
