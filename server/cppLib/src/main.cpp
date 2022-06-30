@@ -16,9 +16,6 @@
 int main()
 {
 
-    InputHandler::verifyUserInput("^i");
-    InputHandler::verifyUserInput("A8");
-
     GameManager gameManager;
 
     std::cout << "Begin of the Game" << std::endl;

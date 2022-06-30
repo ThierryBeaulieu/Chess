@@ -7,7 +7,7 @@
 
 #include "../Pieces/Piece.h"
 #include "../GameManager/Color.h"
-#include "../InputHandler/InputHandler.h"
+#include "../InputHandler/InputManager.h"
 #include "../Pieces/King.h"
 
 class Player

@@ -33,11 +33,12 @@ std::shared_ptr<Piece> Player::getPieceToMove() {
 void Player::play() {
 
     // Ask the user what piece he wants
-    bool playerEntryIsInvalid = true;
+    bool playerEntryIsValid = false;
 
-    while (playerEntryIsInvalid) {
-        std::string userInput = InputHandler::getUserInput();
-
+    while (!playerEntryIsValid) {
+        std::shared_ptr<Piece> pieceToMove = InputManager::getPiece();
+        Position positionWanted = InputManager::getPosition();
+        playerEntryIsValid = true;
     }
 
 
