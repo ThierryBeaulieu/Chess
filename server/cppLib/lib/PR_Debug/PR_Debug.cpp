@@ -7,9 +7,9 @@ namespace PR_Debug
     void printGameInTerminal(const GameManager &gameManager)
     {
         auto board = gameManager.getBoard();
-        for (int i = boardSize_ - 1; i >= 0; i--)
+        for (int j = boardSize_ - 1; j >= 0; j--)
         {
-            for (int j = 0; j < boardSize_; j++)
+            for (int i = 0; i < boardSize_; i++)
             {
                 auto piece = board.getTileContent(i, j);
                 std::string pieceName = "      ";
