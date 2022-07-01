@@ -1,7 +1,7 @@
 
 #include "InputManager.h"
 
-std::string InputManager::getRawPosition()
+std::string InputManager::getRawPiecePosition()
 {
     bool isInputCorrect = false;
     std::string userInput;
@@ -16,7 +16,7 @@ std::string InputManager::getRawPosition()
     return userInput;
 }
 
-std::string InputManager::getRawPiece()
+std::string InputManager::getRawPosition()
 {
     bool isInputCorrect = false;
     std::string userInput;

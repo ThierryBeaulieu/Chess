@@ -13,7 +13,7 @@ class InputManager
 {
 public:
     static std::string getRawPosition();
-    static std::string getRawPiece();
+    static std::string getRawPiecePosition();
 };
 
 #endif /* InputManager.h */
