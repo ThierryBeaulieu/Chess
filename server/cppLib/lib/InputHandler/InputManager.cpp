@@ -1,34 +1,32 @@
 
 #include "InputManager.h"
 
-Position InputManager::getPosition()
+std::string InputManager::getRawPosition()
 {
     bool isInputCorrect = false;
-    Position piecePosition = {0, 0};
+    std::string userInput;
 
     while (!isInputCorrect)
     {
         std::cout << "Position (A3)> ";
-        std::string userInput;
         userInput = InputHandler::getUserInput();
         isInputCorrect = InputHandler::verifyUserInput(userInput);
     }
 
-    return piecePosition;
+    return userInput;
 }
 
-std::shared_ptr<Piece> InputManager::getPiece()
+std::string InputManager::getRawPiece()
 {
     bool isInputCorrect = false;
-    std::shared_ptr<Piece> piece = nullptr;
+    std::string userInput;
 
     while (!isInputCorrect)
     {
         std::cout << "Piece (A3) > ";
-        std::string userInput;
         userInput = InputHandler::getUserInput();
         isInputCorrect = InputHandler::verifyUserInput(userInput);
     }
 
-    return piece;
+    return userInput;
 }

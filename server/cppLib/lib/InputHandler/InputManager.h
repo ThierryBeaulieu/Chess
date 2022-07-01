@@ -12,8 +12,8 @@
 class InputManager
 {
 public:
-    static Position getPosition();
-    static std::shared_ptr<Piece> getPiece();
+    static std::string getRawPosition();
+    static std::string getRawPiece();
 };
 
 #endif /* InputManager.h */
