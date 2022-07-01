@@ -40,14 +40,19 @@ void Player::play(std::shared_ptr<GameManager> gameManager) {
     bool playerEntryIsValid = false;
 
     while (!playerEntryIsValid) {
-        std::string pieceToMove = InputManager::getRawPiecePosition();
+        std::string pieceWanted = InputManager::getRawPiecePosition();
         std::string rawPosition = InputManager::getRawPosition();
 
         auto board = gameManager->getBoard();
         Position position = board.getPosition(rawPosition);
-        std::shared_ptr<Piece> pieceWanted = board.getPiece(pieceToMove);
-        //const std::vector<Position> possiblePosition = pieceToMove->getPossibleMoves();
-        playerEntryIsValid = true;
+        std::shared_ptr<Piece> pieceToMove = board.getPiece(pieceWanted);
+
+        if (pieceToMove != nullptr) {
+            const std::vector<Position> possiblePosition = pieceToMove->getPossibleMoves();
+            playerEntryIsValid = true;
+        }
+        
+        
     }
 
 
