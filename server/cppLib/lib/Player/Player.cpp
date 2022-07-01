@@ -34,7 +34,7 @@ std::shared_ptr<Piece> Player::getPieceToMove() {
     return std::make_shared<King>(0, 0);
 }
 
-void Player::play() {
+void Player::play(std::shared_ptr<GameManager> gameManager) {
 
     // Ask the user what piece he wants
     bool playerEntryIsValid = false;

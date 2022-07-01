@@ -20,6 +20,8 @@
 
 static const int boardSize_ = 8;
 
+class Player;
+
 class GameManager
 {
 public:

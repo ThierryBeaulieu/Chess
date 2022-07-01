@@ -31,7 +31,7 @@ int main()
 
         std::shared_ptr<Player> player = gameManager->getPlayersTurn();
 
-        player->play();
+        player->play(gameManager);
 
         gameManager->endPlayersTurn();
         system("CLS");

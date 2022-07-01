@@ -10,6 +10,9 @@
 #include "../InputHandler/InputManager.h"
 #include "../GameManager/State.h"
 #include "../Pieces/King.h"
+#include "../GameManager/GameManager.h"
+
+class GameManager;
 
 class Player
 {
@@ -17,7 +20,7 @@ public:
     Player();
     ~Player();
     
-    void play();
+    void play(std::shared_ptr<GameManager> gameManager);
 
     const std::string& getName() const;
     void setName(const std::string& name);
