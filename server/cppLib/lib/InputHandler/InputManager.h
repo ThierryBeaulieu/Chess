@@ -14,6 +14,8 @@ class InputManager
 public:
     static std::string getRawPosition();
     static std::string getRawPiecePosition();
+    static int convertIntToIndex(char c);
+    static int convertLetterToIndex(char c);
 };
 
 #endif /* InputManager.h */
