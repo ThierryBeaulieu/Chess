@@ -6,6 +6,7 @@
 
 #include "../Tile/Tile.h"
 #include "../Pieces/Piece.h"
+#include "../GameManager/Position.h"
 
 template<int N>
 class Board
@@ -64,6 +65,14 @@ public:
         return true;
     }
 
+    Position getPosition(std::string position) {
+        Position position = { -1,-1 };
+    }
+
+    std::shared_ptr<Piece> getPiece(std::string pieceToMove) {
+        std::shared_ptr<Piece> piece = nullptr;
+        return piece;
+    }
     
 private:
     Tile tile_[N][N];
