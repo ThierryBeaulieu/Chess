@@ -10,7 +10,7 @@
 
 namespace PR_Debug
 {
-    void printGameInTerminal(const GameManager &gameManager);
+    void printGameInTerminal(std::shared_ptr<GameManager> gameManager);
 }
 
 #endif

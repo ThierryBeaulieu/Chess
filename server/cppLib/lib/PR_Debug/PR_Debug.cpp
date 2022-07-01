@@ -4,9 +4,9 @@
 
 namespace PR_Debug
 {
-    void printGameInTerminal(const GameManager &gameManager)
+    void printGameInTerminal(std::shared_ptr<GameManager> gameManager)
     {
-        auto board = gameManager.getBoard();
+        auto board = gameManager->getBoard();
         for (int j = boardSize_ - 1; j >= 0; j--)
         {
             for (int i = 0; i < boardSize_; i++)
