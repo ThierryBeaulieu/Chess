@@ -9,6 +9,10 @@ King::~King()
 {
 }
 
-const std::vector<Position>& King::showPossibleMoves() {
+const std::vector<Position>& King::getPossibleMoves() {
 	return possibleMoves_;
+}
+
+const std::string King::getName() const {
+	return "King  ";
 }

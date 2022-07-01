@@ -9,6 +9,10 @@ Knight::~Knight()
 {
 }
 
-const std::vector<Position>& Knight::showPossibleMoves() {
+const std::vector<Position>& Knight::getPossibleMoves() {
 	return possibleMoves_;
+}
+
+const std::string Knight::getName() const {
+	return "Knight";
 }

@@ -6,6 +6,8 @@
 
 #include "../Tile/Tile.h"
 #include "../Pieces/Piece.h"
+#include "../GameManager/Position.h"
+#include "../InputHandler/InputManager.h"
 
 template<int N>
 class Board
@@ -23,9 +25,14 @@ public:
     int getSize() {
         return N;
     }
-    
+
+
+    // The methode should only be used to initialize board
     void setTileContent(std::shared_ptr<Piece> piece){
         const Position position = piece->getPosition();
+        if (tile_[position.x][position.y].getContent() != nullptr) {
+            exit(EXIT_FAILURE); // stop intialization
+        }
         tile_[position.x][position.y].setContent(piece);
     }
     
@@ -39,7 +46,7 @@ public:
     */
     std::pair<bool, std::shared_ptr<Piece>> movePiece(std::shared_ptr<Piece> piece, Position newPosition) {
 
-        bool isMoveLegit = verifyMoveValidity();
+        bool isMoveLegit = verifyMoveValidity(newPosition);
         std::shared_ptr<Piece> piecesAdr = nullptr;
 
         if (!isMoveLegit || piece == nullptr) {
@@ -59,6 +66,19 @@ public:
         return true;
     }
 
+    Position getPosition(std::string positionWanted) {
+        Position position = { -1,-1 };
+        position.x = InputManager::convertLetterToIndex(positionWanted[0]);
+        position.y = InputManager::convertIntToIndex(positionWanted[1]);
+        return position;
+    }
+
+    std::shared_ptr<Piece> getPiece(std::string pieceToMove) {
+        std::shared_ptr<Piece> piece = nullptr;
+        Position position = this->getPosition(pieceToMove);
+        piece = this->getTileContent(position.x, position.y);
+        return piece;
+    }
     
 private:
     Tile tile_[N][N];

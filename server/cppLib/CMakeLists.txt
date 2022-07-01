@@ -11,6 +11,9 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# This macro defines DEBUG
+add_compile_definitions(PR_DEBUG)
+
 # verify if the generator can create multiple executables.
 if(NOT SET_UP_CONFIGURATIONS_DONE)
     set(SET_UP_CONFIGURATIONS_DONE TRUE)

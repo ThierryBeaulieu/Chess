@@ -9,8 +9,8 @@ public:
     Bishop(const int x, const int y);
     ~Bishop();
 
-    virtual const std::vector<Position>& showPossibleMoves();
-
+    virtual const std::vector<Position>& getPossibleMoves();
+    virtual const std::string getName() const;
 private:
     Bishop() = default;
 };

@@ -7,7 +7,6 @@
 #include "../Board/Board.h"
 #include "../Tile/Tile.h"
 #include "../GameManager/Position.h"
-#include "../GameManager/State.h"
 #include "../Random/Random.h"
 #include "../GameManager/Color.h"
 
@@ -18,6 +17,10 @@
 #include "../Pieces/Queen.h"
 #include "../Pieces/Rook.h"
 #include "../Pieces/Piece.h"
+
+static const int boardSize_ = 8;
+
+class Player;
 
 class GameManager
 {
@@ -31,19 +34,23 @@ public:
     std::shared_ptr<Player> getFirstPlayer() const;
     std::shared_ptr<Player> getSecondPlayer() const;
 
-    State getState();
-
 private:
     // id of players
     const int first = 0;
     const int second = 1;
+
+    int white_ = -1;
+    int black_ = -1;
+
     std::shared_ptr<Player> currentPlayer_;
     
     // Board
-    static const int boardSize_ = 8;
     Board<boardSize_> board_;
-    State state_;
-  
+public:
+    const Board<boardSize_>& getBoard() const;
+    std::pair<bool, std::shared_ptr<Piece>> movePiece(std::shared_ptr<Piece> piece, Position newPosition);
+private:
+
     // players
     int indexOfCurrentPlayer_ = 0;
     static const int nbPlayers_ = 2;
@@ -54,6 +61,7 @@ private:
     void setPlayersColor();
     void initializeBoard();
     void initializePlayers();
+    void initializePlayersBoard(Color color);
 };
 
 #endif // GAMEMANAGER_H

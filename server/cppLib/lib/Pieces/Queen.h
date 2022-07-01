@@ -9,8 +9,8 @@ public:
     Queen(const int x, const int y);
     ~Queen();
 
-    virtual const std::vector<Position>& showPossibleMoves();
-
+    virtual const std::vector<Position>& getPossibleMoves();
+    virtual const std::string getName() const;
 private:
     Queen() = default;
 };
