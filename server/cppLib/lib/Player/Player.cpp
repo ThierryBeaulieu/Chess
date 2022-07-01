@@ -37,29 +37,41 @@ void Player::play(std::shared_ptr<GameManager> gameManager) {
 
     // Ask the user what piece he wants
     bool isUserInputValid = false;
+    Position pieceDestination = { -1,-1 };
+    std::shared_ptr<Piece> pieceToMove = nullptr;
 
     while (!isUserInputValid) {
-        std::string pieceWanted = InputManager::getRawPiecePosition();
-        std::string rawPosition = InputManager::getRawPosition();
-
         auto boardCopy = gameManager->getBoard();
-        Position pieceDestination = boardCopy.getPosition(rawPosition);
-        std::shared_ptr<Piece> pieceToMove = boardCopy.getPiece(pieceWanted);
+        pieceDestination = boardCopy.getPosition(InputManager::getRawPosition());
+        pieceToMove = boardCopy.getPiece(InputManager::getRawPiecePosition());
 
         if (pieceToMove != nullptr) {
             isUserInputValid = validatePlayerEntry(pieceDestination, pieceToMove);   
         }
-        
-        
+        else {
+            std::cout << "La pièce à bouger est absente de la case" << std::endl;
+        }
     }
 
-    // tell the user the available positions
+    changePiecePosition(gameManager, pieceToMove, pieceDestination);
 
-    // if the position is correct, set the selected piece to a new position
+    //set the selected piece to a new position
     // if the user click on the same piece again, ask him what he wants again
 
     // end the users turn.
 
+}
+
+void Player::changePiecePosition(std::shared_ptr<GameManager> gameManager, std::shared_ptr<Piece> pieceToMove, Position newPosition) {
+    std::pair<bool, std::shared_ptr<Piece>> moveResult = gameManager->movePiece(pieceToMove, newPosition);
+
+    if (moveResult.first == false) {
+        std::cout << "Le move n'est pas correct" << std::endl;
+        return;
+    }
+    if (moveResult.second != nullptr) {
+        std::cout << "La piece " << moveResult.second->getName() << " a été détruite" << std::endl;
+    }
 }
 
 bool Player::validatePlayerEntry(Position positionWanted, std::shared_ptr<Piece> pieceToMove) {

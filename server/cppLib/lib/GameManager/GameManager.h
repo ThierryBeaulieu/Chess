@@ -48,6 +48,7 @@ private:
     Board<boardSize_> board_;
 public:
     const Board<boardSize_>& getBoard() const;
+    std::pair<bool, std::shared_ptr<Piece>> movePiece(std::shared_ptr<Piece> piece, Position newPosition);
 private:
 
     // players

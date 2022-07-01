@@ -117,3 +117,7 @@ std::shared_ptr<Player> GameManager::getSecondPlayer() const{
 const Board<boardSize_>& GameManager::getBoard() const {
     return board_;
 }
+
+std::pair<bool, std::shared_ptr<Piece>> GameManager::movePiece(std::shared_ptr<Piece> piece, Position newPosition) {
+    return board_.movePiece(piece, newPosition);
+}

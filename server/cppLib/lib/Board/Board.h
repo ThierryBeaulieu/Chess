@@ -46,7 +46,7 @@ public:
     */
     std::pair<bool, std::shared_ptr<Piece>> movePiece(std::shared_ptr<Piece> piece, Position newPosition) {
 
-        bool isMoveLegit = verifyMoveValidity();
+        bool isMoveLegit = verifyMoveValidity(newPosition);
         std::shared_ptr<Piece> piecesAdr = nullptr;
 
         if (!isMoveLegit || piece == nullptr) {

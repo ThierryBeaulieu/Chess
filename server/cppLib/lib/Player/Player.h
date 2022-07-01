@@ -36,6 +36,8 @@ public:
     
     void addPersonnalPiece(std::shared_ptr<Piece> piece);
 
+    void changePiecePosition(std::shared_ptr<GameManager> gameManager, std::shared_ptr<Piece> pieceToMove, Position newPosition);
+
 private:
     bool validatePlayerEntry(Position positionWanted, std::shared_ptr<Piece> pieceToMove);
 
