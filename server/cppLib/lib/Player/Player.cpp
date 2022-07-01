@@ -35,7 +35,6 @@ std::shared_ptr<Piece> Player::getPieceToMove() {
 
 void Player::play(std::shared_ptr<GameManager> gameManager) {
 
-    // Ask the user what piece he wants
     bool isUserInputValid = false;
     Position pieceDestination = { -1,-1 };
     std::shared_ptr<Piece> pieceToMove = nullptr;

@@ -85,3 +85,23 @@ TEST(InputManagerTest, verifyUserInput) {
     EXPECT_EQ(InputHandler::verifyUserInput("i1"), false);
     EXPECT_EQ(InputHandler::verifyUserInput("a9"), false);
 }
+
+// Convert correctly the user input
+TEST(InputMangerTest, verifyCorrectConversions) {
+    EXPECT_EQ(1, InputManager::convertIntToIndex('2'));
+    EXPECT_EQ(7, InputManager::convertIntToIndex('8'));
+    EXPECT_EQ(0, InputManager::convertIntToIndex('1'));
+
+    EXPECT_EQ(0, InputManager::convertLetterToIndex('a'));
+    EXPECT_EQ(0, InputManager::convertLetterToIndex('A'));
+    EXPECT_EQ(1, InputManager::convertLetterToIndex('b'));
+    EXPECT_EQ(1, InputManager::convertLetterToIndex('B'));
+    EXPECT_EQ(2, InputManager::convertLetterToIndex('c'));
+    EXPECT_EQ(2, InputManager::convertLetterToIndex('C'));
+    EXPECT_EQ(3, InputManager::convertLetterToIndex('d'));
+    EXPECT_EQ(3, InputManager::convertLetterToIndex('D'));
+    EXPECT_EQ(4, InputManager::convertLetterToIndex('e'));
+    EXPECT_EQ(4, InputManager::convertLetterToIndex('E'));
+    EXPECT_EQ(5, InputManager::convertLetterToIndex('f'));
+    EXPECT_EQ(5, InputManager::convertLetterToIndex('F'));
+}
