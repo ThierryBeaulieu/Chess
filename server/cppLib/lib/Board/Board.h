@@ -7,6 +7,7 @@
 #include "../Tile/Tile.h"
 #include "../Pieces/Piece.h"
 #include "../GameManager/Position.h"
+#include "../InputHandler/InputManager.h"
 
 template<int N>
 class Board
@@ -65,12 +66,17 @@ public:
         return true;
     }
 
-    Position getPosition(std::string position) {
+    Position getPosition(std::string positionWanted) {
         Position position = { -1,-1 };
+        position.x = InputManager::convertLetterToIndex(positionWanted[0]);
+        position.y = InputManager::convertIntToIndex(positionWanted[1]);
+        return position;
     }
 
     std::shared_ptr<Piece> getPiece(std::string pieceToMove) {
         std::shared_ptr<Piece> piece = nullptr;
+        Position position = this->getPosition(pieceToMove);
+        piece = this->getTileContent(position.x, position.y);
         return piece;
     }
     
