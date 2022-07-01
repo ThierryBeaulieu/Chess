@@ -47,7 +47,7 @@ private:
     // Board
     Board<boardSize_> board_;
 public:
-    const Board<boardSize_> getBoard() const;
+    const Board<boardSize_>& getBoard() const;
 private:
 
     // players

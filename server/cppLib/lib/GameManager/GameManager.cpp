@@ -114,6 +114,6 @@ std::shared_ptr<Player> GameManager::getSecondPlayer() const{
     return player_[second];
 }
 
-const Board<boardSize_> GameManager::getBoard() const {
+const Board<boardSize_>& GameManager::getBoard() const {
     return board_;
 }
