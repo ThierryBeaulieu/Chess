@@ -49,7 +49,7 @@ void Player::play(std::shared_ptr<GameManager> gameManager) {
             isUserInputValid = validatePlayerEntry(pieceDestination, pieceToMove);   
         }
         else {
-            std::cout << "La pièce à bouger est absente de la case" << std::endl;
+            std::cout << "La piece a bouger est absente de la case" << std::endl;
         }
     }
 

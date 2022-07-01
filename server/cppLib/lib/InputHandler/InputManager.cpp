@@ -31,7 +31,7 @@ std::string InputManager::getRawPosition()
 }
 
 int InputManager::convertIntToIndex(char c) {
-    return c - '0';
+    return (c - '0') - 1;
 }
 
 int InputManager::convertLetterToIndex(char c) {
