@@ -28,7 +28,6 @@ void Player::setName(const std::string& name) {
     name_ = name;
 }
 
-
 std::shared_ptr<Piece> Player::getPieceToMove() {
     // ask the user for the wanted piece
     return std::make_shared<King>(0, 0);
@@ -37,24 +36,22 @@ std::shared_ptr<Piece> Player::getPieceToMove() {
 void Player::play(std::shared_ptr<GameManager> gameManager) {
 
     // Ask the user what piece he wants
-    bool playerEntryIsValid = false;
+    bool isUserInputValid = false;
 
-    while (!playerEntryIsValid) {
+    while (!isUserInputValid) {
         std::string pieceWanted = InputManager::getRawPiecePosition();
         std::string rawPosition = InputManager::getRawPosition();
 
-        auto board = gameManager->getBoard();
-        Position position = board.getPosition(rawPosition);
-        std::shared_ptr<Piece> pieceToMove = board.getPiece(pieceWanted);
+        auto boardCopy = gameManager->getBoard();
+        Position pieceDestination = boardCopy.getPosition(rawPosition);
+        std::shared_ptr<Piece> pieceToMove = boardCopy.getPiece(pieceWanted);
 
         if (pieceToMove != nullptr) {
-            const std::vector<Position> possiblePosition = pieceToMove->getPossibleMoves();
-            playerEntryIsValid = true;
+            isUserInputValid = validatePlayerEntry(pieceDestination, pieceToMove);   
         }
         
         
     }
-
 
     // tell the user the available positions
 
@@ -63,6 +60,17 @@ void Player::play(std::shared_ptr<GameManager> gameManager) {
 
     // end the users turn.
 
+}
+
+bool Player::validatePlayerEntry(Position positionWanted, std::shared_ptr<Piece> pieceToMove) {
+    const std::vector<Position> possibleMoves = pieceToMove->getPossibleMoves();
+
+    for (Position pos : possibleMoves)
+    {
+        if (positionWanted.x == pos.x && positionWanted.y == pos.y) {
+            return true;
+        }
+    }
 }
 
 State Player::getState() {

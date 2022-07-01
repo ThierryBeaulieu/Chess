@@ -11,6 +11,7 @@
 #include "../GameManager/State.h"
 #include "../Pieces/King.h"
 #include "../GameManager/GameManager.h"
+#include "../GameManager/Position.h"
 
 class GameManager;
 
@@ -34,6 +35,9 @@ public:
     void setState(State state);
     
     void addPersonnalPiece(std::shared_ptr<Piece> piece);
+
+private:
+    bool validatePlayerEntry(Position positionWanted, std::shared_ptr<Piece> pieceToMove);
 
 private:
     Color color_;
