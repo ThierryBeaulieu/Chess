@@ -24,6 +24,7 @@ function App() {
       ))}
     </div>
     */
+
     <div>
       <ThreeScene />
     </div>

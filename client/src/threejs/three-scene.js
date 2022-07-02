@@ -4,7 +4,6 @@ import * as THREE from 'three';
 class ThreeScene extends Component {
   componentDidMount() {
     //scene
-    console.log('Hello');
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x909090);
 
@@ -33,7 +32,7 @@ class ThreeScene extends Component {
     // add the cube to the scene
     this.scene.add(this.cube);
     this.animation();
-    this.renderer.render(this.scene, this.camera);
+    //this.renderer.render(this.scene, this.camera);
 
     // Event handler
     window.addEventListener('resize', this.handleWindowResize);
