@@ -56,5 +56,3 @@ Chess> npm run client
 You should be good to go!
 
 If you want to learn more about the different ways that you can contribute, I invite you to take a look at the [Documentation](https://github.com/ThierryBeaulieu/Chess/blob/dev/Documentation.md).
-
-You can also have access to the figma via this link: https://www.figma.com/file/G9VtXcxGd05AFdtMY9puYi/Chess?node-id=1%3A5
