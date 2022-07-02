@@ -27,7 +27,7 @@ class ThreeScene extends Component {
 
     //Create a DirectionalLight and turn on shadows for the light
     this.light = new THREE.DirectionalLight(0xffffff, 1);
-    this.light.position.set(0, 1, 0); //default; light shining from top
+    this.light.position.set(0, 15, 15); //default; light shining from top
     this.light.castShadow = true; // default false
     this.scene.add(this.light);
 
@@ -37,17 +37,17 @@ class ThreeScene extends Component {
     this.light.shadow.camera.near = 0.5; // default
     this.light.shadow.camera.far = 500; // default
 
-    /*
-    // Create a Box
-    var geometry = new THREE.BoxBufferGeometry(1, 1, 1);
+    // Create a Rectangle base
+    var geometry = new THREE.BoxBufferGeometry(20, 20, 2);
     var material = new THREE.MeshBasicMaterial({
       color: 0xc4c4c4,
     });
     this.cube = new THREE.Mesh(geometry, material);
+    this.cube.rotation.x = -Math.PI / 2;
+    this.cube.position.y = -10;
     this.cube.castShadow = true;
-    this.cube.receiveShadow = false;
+    this.cube.receiveShadow = true;
     this.scene.add(this.cube);
-    */
 
     //Create a sphere that cast shadows (but does not receive them)
     this.sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
@@ -57,6 +57,7 @@ class ThreeScene extends Component {
     this.sphere.receiveShadow = false; //default
     this.scene.add(this.sphere);
 
+    /*
     // Create a plane that will receive shadow
     this.planeGeometry = new THREE.PlaneGeometry(40, 30, 32, 32);
     this.planeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
@@ -65,6 +66,7 @@ class ThreeScene extends Component {
     this.plane.rotation.x = -Math.PI / 2;
     this.plane.receiveShadow = true;
     this.scene.add(this.plane);
+    */
 
     //Create a helper for the shadow camera (optional)
     this.helper = new THREE.CameraHelper(this.light.shadow.camera);
