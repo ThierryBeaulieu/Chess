@@ -26,35 +26,45 @@ class ThreeScene extends Component {
     this.camera.position.z = 10;
 
     //Create a DirectionalLight and turn on shadows for the light
-    this.light = new THREE.DirectionalLight(0xffffff, 1);
-    this.light.position.set(0, 15, 15); //default; light shining from top
-    this.light.castShadow = true; // default false
+    this.lightColor = 0xffffff;
+    this.lightIntensity = 1;
+    this.light = new THREE.DirectionalLight(
+      this.lightColor,
+      this.lightIntensity,
+    );
+    this.light.castShadow = true;
+    this.light.position.set(-1, 10, -2);
+    this.light.target.position.set(-4, 0, -4);
     this.scene.add(this.light);
+    this.scene.add(this.light.target);
+
+    this.directionnalLightHelper = new THREE.DirectionalLightHelper(this.light);
+    this.scene.add(this.directionnalLightHelper);
 
     //Set up shadow properties for the light
-    this.light.shadow.mapSize.width = 512; // default
-    this.light.shadow.mapSize.height = 512; // default
-    this.light.shadow.camera.near = 0.5; // default
-    this.light.shadow.camera.far = 500; // default
+    //this.light.shadow.mapSize.width = 512; // default
+    //this.light.shadow.mapSize.height = 512; // default
+    //this.light.shadow.camera.near = 0.5; // default
+    //this.light.shadow.camera.far = 500; // default
 
     // Create a Rectangle base
-    var geometry = new THREE.BoxBufferGeometry(20, 20, 2);
-    var material = new THREE.MeshBasicMaterial({
+    this.geometry = new THREE.BoxBufferGeometry(50, 50, 2);
+    this.material = new THREE.MeshPhongMaterial({
       color: 0xc4c4c4,
     });
-    this.cube = new THREE.Mesh(geometry, material);
+    this.cube = new THREE.Mesh(this.geometry, this.material);
     this.cube.rotation.x = -Math.PI / 2;
-    this.cube.position.y = -10;
+    this.cube.position.y = -5;
     this.cube.castShadow = true;
     this.cube.receiveShadow = true;
     this.scene.add(this.cube);
 
     //Create a sphere that cast shadows (but does not receive them)
     this.sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
-    this.sphereMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+    this.sphereMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
     this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
     this.sphere.castShadow = true; //default is false
-    this.sphere.receiveShadow = false; //default
+    this.sphere.receiveShadow = true; //default
     this.scene.add(this.sphere);
 
     /*
