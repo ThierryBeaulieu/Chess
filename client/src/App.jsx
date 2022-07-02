@@ -1,16 +1,17 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import httpServer from './services/http.server';
 
 function App() {
   const [data, setData] = useState({ members: ['bonjour', 'hello'] });
 
   useEffect(() => {
-    fetch('http://localhost:5001/')
-      .then((response) => response.json())
-      .then((res) => {
-        setData(res);
-        console.log(res);
-      });
+    async function fetchData() {
+      await httpServer.GET('');
+    }
+    const fetchedData = fetchData();
+    console.log(fetchedData);
+    setData(fetchedData);
   }, []);
 
   return (
