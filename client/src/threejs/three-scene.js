@@ -70,11 +70,10 @@ class ThreeScene extends Component {
     //Create a sphere that cast shadows (but does not receive them)
     this.sphereGeometry1 = new THREE.SphereGeometry(2, 32, 32);
     this.sphereMaterial1 = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-    this.sphere1 = new THREE.Mesh(this.sphereGeometry1, this.sphereMaterial1);
-    this.sphere1.castShadow = true; //default is false
-    this.sphere1.receiveShadow = true; //default
-    this.sphere1.position.y = 10;
-    this.scene.add(this.sphere1);
+    this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
+    this.sphere.castShadow = true; //default is false
+    this.sphere.receiveShadow = true; //default
+    this.scene.add(this.sphere);
 
     /*
     // Create a plane that will receive shadow
