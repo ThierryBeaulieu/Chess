@@ -45,7 +45,7 @@ You should be good to go!
 To activate the server, use the command:
 
 ```bat
-Chess>npm run server
+Chess> npm run server
 ```
 
 To activate the client, user the command:
