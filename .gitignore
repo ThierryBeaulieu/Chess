@@ -1,3 +1,5 @@
+# visual studio code files
+.vscode
 
 # ignoring the build folder.
 build/
