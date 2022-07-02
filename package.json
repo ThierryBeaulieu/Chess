@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "basicInstallation": "cd client && npm install && cd ..",
+    "basicInstallation": "npm config set python python3.0 && cd client && npm install",
     "server": "python server/flask/app.py",
-    "client": "cd client",
+    "client": "cd client && npm start",
     "start": "echo \"Error: server or client not specified\" && exit 1"
 
   },
