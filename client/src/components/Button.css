@@ -2,3 +2,11 @@
     color: white;
     font-family: 'Roboto', sans-serif;
 }
+
+.basicButton:hover{
+    background-color: azure;
+    color: black;
+}
+.basicButton:active {
+    color: blue;
+}
