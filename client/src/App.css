@@ -1,4 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    background-image: url(images/basic-background.jpg);
+    backdrop-filter: blur(5px);
+    font-family: 'Roboto', sans-serif;
 }
