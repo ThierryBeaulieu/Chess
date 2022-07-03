@@ -1,6 +1,13 @@
 * {
     margin: 0px;
     padding: 0px;
+
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+
     background-image: url(images/basic-background.jpg);     
     background-repeat: no-repeat;
     background-position: center;
@@ -10,14 +17,14 @@
     -o-background-size: cover;
     background-size: cover;
     backdrop-filter: blur(5px);
-    font-family: 'Roboto', sans-serif;
+    
 }
 
 .MainTitle{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 130px;
+    font-size: 100px;
     line-height: 152px;
 
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.630208) 99.99%, rgba(255, 255, 255, 0) 100%);
@@ -31,9 +38,13 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.242731) 37.5%, rgba(255, 255, 255, 0.173639) 99.98%, rgba(255, 255, 255, 0.0753814) 99.99%, rgba(255, 255, 255, 0) 100%);
     backdrop-filter: blur(50px);
     border-radius: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.242731) 37.5%, rgba(255, 255, 255, 0.173639) 99.98%, rgba(255, 255, 255, 0.0753814) 99.99%, rgba(255, 255, 255, 0) 100%);
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 25px;
+    color: white;
     line-height: 29px;
 }
