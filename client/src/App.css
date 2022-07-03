@@ -26,3 +26,15 @@
     background-clip: text;
     text-fill-color: transparent;
 }
+
+.MainButton{
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.242731) 37.5%, rgba(255, 255, 255, 0.173639) 99.98%, rgba(255, 255, 255, 0.0753814) 99.99%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(50px);
+    border-radius: 20px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 29px;
+}
