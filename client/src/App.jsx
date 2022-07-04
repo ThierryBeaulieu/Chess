@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import httpServer from './services/http.server';
+import MainPage from './screens/MainPage';
 
 function App() {
   const [data, setData] = useState({ members: ['bonjour', 'hello'] });
@@ -14,11 +15,14 @@ function App() {
   }, []);
 
   return (
+    <MainPage />
+    /*
     <div>
       {data.members.map((member, i) => (
         <p key={i}>{member}</p>
       ))}
     </div>
+    */
   );
 }
 
