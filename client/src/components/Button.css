@@ -6,7 +6,6 @@
     box-sizing: border-box;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.242731) 37.5%, rgba(255, 255, 255, 0.173639) 99.98%, rgba(255, 255, 255, 0.0753814) 99.99%, rgba(255, 255, 255, 0) 100%);
     backdrop-filter: blur(50px);
-    border-radius: 20px;
     font-family: 'Roboto';
     font-style: normal;
     font-size: 14px;
@@ -16,6 +15,7 @@
     justify-content: center;
     box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.1);
     cursor: pointer;
+    border-radius: 20px;
     border-width: 2px;
     border-color: rgba(0,0,0,0);
     transition: all 400ms ease;
