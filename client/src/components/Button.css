@@ -18,14 +18,21 @@
     cursor: pointer;
     border-width: 1px;
     border-color: rgba(0,0,0,0);
+    transform: scale(1);
+    transition: all 400ms ease;
+
 }
 .basicButton:hover{
     border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    transition: all 0ms ease;
+
 }
 .basicButton:active {
     background-color: azure;
     color: azure;
     color: black;
+    transition: all 0ms ease;
 }
 .secondary{
     border-radius: 6px;
