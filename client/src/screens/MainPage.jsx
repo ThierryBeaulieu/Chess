@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
+import { Link } from 'react-router-dom';
 
 export default function MainPage() {
   return (
@@ -23,15 +24,23 @@ export default function MainPage() {
             gap: '50px',
           }}
         >
-          <div className='MainTitle' style={{ alignSelf: 'flex-end' }}>
-            Chess .
-          </div>
-          <Button name='Play online' style={{ alignSelf: 'flex-end' }} />
-          <Button
-            name='Train yourself'
-            secondary='true'
-            style={{ alignSelf: 'flex-end' }}
-          />
+          <Link to='/'>
+            <div className='MainTitle' style={{ alignSelf: 'flex-end' }}>
+              Chess .
+            </div>
+          </Link>
+
+          <Link to='/game'>
+            <Button name='Play online' style={{ alignSelf: 'flex-end' }} />
+          </Link>
+
+          <Link to='/training'>
+            <Button
+              name='Train yourself'
+              secondary='true'
+              style={{ alignSelf: 'flex-end' }}
+            />
+          </Link>
         </div>
       </div>
     </React.Fragment>
