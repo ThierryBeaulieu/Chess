@@ -1,5 +1,5 @@
 .basicButton{
-    padding: 10px;
+    padding: 6px;
     padding-left: 40px;
     padding-right: 40px;
     margin: 10px;
@@ -9,7 +9,7 @@
     border-radius: 20px;
     font-family: 'Roboto';
     font-style: normal;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     color: white;
     line-height: 29px;
@@ -28,9 +28,8 @@
     color: black;
 }
 .secondary{
-    color: orange;
     border-radius: 6px;
-    padding: 8px;
+    padding: 4px;
     padding-right: 15px;
     padding-left: 15px;
   };
