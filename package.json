@@ -1,0 +1,24 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "Welcome 👋 to this chess project! If you want to install this project, you can clone it on your computer with:",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npm config set python python3.0 && cd client && npm install",
+    "server": "python server/flask/app.py",
+    "client": "cd client && npm start",
+    "start": "echo \"Error: server or client not specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThierryBeaulieu/Chess.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThierryBeaulieu/Chess/issues"
+  },
+  "homepage": "https://github.com/ThierryBeaulieu/Chess#readme"
+}
