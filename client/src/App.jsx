@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import React, { useState, useEffect } from 'react';
 import httpServer from './services/http.server';
 import MainPage from './screens/MainPage';

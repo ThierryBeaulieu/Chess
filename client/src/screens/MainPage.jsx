@@ -1,45 +1,23 @@
 import React from 'react';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
+import './MainPage.css';
 
 export default function MainPage() {
   return (
     <React.Fragment>
-      <div
-        style={{
-          position: `absolute`,
-          top: 0,
-          left: 0,
-          width: `100vw`,
-          height: `100vh`,
-          display: `flex`,
-          flexDirection: `column`,
-        }}
-      >
-        <div
-          style={{
-            margin: `auto 60% auto 0`,
-            display: 'flex',
-            flexDirection: `column`,
-            gap: '50px',
-          }}
-        >
+      <div className='columnSeparator'>
+        <div className='columnAlignment'>
           <Link to='/'>
-            <div className='MainTitle' style={{ alignSelf: 'flex-end' }}>
-              Chess .
-            </div>
+            <div className='MainTitle'>Chess .</div>
           </Link>
 
           <Link to='/game'>
-            <Button name='Play online' style={{ alignSelf: 'flex-end' }} />
+            <Button name='Play online' />
           </Link>
 
           <Link to='/training'>
-            <Button
-              name='Train yourself'
-              secondary='true'
-              style={{ alignSelf: 'flex-end' }}
-            />
+            <Button name='Train yourself' secondary='true' />
           </Link>
         </div>
       </div>
