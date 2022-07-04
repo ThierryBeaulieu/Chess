@@ -17,9 +17,10 @@ export default function MainPage() {
       >
         <div
           style={{
-            margin: `auto 50% auto 0`,
+            margin: `auto 60% auto 0`,
             display: 'flex',
             flexDirection: `column`,
+            gap: '50px',
           }}
         >
           <div className='MainTitle' style={{ alignSelf: 'flex-end' }}>
