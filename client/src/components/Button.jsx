@@ -6,13 +6,22 @@ class Button extends React.Component {
     super(props);
     this.name = props.name;
     this.secondary = Boolean(props.secondary);
+    this.style = props.style;
   }
 
   render() {
     if (this.secondary === true) {
-      return <button className='basicButton secondary'>{this.name}</button>;
+      return (
+        <button style={this.style} className='basicButton secondary'>
+          {this.name}
+        </button>
+      );
     } else {
-      return <button className='basicButton'>{this.name}</button>;
+      return (
+        <button style={this.style} className='basicButton'>
+          {this.name}
+        </button>
+      );
     }
   }
 }
