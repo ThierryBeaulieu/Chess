@@ -1,39 +1,15 @@
 .basicButton{
-    padding: 6px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin: 10px;
-    box-sizing: border-box;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.242731) 37.5%, rgba(255, 255, 255, 0.173639) 99.98%, rgba(255, 255, 255, 0.0753814) 99.99%, rgba(255, 255, 255, 0) 100%);
-    backdrop-filter: blur(50px);
-    font-family: 'Roboto';
-    font-style: normal;
-    font-size: 14px;
-    font-weight: 300;
-    color: white;
-    line-height: 29px;
-    justify-content: center;
-    box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.1);
-    cursor: pointer;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 5px;
     border-width: 2px;
-    border-color: rgba(0,0,0,0);
-    transition: all 400ms ease;
+    border-color: rgb(255,255,255);
 }
 .basicButton:hover{
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    backface-visibility: hidden;
-    transition: all 0ms ease;
+
 }
 .basicButton:active {
-    background-color: azure;
-    color: azure;
-    color: black;
-    transition: all 0ms ease;
+
 }
 .secondary{
-    border-radius: 6px;
-    padding: 4px;
-    padding-right: 15px;
-    padding-left: 15px;
+
   };
