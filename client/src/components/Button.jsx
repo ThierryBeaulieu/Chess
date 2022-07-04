@@ -5,10 +5,16 @@ class Button extends React.Component {
   constructor(props) {
     super(props);
     this.name = props.name;
+    this.secondary = Boolean(props.secondary);
   }
 
   render() {
-    return <button className='basicButton'>{this.name}</button>;
+    console.log(this.secondary);
+    if (Boolean(this.secondary) === true) {
+      return <button className='basicButton'>{this.name}</button>;
+    } else {
+      return <button className='basicButton secondary'>{this.name}</button>;
+    }
   }
 }
 export default Button;

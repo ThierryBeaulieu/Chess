@@ -19,7 +19,6 @@
     backdrop-filter: blur(5px);
     
 }
-
 .MainTitle{
     font-family: 'Roboto';
     font-style: normal;
@@ -31,4 +30,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.ButtonColumn{
+    display: flex;
+    flex-direction: column;
+}
+.ColumnSeparator{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
 }
