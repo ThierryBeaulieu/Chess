@@ -1,6 +1,13 @@
 .columnSeparator{
-
+    width: 50vh;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
 }
 .columnAlignment{
-    
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5vh;
 }
