@@ -16,12 +16,12 @@
     justify-content: center;
     box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.1);
     cursor: pointer;
-    border-width: 1px;
+    border-width: 2px;
     border-color: rgba(0,0,0,0);
     transition: all 400ms ease;
 }
 .basicButton:hover{
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     backface-visibility: hidden;
     transition: all 0ms ease;
 }
