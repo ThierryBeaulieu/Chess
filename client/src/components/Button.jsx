@@ -10,10 +10,10 @@ class Button extends React.Component {
 
   render() {
     console.log(this.secondary);
-    if (Boolean(this.secondary) === true) {
-      return <button className='basicButton'>{this.name}</button>;
-    } else {
+    if (this.secondary === true) {
       return <button className='basicButton secondary'>{this.name}</button>;
+    } else {
+      return <button className='basicButton'>{this.name}</button>;
     }
   }
 }
