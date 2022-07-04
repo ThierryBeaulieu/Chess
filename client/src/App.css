@@ -32,11 +32,8 @@
     background-clip: text;
 }
 .ButtonColumn{
-    display: flex;
-    flex-direction: column;
+
 }
 .ColumnSeparator{
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
+    
 }

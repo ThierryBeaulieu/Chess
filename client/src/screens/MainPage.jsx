@@ -5,7 +5,7 @@ export default function MainPage() {
   return (
     <>
       <div className='ColumnSeparator'>
-        <div>
+        <div className='ButtonColumn'>
           <div className='MainTitle'>Chess .</div>
           <Button name='Play online' />
           <Button name='Train yourself' secondary='true' />
