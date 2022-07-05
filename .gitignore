@@ -1,46 +1,23 @@
-# visual studio code files
-.vscode
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# ignoring the build folder.
-build/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# ignoring visual studio files
-*.sln
-*.vcxproj.user
-*.vcxproj.user.*
-*.vcxproj.filters
-*.vcxproj.filters.*
-*.vcxproj.filters.user
-*.vcxproj.filters.user.*
-*.vcxproj.filters.user.debug
-*.vcxproj.filters.user.debug.*
-*.vcxproj.filters.user.release
-*.vcxproj.filters.user.release.*
-*.vcxproj
-*.stamp
+# testing
+/coverage
 
-# file produce by Debug
-Debug/
+# production
+/build
 
-# ignoring mac files
+# misc
 .DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# ignoring python virtual environments
-venv/
-
-# Python Flask
-instance/
-.webassets-cache
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-#package
-package-lock.json
-
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
