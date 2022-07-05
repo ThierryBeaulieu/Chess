@@ -20,7 +20,7 @@ def piece(filename):
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
-    return "hello"
+
 
     # main
 if __name__ == "__main__":
