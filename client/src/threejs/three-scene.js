@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 class ThreeScene extends Component {
   componentDidMount() {
@@ -45,7 +45,7 @@ class ThreeScene extends Component {
     const positionArray = new Float32Array(particuleCount * 3);
 
     for (let i = 0; i < particuleCount * 3; i++) {
-      positionArray[i] = Math.random() * 20;
+      positionArray[i] = (Math.random() - 0.5) * 30;
     }
 
     particulesGeometry.setAttribute(
@@ -67,7 +67,7 @@ class ThreeScene extends Component {
     this.renderer.render(this.scene, this.camera);
 
     // Navigate
-    new OrbitControls(this.camera, this.renderer.domElement);
+    // new OrbitControls(this.camera, this.renderer.domElement);
 
     // Event handler
     window.addEventListener('resize', this.handleWindowResize);
