@@ -22,6 +22,5 @@ def piece(filename):
         abort(404)
 
 
-    # main
 if __name__ == "__main__":
     app.run(port=5001, debug=True)
