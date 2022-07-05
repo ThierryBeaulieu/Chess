@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
 class ThreeScene extends Component {
   componentDidMount() {
@@ -25,6 +26,10 @@ class ThreeScene extends Component {
     );
     this.camera.position.z = 10;
 
+    this.secondLight = new THREE.SpotLight();
+    this.secondLight.position.set(20, 20, 20);
+    this.scene.add(this.secondLight);
+
     //Create a DirectionalLight and turn on shadows for the light
     this.lightColor = 0xffffff;
     this.lightIntensity = 1;
@@ -38,57 +43,21 @@ class ThreeScene extends Component {
     this.scene.add(this.light);
     this.scene.add(this.light.target);
 
-    this.directionnalLightHelper = new THREE.DirectionalLightHelper(this.light);
-    this.scene.add(this.directionnalLightHelper);
-
-    //Set up shadow properties for the light
-    //this.light.shadow.mapSize.width = 512; // default
-    //this.light.shadow.mapSize.height = 512; // default
-    //this.light.shadow.camera.near = 0.5; // default
-    //this.light.shadow.camera.far = 500; // default
-
-    // Create a Rectangle base
-    this.geometry = new THREE.BoxBufferGeometry(50, 50, 2);
-    this.material = new THREE.MeshPhongMaterial({
-      color: 0xc4c4c4,
-    });
-    this.cube = new THREE.Mesh(this.geometry, this.material);
-    this.cube.rotation.x = -Math.PI / 2;
-    this.cube.position.y = -5;
-    this.cube.castShadow = true;
-    this.cube.receiveShadow = true;
-    this.scene.add(this.cube);
-
-    //Create a sphere that cast shadows (but does not receive them)
-    this.sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
-    this.sphereMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-    this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
-    this.sphere.castShadow = true; //default is false
-    this.sphere.receiveShadow = true; //default
-    this.scene.add(this.sphere);
-
-    //Create a sphere that cast shadows (but does not receive them)
-    this.sphereGeometry1 = new THREE.SphereGeometry(2, 32, 32);
-    this.sphereMaterial1 = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-    this.sphere = new THREE.Mesh(this.sphereGeometry, this.sphereMaterial);
-    this.sphere.castShadow = true; //default is false
-    this.sphere.receiveShadow = true; //default
-    this.scene.add(this.sphere);
-
-    /*
-    // Create a plane that will receive shadow
-    this.planeGeometry = new THREE.PlaneGeometry(40, 30, 32, 32);
-    this.planeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-    this.plane = new THREE.Mesh(this.planeGeometry, this.planeMaterial);
-    this.plane.position.y -= 10;
-    this.plane.rotation.x = -Math.PI / 2;
-    this.plane.receiveShadow = true;
-    this.scene.add(this.plane);
-    */
-
-    //Create a helper for the shadow camera (optional)
-    this.helper = new THREE.CameraHelper(this.light.shadow.camera);
-    this.scene.add(this.helper);
+    this.loader = new FBXLoader();
+    this.loader.load(
+      'C:/Users/thier/Desktop/Chess/client/src/threejs/Queen.fbx',
+      function (geometry) {
+        const mesh = new THREE.Mesh(geometry, this.material);
+        this.scene.add(mesh);
+        console.log('mesh added');
+      },
+      (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
 
     // animate & render
     this.animation();
