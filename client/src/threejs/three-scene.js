@@ -4,6 +4,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 class ThreeScene extends Component {
   componentDidMount() {
+    // mouse
+    this.mouseX = 0;
+    this.mouseY = 0;
+
     // scene
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x909090);
@@ -11,6 +15,8 @@ class ThreeScene extends Component {
     // renderer
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // shadow configuration
     this.renderer.shadowMap.enable = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
 
@@ -34,12 +40,12 @@ class ThreeScene extends Component {
 
     // Particules
     const particulesGeometry = new THREE.BufferGeometry();
-    const particuleCount = 5000;
+    const particuleCount = 10000;
 
     const positionArray = new Float32Array(particuleCount * 3);
 
     for (let i = 0; i < particuleCount * 3; i++) {
-      positionArray[i] = Math.random();
+      positionArray[i] = (Math.random() - 0.5) * 20;
     }
 
     particulesGeometry.setAttribute(
@@ -53,16 +59,19 @@ class ThreeScene extends Component {
     });
 
     // Mesh
-    const cloud = new THREE.Points(particulesGeometry, this.material);
-    this.scene.add(cloud);
+    this.animationcloud = new THREE.Points(particulesGeometry, this.material);
+    this.scene.add(this.animationcloud);
 
     // Animate & render
     this.animation();
     this.renderer.render(this.scene, this.camera);
 
+    // Navigate
     new OrbitControls(this.camera, this.renderer.domElement);
+
     // Event handler
     window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener('mousemove', this.animateParticules);
   }
 
   handleWindowResize = () => {
@@ -72,10 +81,19 @@ class ThreeScene extends Component {
     this.renderer.render(this.scene, this.camera);
   };
 
+  animateParticules = (event) => {
+    this.mouseY = event.clientY;
+    this.mouseX = event.clientX;
+  };
+
+  clock = new THREE.Clock();
+
+  elapsedTime = this.clock.getElapsedTime();
+
   animation = () => {
     requestAnimationFrame(this.animation);
-    //this.cube.rotation.x += 0.01;
-    //this.cube.rotation.y += 0.01;
+    this.animationcloud.rotation.y = this.mouseX * 0.005;
+    this.animationcloud.rotation.x = this.mouseY * 0.005;
     this.renderer.render(this.scene, this.camera);
   };
 
