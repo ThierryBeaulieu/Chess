@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50vh;
+    width: 40vw;
     height: 100vh;
     display: flex;
     justify-content: flex-end;
@@ -13,6 +13,4 @@
     flex-direction: column;
     justify-content: center;
     gap: 5vh;
-}
-.backgroundPosition{
 }

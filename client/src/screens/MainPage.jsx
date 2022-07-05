@@ -7,7 +7,7 @@ import ThreeScene from '../threejs/three-scene';
 export default function MainPage() {
   return (
     <React.Fragment>
-      <ThreeScene className='backgroundPosition' />
+      <ThreeScene />
       <div className='columnSeparator'>
         <div className='columnAlignment'>
           <Link to='/'>
