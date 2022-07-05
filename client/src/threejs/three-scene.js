@@ -10,7 +10,7 @@ class ThreeScene extends Component {
 
     // scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x909090);
+    this.scene.background = new THREE.Color(0x222224);
 
     // renderer
     this.renderer = new THREE.WebGLRenderer();
@@ -45,7 +45,7 @@ class ThreeScene extends Component {
     const positionArray = new Float32Array(particuleCount * 3);
 
     for (let i = 0; i < particuleCount * 3; i++) {
-      positionArray[i] = (Math.random() - 0.5) * 20;
+      positionArray[i] = Math.random() * 20;
     }
 
     particulesGeometry.setAttribute(
