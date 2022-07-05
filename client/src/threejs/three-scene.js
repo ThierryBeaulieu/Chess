@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
 class ThreeScene extends Component {
   componentDidMount() {
-    //scene
+    // scene
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x909090);
 
-    //renderer
+    // renderer
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.shadowMap.enable = true;
@@ -17,7 +16,7 @@ class ThreeScene extends Component {
 
     this.mount.appendChild(this.renderer.domElement);
 
-    //camera
+    // Camera
     this.camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -26,40 +25,38 @@ class ThreeScene extends Component {
     );
     this.camera.position.z = 10;
 
-    this.secondLight = new THREE.SpotLight();
-    this.secondLight.position.set(20, 20, 20);
-    this.scene.add(this.secondLight);
+    // Lights
+    const pointLight = new THREE.PointLight(0xffffff, 0.1);
+    pointLight.position.x = 2;
+    pointLight.position.y = 3;
+    pointLight.position.z = 4;
+    this.scene.add(this.pointLight);
 
-    //Create a DirectionalLight and turn on shadows for the light
-    this.lightColor = 0xffffff;
-    this.lightIntensity = 1;
-    this.light = new THREE.DirectionalLight(
-      this.lightColor,
-      this.lightIntensity,
-    );
-    this.light.castShadow = true;
-    this.light.position.set(-1, 10, -2);
-    this.light.target.position.set(-4, 0, -4);
-    this.scene.add(this.light);
-    this.scene.add(this.light.target);
+    // Particules
+    const particulesGeometry = new THREE.BufferGeometry();
+    const particuleCount = 5000;
 
-    this.loader = new FBXLoader();
-    this.loader.load(
-      'C:/Users/thier/Desktop/Chess/client/src/threejs/Queen.fbx',
-      function (geometry) {
-        const mesh = new THREE.Mesh(geometry, this.material);
-        this.scene.add(mesh);
-        console.log('mesh added');
-      },
-      (xhr) => {
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-      },
-      (error) => {
-        console.log(error);
-      },
+    const positionArray = new Float32Array(particuleCount * 3);
+
+    for (let i = 0; i < particuleCount * 3; i++) {
+      positionArray[i] = Math.random();
+    }
+
+    particulesGeometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(positionArray, 3),
     );
 
-    // animate & render
+    // Material
+    this.material = new THREE.PointsMaterial({
+      size: 0.005,
+    });
+
+    // Mesh
+    const cloud = new THREE.Points(particulesGeometry, this.material);
+    this.scene.add(cloud);
+
+    // Animate & render
     this.animation();
     this.renderer.render(this.scene, this.camera);
 
