@@ -92,8 +92,8 @@ class ThreeScene extends Component {
 
   animation = () => {
     requestAnimationFrame(this.animation);
-    this.animationcloud.rotation.y = this.mouseX * 0.005;
-    this.animationcloud.rotation.x = this.mouseY * 0.005;
+    this.animationcloud.rotation.y = this.mouseX * 0.001;
+    this.animationcloud.rotation.x = this.mouseY * 0.001;
     this.renderer.render(this.scene, this.camera);
   };
 
