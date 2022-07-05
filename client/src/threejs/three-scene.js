@@ -40,7 +40,7 @@ class ThreeScene extends Component {
 
     // Particules
     const particulesGeometry = new THREE.BufferGeometry();
-    const particuleCount = 10000;
+    const particuleCount = 5000;
 
     const positionArray = new Float32Array(particuleCount * 3);
 
