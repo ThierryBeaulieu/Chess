@@ -1,11 +1,14 @@
 {
-  "name": "@ert78gb/jasmine4-typescript-es6-module-example",
+  "name": "server",
   "private": true,
   "version": "1.0.0",
-  "description": "Example repo of how to use Jasmine with Typescript in es6 module project",
+  "description": "Chess server",
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
+    "start": "node build/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p .",
     "test": "cross-env NODE_OPTIONS=--loader=ts-node/esm jasmine --config=jasmine.json"
   },
   "keywords": [
@@ -15,7 +18,7 @@
     "module",
     "example"
   ],
-  "author": "Róbert Kiss <ert78gb@gmail.com>",
+  "author": "Thierry Beaulieu",
   "license": "MIT",
   "devDependencies": {
     "@types/jasmine": "^3.10.3",
