@@ -14,9 +14,9 @@ class Tile {
 }
 
 export default class Board {
-  private tiles: Tile[][];
+  public tile: Tile[][];
   constructor(width: number, height: number) {
-    this.tiles = new Array(width)
+    this.tile = new Array(width)
       .fill(null)
       .map(() => new Array(height).fill(null));
   }
