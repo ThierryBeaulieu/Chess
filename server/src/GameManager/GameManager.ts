@@ -1,9 +1,15 @@
+import Board from '../Board/Board';
 import Player from '../Player/Player';
 
-class GameManager {
-  currentPlayers: Player = [];
+const DEFAULT_BOARD_SIZE = 8;
 
-  constructor() {}
+class GameManager {
+  private currentPlayers: Player = [];
+  private board: Board;
+
+  constructor() {
+    this.board = new Board(DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE);
+  }
 }
 
 export default GameManager;
