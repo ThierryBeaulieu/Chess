@@ -1,0 +1,19 @@
+# Chess
+
+Welcome this Chess an online chess website
+
+## Installation
+The first step is of course to clone this repository. You can do this by using the following cloning 
+
+```bat
+git@github.com:ThierryBeaulieu/Chess.git
+```
+
+## Start server
+
+For starting the server, you simply need, in the root, to use the following command:
+```bat
+npm run server
+```
+
+For starting the client, you simply need, in the root, to use the following command:
