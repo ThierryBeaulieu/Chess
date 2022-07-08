@@ -21,4 +21,4 @@ For starting the client, you simply need, in the root, to use the following comm
 Chess> npm run client
 ```
 
-There you go, you should have a fully functionnal website!
+There you go, you should have a fully functionning website!
