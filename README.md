@@ -1,6 +1,6 @@
 # Chess
 
-Welcome this Chess an online chess website
+Welcome Chess, an online chess website
 
 ## Installation
 The first step is of course to clone this repository. You can do this by using the following cloning 
