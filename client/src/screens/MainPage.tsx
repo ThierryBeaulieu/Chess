@@ -16,11 +16,11 @@ export default function MainPage() {
           </Link>
 
           <Link to='/game'>
-            <Button name='Play online' />
+            <Button name={'Play online'} />
           </Link>
 
           <Link to='/training'>
-            <Button name='Train yourself' secondary='true' />
+            <Button name={'Train yourself'} secondary={'true'} />
           </Link>
         </div>
       </div>
