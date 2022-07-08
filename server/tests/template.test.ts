@@ -1,4 +1,4 @@
-import Piece from '../src/Piece';
+import Piece from '../src/Pieces/Piece';
 
 describe('Update method', () => {
   it('should update a specific existing Ingredient entry', () => {
