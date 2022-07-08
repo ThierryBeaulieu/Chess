@@ -5,7 +5,7 @@ Welcome Chess, an online chess website
 ## Installation
 The first step is of course to clone this repository. You can do this by using the following cloning 
 
-```bat
+```
 git clone git@github.com:ThierryBeaulieu/Chess.git
 ```
 
