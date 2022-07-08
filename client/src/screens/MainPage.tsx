@@ -5,6 +5,7 @@ import './MainPage.css';
 import ThreeScene from '../threejs/three-scene';
 
 export default function MainPage() {
+
   return (
     <React.Fragment>
       <ThreeScene />
