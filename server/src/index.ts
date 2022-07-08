@@ -1,4 +1,4 @@
-import Piece from './Piece';
+import Piece from './Pieces/Piece';
 
 function mul(a: number, b: number): number {
   return a * b;
