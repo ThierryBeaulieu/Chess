@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
-import ThreeScene from '../threejs/three-scene';
+import ThreeScene from '../threejs/three-scene.jsx';
 
 export default function MainPage() {
   return (
