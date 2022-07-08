@@ -1,39 +1,28 @@
 {
   "name": "server",
-  "private": true,
   "version": "1.0.0",
-  "description": "server used for chess",
-  "main": "app.ts",
+  "description": "Chess server",
+  "main": "index.ts",
   "directories": {
     "test": "tests"
   },
-  "type": "module",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "verbose": true
+  },
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--loader=ts-node/esm ts-node src/app.ts",
-    "dev": "cross-env NODE_OPTIONS=--loader=ts-node/esm nodemon src/app.ts",
     "build": "tsc -p .",
-    "test": "cross-env NODE_OPTIONS=--loader=ts-node/esm jasmine --config=jasmine.json"
+    "start": "npm run build -- -w",
+    "test": "jest --detectOpenHandles",
+    "coverage": "jest --coverage"
   },
-  "keywords": [
-    "Jasmine",
-    "Typescript",
-    "es6",
-    "module",
-    "example"
-  ],
   "author": "Thierry Beaulieu",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/jasmine": "^4.0.3",
-    "@types/node": "^17.0.25",
-    "cross-env": "^7.0.2",
-    "jasmine": "^4.1.0",
-    "nodemon": "^2.0.19",
-    "ts-node": "^10.4.0",
+    "@types/jest": "^28.1.4",
+    "jest": "^28.1.2",
+    "ts-jest": "^28.0.5",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "express": "^4.18.1"
   }
 }
