@@ -1,6 +1,10 @@
 import React from 'react';
 import './Game.css';
 
+function Tile() {
+  return 'hello';
+}
+
 function Board({ body }) {
   return (
     <table>
