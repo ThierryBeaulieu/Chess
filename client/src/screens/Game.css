@@ -1,5 +1,5 @@
 :root {
-    --CHESS_TILE: 90px
+    --CHESS_TILE: 10vh
 }
 table, td {
     border: 1px solid black;
