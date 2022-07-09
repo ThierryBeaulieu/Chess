@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
 
-  color: white;
+  color: black;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -12,4 +12,5 @@
 .MainTitle{
   font-size: 100px;
   line-height: 152px;
+  color: white;
 }

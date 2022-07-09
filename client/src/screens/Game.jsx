@@ -1,10 +1,34 @@
 import React from 'react';
 import './Game.css';
 
-export default function Game() {
+function Board({ body }) {
   return (
-    <React.Fragment>
-      <h1>"Hello world"</h1>
-    </React.Fragment>
+    <table>
+      <tbody>
+        {body.map((tableRow) => (
+          <tr>
+            {tableRow.map((cell) => (
+              <td>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
+}
+
+export default function Game() {
+  const BLACK_ROW = ['b', 'w', 'b', 'w', 'b', 'w', 'b', 'w'];
+  const WHITE_ROW = ['w', 'b', 'w', 'b', 'w', 'b', 'w', 'b'];
+  const BOARD_COLORS = [
+    WHITE_ROW,
+    BLACK_ROW,
+    WHITE_ROW,
+    BLACK_ROW,
+    WHITE_ROW,
+    BLACK_ROW,
+    WHITE_ROW,
+    BLACK_ROW,
+  ];
+  return <Board body={BOARD_COLORS} />;
 }
