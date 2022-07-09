@@ -1,0 +1,11 @@
+:root {
+    --CHESS_TILE: 90px
+}
+table, td {
+    border: 1px solid black;
+}
+td {
+    width: var(--CHESS_TILE);
+    height: var(--CHESS_TILE);
+    background-color: orange;
+}
