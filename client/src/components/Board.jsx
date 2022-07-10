@@ -2,14 +2,22 @@ export function drawBoard(canvas, context) {
   new Board(canvas, context);
 }
 
+class Piece {
+  type;
+
+  constructor(type) {
+    this.type = type;
+  }
+}
+
 class Tile {
-  x;
-  y;
+  xIndex;
+  yIndex;
   piece;
 
   constructor(x, y, piece) {
-    this.x = x;
-    this.y = y;
+    this.xIndex = x;
+    this.yIndex = y;
     this.piece = piece;
   }
 }
@@ -42,7 +50,7 @@ class Board {
   initializeTiles() {
     for (let i = 0; i < this.TILES_PER_ROW; i++) {
       for (let j = 0; i < this.TILES_PER_ROW; j++) {
-        tiles[i][j] = new Tile();
+        tiles[i][j] = new Tile(i, j);
       }
     }
   }
