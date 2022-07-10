@@ -5,6 +5,15 @@ function Canvas() {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    setCanvasDimensions(canvas);
+
+    const context = canvas.getContext('2d');
+    contextRef.current = context;
+    drawCircle(context);
+  }, []);
+
   function setCanvasDimensions(canvas) {
     const SCREEN_ESTATE = 1.5; // change canvas size
     const ANTI_BLURRY_RATIO = 2; // change pixel density
@@ -35,16 +44,20 @@ function Canvas() {
     context.stroke();
   }
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    setCanvasDimensions(canvas);
+  function select() {}
 
-    const context = canvas.getContext('2d');
-    contextRef.current = context;
-    drawCircle(context);
-  }, []);
+  function unselect() {}
 
-  return <canvas ref={canvasRef}></canvas>;
+  function move() {}
+
+  return (
+    <canvas
+      onMouseDown={select}
+      onMouseUp={unselect}
+      onMouseMove={move}
+      ref={canvasRef}
+    ></canvas>
+  );
 }
 
 export default Canvas;
