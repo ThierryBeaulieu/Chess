@@ -12,7 +12,8 @@
     "verbose": true
   },
   "scripts": {
-    "build": "tsc -p .",
+    "dev": "tsc ./src/index.ts --watch",
+    "build": "tsc -p ./src",
     "start": "npm run build -- -w",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --coverage"

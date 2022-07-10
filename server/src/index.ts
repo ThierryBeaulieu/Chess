@@ -1,8 +1,8 @@
-import express, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import 'dotenv/config';
 
+const express = require('express');
 const app = express();
-const cors = require('cors');
 
 /*
 app.use(cors());
