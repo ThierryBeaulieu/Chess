@@ -36,16 +36,6 @@ function Canvas() {
     canvas.style.height = `${canvas.height / ANTI_BLURRY_RATIO}px`;
   }
 
-  function drawCircle(context) {
-    context.scale(2, 2);
-    context.lineCap = 'round';
-    context.strokeStyle = 'black';
-    context.lineWidth = 5;
-    context.beginPath();
-    context.arc(0, 0, 100, 0, 2 * Math.PI);
-    context.stroke();
-  }
-
   function select() {}
 
   function unselect() {}
