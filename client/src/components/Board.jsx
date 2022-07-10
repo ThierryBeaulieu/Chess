@@ -1,10 +1,23 @@
-export default function Board() {}
-
 export function drawBoard(canvas, context) {
-  const BOARD_WIDTH = canvas.width;
-  const BOARD_HEIGHT = canvas.height;
+  const board = new Board(canvas, context);
+  board.draw();
+}
 
-  context.beginPath();
-  context.arc(100, 75, 50, 0, 2 * Math.PI);
-  context.stroke();
+class Board {
+  canvas;
+  ctx;
+
+  constructor(canvas, context) {
+    this.canvas = canvas;
+    this.ctx = context;
+    this.ctx.lineWidth = 10;
+  }
+
+  draw() {
+    // draw a red line
+    this.ctx.beginPath();
+    this.ctx.moveTo(100, 100);
+    this.ctx.lineTo(300, 100);
+    this.ctx.stroke();
+  }
 }
