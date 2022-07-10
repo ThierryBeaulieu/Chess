@@ -45,10 +45,8 @@ class Board {
   }
 
   drawTile(x, y, width, height, color) {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = 'rgba(255, 165, 0, 1)';
-    this.ctx.rect(x, y, width, height);
-    this.ctx.stroke();
+    this.ctx.fillStyle = `${color}`;
+    this.ctx.fillRect(x, y, width, height);
   }
 
   drawTiles() {
