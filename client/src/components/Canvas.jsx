@@ -17,8 +17,7 @@ function Canvas() {
   }, []);
 
   function setCanvasDimensions(canvas) {
-    const SCREEN_ESTATE = 1.5; // change canvas size
-    const ANTI_BLURRY_RATIO = 2; // change pixel density
+    const SCREEN_ESTATE = 0.8; // change canvas size
 
     const windowSize = {
       height: window.innerHeight,
@@ -32,8 +31,8 @@ function Canvas() {
       canvas.width = windowSize.width * SCREEN_ESTATE;
       canvas.height = windowSize.width * SCREEN_ESTATE;
     }
-    canvas.style.width = `${canvas.width / ANTI_BLURRY_RATIO}px`;
-    canvas.style.height = `${canvas.height / ANTI_BLURRY_RATIO}px`;
+    canvas.style.width = `${canvas.width}px`;
+    canvas.style.height = `${canvas.height}px`;
   }
 
   function select() {}
