@@ -1,7 +1,11 @@
-import Piece from './Pieces/Piece';
+const express = require('express');
+const app = express();
+const port = 3000;
 
-function mul(a: number, b: number): number {
-  return a * b;
-}
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
-console.log(mul(5, 5));
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
