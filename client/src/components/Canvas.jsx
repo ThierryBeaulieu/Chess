@@ -17,7 +17,7 @@ function Canvas() {
   }, []);
 
   function setCanvasDimensions(canvas) {
-    const SCREEN_ESTATE = 0.8; // change canvas size
+    const SCREEN_ESTATE = 0.75; // change canvas size
 
     const windowSize = {
       height: window.innerHeight,
@@ -25,8 +25,8 @@ function Canvas() {
     };
 
     if (windowSize.width > windowSize.height) {
-      canvas.width = windowSize.height * SCREEN_ESTATE;
-      canvas.height = windowSize.height * SCREEN_ESTATE;
+      canvas.width = Math.round(windowSize.height * SCREEN_ESTATE);
+      canvas.height = Math.round(windowSize.height * SCREEN_ESTATE);
     } else {
       canvas.width = windowSize.width * SCREEN_ESTATE;
       canvas.height = windowSize.width * SCREEN_ESTATE;
