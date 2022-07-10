@@ -2,6 +2,16 @@ export function drawBoard(canvas, context) {
   new Board(canvas, context);
 }
 
+class Tile {
+  x;
+  y;
+
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
 class Board {
   canvas;
   ctx;
@@ -20,39 +30,28 @@ class Board {
     this.ctx = context;
 
     this.defineDimensions();
-    this.drawIndex();
     this.drawTiles();
   }
 
-  unblurry(number) {
-    const offset = 0.5;
-    const roundedNb = Math.round(number);
-    return roundedNb + offset;
-  }
-
   defineDimensions() {
-    this.maxWidth = this.unblurry(this.canvas.width);
+    this.maxWidth = this.canvas.width;
     this.maxHeight = this.maxWidth;
 
-    this.indexWidth = this.unblurry(this.maxWidth / 20);
+    this.indexWidth = this.maxWidth / 20;
     this.indexHeight = this.indexWidth;
 
-    this.tileWidth = this.unblurry((this.maxWidth - this.indexWidth) / 8);
+    this.tileWidth = (this.maxWidth - this.indexWidth) / 8;
     this.tileHeight = this.tileWidth;
   }
 
-  drawIndex() {
-    this.ctx.lineWidth = 1.0;
+  drawTile(x, y, width, height, color) {
     this.ctx.beginPath();
-    this.ctx.moveTo(this.indexWidth, 0);
-    this.ctx.lineTo(this.indexWidth, this.maxHeight - this.indexHeight);
-    this.ctx.stroke();
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.indexWidth, this.maxHeight - this.indexHeight);
-    this.ctx.lineTo(this.maxWidth, this.maxHeight - this.indexHeight);
+    this.ctx.fillStyle = 'rgba(255, 165, 0, 1)';
+    this.ctx.rect(x, y, width, height);
     this.ctx.stroke();
   }
 
-  drawTiles() {}
+  drawTiles() {
+    this.drawTile(10, 10, this.tileWidth, this.tileHeight, '#222228');
+  }
 }
