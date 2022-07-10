@@ -5,14 +5,18 @@ export function drawBoard(canvas, context) {
 class Tile {
   x;
   y;
+  piece;
 
-  constructor(x, y) {
+  constructor(x, y, piece) {
     this.x = x;
     this.y = y;
+    this.piece = piece;
   }
 }
 
 class Board {
+  TILES_PER_ROW = 8;
+
   canvas;
   ctx;
 
@@ -25,12 +29,22 @@ class Board {
   indexWidth;
   indexHeight;
 
+  tiles;
+
   constructor(canvas, context) {
     this.canvas = canvas;
     this.ctx = context;
 
     this.defineDimensions();
-    this.drawTiles();
+    this.initializeTiles();
+  }
+
+  initializeTiles() {
+    for (let i = 0; i < this.TILES_PER_ROW; i++) {
+      for (let j = 0; i < this.TILES_PER_ROW; j++) {
+        tiles[i][j] = new Tile();
+      }
+    }
   }
 
   defineDimensions() {
