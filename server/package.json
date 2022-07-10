@@ -12,9 +12,9 @@
     "verbose": true
   },
   "scripts": {
-    "dev": "tsc ./src/index.ts --watch",
-    "build": "tsc -p ./src",
-    "start": "npm run build -- -w",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p .",
+    "start": "npm run build && node dist/index.js",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --coverage"
   },
@@ -22,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
     "concurrently": "^7.2.2",
     "jest": "^28.1.2",
     "nodemon": "^2.0.19",
@@ -30,9 +31,9 @@
   },
   "dependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^18.0.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "ts-node": "^10.8.2"
   }
 }
