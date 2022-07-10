@@ -1,4 +1,4 @@
-const HTTP_SERVER = {
+const HTTP_TEMPLATE = {
   SERVER_LOCAL_PATH: 'http://localhost:5001',
 
   async GET(endpoint) {
