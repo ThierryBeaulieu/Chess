@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './Canvas.css';
+import { drawBoard } from './Board';
 
 function Canvas() {
   const canvasRef = useRef(null);
@@ -11,7 +12,8 @@ function Canvas() {
 
     const context = canvas.getContext('2d');
     contextRef.current = context;
-    drawCircle(context);
+
+    drawBoard(canvas, context);
   }, []);
 
   function setCanvasDimensions(canvas) {
