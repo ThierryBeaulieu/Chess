@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "rootDir": "./",
     "module": "commonjs",
-    "noEmit": true,
-    "outDir": "dist",
+    "rootDir": "./src",
+    "noEmit": false,
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+  },
+  "exclude": ["tests/*.test.ts"]
+  
 }
