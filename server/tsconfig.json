@@ -4,7 +4,7 @@
     "rootDir": "./",
     "module": "commonjs",
     "noEmit": true,
-    "outDir": "build",
+    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

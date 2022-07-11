@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import httpServer from './services/http.server';
+import httpServer from './services/http.template';
 import MainPage from './screens/MainPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Training from './screens/Training';

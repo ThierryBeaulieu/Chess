@@ -1,7 +1,23 @@
-import Piece from './Pieces/Piece';
+import { Request, Response } from 'express';
+import 'dotenv/config';
 
-function mul(a: number, b: number): number {
-  return a * b;
-}
+const express = require('express');
+const app = express();
 
-console.log(mul(5, 5));
+/*
+app.use(cors());
+
+const cookie = require('./services/cookie.service');
+app.use('/cookie', cookie);
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello World!');
+});
+*/
+app.post('/', (req: Request, res: Response) => {
+  res.send('Hello World!');
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`);
+});
