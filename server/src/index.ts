@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
+import cookieRouter from './services/cookie.service';
 import 'dotenv/config';
 
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const app = express();
 
 app.use(cors());
 
-const cookie = require('./services/cookie.service');
-app.use('/cookie', cookie);
+app.use('/api/cookie/', cookieRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
