@@ -3,8 +3,8 @@ import 'dotenv/config';
 
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
-/*
 app.use(cors());
 
 const cookie = require('./services/cookie.service');
@@ -13,7 +13,7 @@ app.use('/cookie', cookie);
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
-*/
+
 app.post('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
