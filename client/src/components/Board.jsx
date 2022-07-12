@@ -50,7 +50,7 @@ class Board {
   initializeTiles() {
     for (let i = 0; i < this.TILES_PER_ROW; i++) {
       for (let j = 0; i < this.TILES_PER_ROW; j++) {
-        tiles[i][j] = new Tile(i, j);
+        this.tiles[i][j] = new Tile(i, j);
       }
     }
   }

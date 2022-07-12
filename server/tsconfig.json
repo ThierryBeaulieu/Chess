@@ -10,7 +10,10 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
+  "include": ["src/**/*"],
   "exclude": ["tests/*.test.ts"]
   
 }
