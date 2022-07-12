@@ -1,4 +1,5 @@
-# Chess  ♘ ♗ ♕ ♔ ♗ ♘ ♖
+# Chess  ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+
 
 Welcome 👋 to this chess project! The goal of this project is to make a fully functionning chess web application.
 
