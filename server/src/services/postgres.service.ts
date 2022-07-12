@@ -1,20 +1,36 @@
-const { Client } = require('pg');
+import 'reflect-metadata';
+import { Service, Container } from 'typedi';
+import { Client } from 'pg';
 
-const client = new Client({
-  host: 'localhost',
-  user: 'postgres',
-  port: 5432,
-  password: 'postgres',
-  database: 'Chess',
-});
+@Service()
+class PgService {
+  client: any;
 
-client.connect();
-
-client.query('Select * from chess.users', (err: any, res: any) => {
-  if (!err) {
-    console.log(res.rows);
-  } else {
-    console.log(err.message);
+  constructor() {
+    this.client = new Client({
+      host: 'localhost',
+      user: 'postgres',
+      port: 5432,
+      password: 'postgres',
+      database: 'Chess',
+    });
   }
-  client.end();
-});
+
+  fetchUsers() {
+    this.client.connect();
+
+    this.client.query('Select * from chess.users', (err: any, res: any) => {
+      if (!err) {
+        console.log(res.rows);
+      } else {
+        console.log(err.message);
+      }
+      this.client.end();
+    });
+  }
+}
+
+const serviceInstance = Container.get(PgService);
+// we request an instance of ExampleService from TypeDI
+
+serviceInstance.fetchUsers();
