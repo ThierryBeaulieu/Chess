@@ -3,8 +3,8 @@ import { Service, Container } from 'typedi';
 import { Client } from 'pg';
 
 @Service()
-class PgService {
-  client: any;
+export default class PgService {
+  private client: any;
 
   constructor() {
     this.client = new Client({
