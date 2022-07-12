@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors());
 
-app.use('/api/cookie/', cookieRouter);
+app.use('/api-cookie/', cookieRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
