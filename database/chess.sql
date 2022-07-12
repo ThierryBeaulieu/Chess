@@ -34,4 +34,3 @@ CREATE TABLE chess.move (
 	PRIMARY KEY (gameId, playerId, turn)
 );
 
-
