@@ -1,6 +1,8 @@
+import 'reflect-metadata';
 import { Request, Response } from 'express';
 import cookieRouter from './controller/cookie.controller';
 import 'dotenv/config';
+
 
 const express = require('express');
 const cors = require('cors');
