@@ -5,8 +5,7 @@ import cookieRouter from './controller/cookie.controller';
 import 'dotenv/config';
 import GameService from './services/game.service';
 
-const something = Container.get(GameService);
-something.createGame();
+
 
 const express = require('express');
 const cors = require('cors');

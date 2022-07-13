@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import { Service } from 'typedi';
 import PostgreSQLService from './postgreSQL.service';
 
@@ -5,8 +6,14 @@ import PostgreSQLService from './postgreSQL.service';
 export default class GameService {
   constructor(private PgService: PostgreSQLService) {}
 
-  async createGame(): Promise<void> {
-    const response = await this.PgService.fetch('SELECT * FROM chess.player');
-    console.log(response[0]);
+  async createGame(playerAId: number, playerBId: number): Promise<Boolean> {
+    try {
+      const request = `INSERT INTO chess.game (playerAId, playerBId)
+      VALUES (${playerAId}, ${playerBId});`;
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

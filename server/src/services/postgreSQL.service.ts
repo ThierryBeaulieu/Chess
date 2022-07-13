@@ -13,11 +13,13 @@ export default class PostgreSQLService {
       password: 'postgres',
       database: 'Chess',
     });
-    this.client.connect();
   }
 
-  async fetch(userQuery: string): Promise<Array<Object>> {
-    return (await this.client.query(userQuery)).rows;
+  async query(userQuery: string): Promise<Array<Object>> {
+    await this.client.connect();
+    const data = (await this.client.query(userQuery)).rows;
+    await this.client.end();
+    return data;
   }
 }
 
