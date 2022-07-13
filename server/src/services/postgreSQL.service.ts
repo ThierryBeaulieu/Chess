@@ -17,12 +17,15 @@ export default class PostgreSQLService {
     // this.client.end();
   }
 
-  fetchUsers() {
-    this.client.query('Select * from chess.users', (err: any, res: any) => {
+  fetch(userQuery: string): any {
+    this.client.query(userQuery, (err: any, res: any) => {
       if (!err) {
         console.log(res.rows);
+        console.log(typeof res.rows);
+        return res.rows;
       } else {
         console.log(err.message);
+        return err.message;
       }
     });
   }
