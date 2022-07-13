@@ -13,9 +13,9 @@
   },
   "scripts": {
     "dev": "nodemon src/app.ts",
-    "build": "tsc -p .",
+    "build": "tsc -p tsconfig.app.json",
     "start": "npm run build && node dist/app.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles ",
     "coverage": "jest --coverage"
   },
   "author": "Thierry Beaulieu",
