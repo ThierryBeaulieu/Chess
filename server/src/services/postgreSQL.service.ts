@@ -1,8 +1,8 @@
-import { Service, Container } from 'typedi';
+import { Service } from 'typedi';
 import { Client } from 'pg';
 
 @Service()
-export default class PgService {
+export default class PostgreSQLService {
   private client: any;
 
   constructor() {
