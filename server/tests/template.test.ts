@@ -21,7 +21,7 @@ describe('Game server', () => {
     const fresult = await gameService.createGame(1, 2);
     expect(fresult).toBe(true);
 
-    const sresult = await gameService.createGame(1, 2);
+    const sresult = await gameService.createGame(1, 3);
     expect(sresult).toBe(false);
   });
 });
