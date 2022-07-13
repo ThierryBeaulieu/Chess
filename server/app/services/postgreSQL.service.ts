@@ -1,24 +1,25 @@
 import { Service } from 'typedi';
-import { Client } from 'pg';
+import { Client, Pool } from 'pg';
 
 @Service()
 export default class PostgreSQLService {
-  private client: any;
+  private pool: any;
 
   constructor() {
-    this.client = new Client({
+    this.pool = new Pool({
       host: 'localhost',
       user: 'postgres',
       port: 5432,
       password: 'postgres',
       database: 'Chess',
+      max: 20,
+      connectionTimeoutMillis: 2000,
+      idleTimeoutMillis: 0,
     });
   }
 
   async query(userQuery: string): Promise<Array<Object>> {
-    await this.client.connect();
-    const data = (await this.client.query(userQuery)).rows;
-    await this.client.end();
+    const data = (await this.pool.query(userQuery)).rows;
     return data;
   }
 }
