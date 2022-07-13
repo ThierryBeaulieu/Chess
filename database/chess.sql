@@ -1,6 +1,8 @@
 DROP SCHEMA IF EXISTS chess CASCADE;
 CREATE SCHEMA chess;
 
+SET search_path = chess;
+
 CREATE TABLE chess.player (
     id SERIAL,
     fname VARCHAR(150) NOT NULL,

@@ -1,4 +1,6 @@
-import Piece from '../src/Pieces/Piece';
+import 'reflect-metadata';
+import { Container } from 'typedi';
+import GameService from '../src/services/game.service';
 
 describe('Update method', () => {
   it('should update a specific existing Ingredient entry', () => {
@@ -10,6 +12,16 @@ describe('Update method', () => {
 });
 
 describe('Piece test', () => {
-  it('should update a specific existing Ingredient entry', () => {
+  it('should update a specific existing Ingredient entry', () => {});
+});
+
+describe('Game server', () => {
+  it('User shouldnt be able to fetch with bad player', async () => {
+    const gameService = Container.get(GameService);
+    const fresult = await gameService.createGame(1, 2);
+    expect(fresult).toBe(true);
+
+    const sresult = await gameService.createGame(1, 3);
+    expect(sresult).toBe(false);
   });
 });

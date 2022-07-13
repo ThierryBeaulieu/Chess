@@ -1,8 +1,8 @@
-import { Service, Container } from 'typedi';
+import { Service } from 'typedi';
 import { Client } from 'pg';
 
 @Service()
-export default class PgService {
+export default class PostgreSQLService {
   private client: any;
 
   constructor() {
@@ -13,18 +13,13 @@ export default class PgService {
       password: 'postgres',
       database: 'Chess',
     });
-    this.client.connect();
-    // this.client.end();
   }
 
-  fetchUsers() {
-    this.client.query('Select * from chess.users', (err: any, res: any) => {
-      if (!err) {
-        console.log(res.rows);
-      } else {
-        console.log(err.message);
-      }
-    });
+  async query(userQuery: string): Promise<Array<Object>> {
+    await this.client.connect();
+    const data = (await this.client.query(userQuery)).rows;
+    await this.client.end();
+    return data;
   }
 }
 
