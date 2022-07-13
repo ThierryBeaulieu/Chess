@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Chess server",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "test": "tests"
   },
@@ -12,9 +12,9 @@
     "verbose": true
   },
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
-    "start": "npm run build && node dist/index.js",
+    "start": "npm run build && node dist/app.js",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --coverage"
   },
