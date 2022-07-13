@@ -4,6 +4,12 @@ import GameService from '../services/game.service';
 
 describe('Game server', () => {
   it('The insertion and update should work in postgres', async () => {
+    const firstPlayerId = 1;
+    const secondPlayerId = 2;
+    const badPlayerId = 3;
+    const gameId = 1;
+    const badGameId = -1;
+
     const gameService = Container.get(GameService);
 
     const player1Added = await gameService.addPlayer(
@@ -19,12 +25,6 @@ describe('Game server', () => {
       gameService.DEFAULT_SCORE,
     );
     expect(player2Added).toBe(true);
-
-    const firstPlayerId = 1;
-    const secondPlayerId = 2;
-    const badPlayerId = 3;
-
-    const gameId = 1;
 
     const firstResult = await gameService.createGame(
       firstPlayerId,
@@ -43,8 +43,14 @@ describe('Game server', () => {
       firstPlayerId,
       'fsdflslj',
     );
-
     expect(moveState).toBe(true);
+
+    const moveState2 = await gameService.makeMove(
+      badGameId,
+      firstPlayerId,
+      'fsdflslj',
+    );
+    expect(moveState2).toBe(false);
 
     const gameState = await gameService.setWinner(firstPlayerId, gameId);
     expect(gameState).toBe(true);
