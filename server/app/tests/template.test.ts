@@ -55,6 +55,10 @@ describe('Game server', () => {
     const playersMove = await gameService.getPlayersMove(gameId);
     const stubData = [{ usermove: 'abcdef', playerid: 1 }];
     expect(playersMove).toStrictEqual(stubData);
+
+    const secondPlayersMove = await gameService.getPlayersMove(badGameId);
+    expect(secondPlayersMove).toStrictEqual([]);
+
     const gameState = await gameService.setWinner(firstPlayerId, gameId);
     expect(gameState).toBe(true);
   });
