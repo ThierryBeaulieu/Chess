@@ -5,7 +5,8 @@ import PostgreSQLService from './postgreSQL.service';
 export default class GameService {
   constructor(private PgService: PostgreSQLService) {}
 
-  createGame(): void {
-    this.PgService.fetch('SELECT * FROM')
+  async createGame(): Promise<void> {
+    const response = await this.PgService.fetch('SELECT * FROM chess.player');
+    console.log(response[0]);
   }
 }

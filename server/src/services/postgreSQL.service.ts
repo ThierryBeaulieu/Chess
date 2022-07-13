@@ -14,20 +14,10 @@ export default class PostgreSQLService {
       database: 'Chess',
     });
     this.client.connect();
-    // this.client.end();
   }
 
-  fetch(userQuery: string): any {
-    this.client.query(userQuery, (err: any, res: any) => {
-      if (!err) {
-        console.log(res.rows);
-        console.log(typeof res.rows);
-        return res.rows;
-      } else {
-        console.log(err.message);
-        return err.message;
-      }
-    });
+  async fetch(userQuery: string): Promise<Array<Object>> {
+    return (await this.client.query(userQuery)).rows;
   }
 }
 
