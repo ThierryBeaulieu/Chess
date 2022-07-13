@@ -12,7 +12,7 @@
     "verbose": true
   },
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon",
     "build": "tsc -p tsconfig.app.json",
     "start": "npm run build && node dist/app.js",
     "test": "jest --detectOpenHandles ",

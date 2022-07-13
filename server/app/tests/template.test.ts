@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Container } from 'typedi';
-import GameService from '../src/services/game.service';
+import GameService from '../services/game.service';
 
 describe('Game server', () => {
   it('User shouldnt be able to fetch with bad player', async () => {
