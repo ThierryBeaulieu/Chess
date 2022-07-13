@@ -49,6 +49,16 @@ export default class GameService {
     }
   }
 
+  async getPlayersMove(gameId: number): Promise<Array<Object>> {
+    try {
+      const request = `SELECT usermove, playerid FROM chess.move WHERE gameid=${gameId};`;
+      const usermove: Array<Object> = await this.PgService.query(request);
+      return usermove;
+    } catch (e) {
+      return null;
+    }
+  }
+
   async setWinner(winnerId: number, gameId: number): Promise<Boolean> {
     try {
       const request = `
