@@ -1,6 +1,0 @@
-{
-    "watch": ["app"],
-    "ext": "ts",
-    "ignore": ["app/**/*.test.ts"],
-    "exec": "npm run build && node --inspect dist/app/app.js"
-}
