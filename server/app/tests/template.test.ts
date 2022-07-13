@@ -3,7 +3,7 @@ import { Container } from 'typedi';
 import GameService from '../services/game.service';
 
 describe('Game server', () => {
-  it('User shouldnt be able to fetch with bad player', async () => {
+  it('The insertion and update should work in postgres', async () => {
     const gameService = Container.get(GameService);
 
     const player1Added = await gameService.addPlayer(
@@ -20,10 +20,33 @@ describe('Game server', () => {
     );
     expect(player2Added).toBe(true);
 
-    const firstResult = await gameService.createGame(1, 2);
+    const firstPlayerId = 1;
+    const secondPlayerId = 2;
+    const badPlayerId = 3;
+
+    const gameId = 1;
+
+    const firstResult = await gameService.createGame(
+      firstPlayerId,
+      secondPlayerId,
+    );
     expect(firstResult).toBe(true);
 
-    const secondResult = await gameService.createGame(1, 3);
+    const secondResult = await gameService.createGame(
+      firstPlayerId,
+      badPlayerId,
+    );
     expect(secondResult).toBe(false);
+
+    const moveState = await gameService.makeMove(
+      gameId,
+      firstPlayerId,
+      'fsdflslj',
+    );
+
+    expect(moveState).toBe(true);
+
+    const gameState = await gameService.setWinner(firstPlayerId, gameId);
+    expect(gameState).toBe(true);
   });
 });

@@ -27,11 +27,39 @@ export default class GameService {
     try {
       const request = `INSERT INTO chess.player (fname, lname, score)
       VALUES ('${firstName}', '${lastName}', ${score});`;
-      console.log(request);
       await this.PgService.query(request);
       return true;
     } catch (e) {
-      console.log(e);
+      return false;
+    }
+  }
+
+  async makeMove(
+    gameId: number,
+    playerId: number,
+    userMove: string,
+  ): Promise<Boolean> {
+    try {
+      const request = `INSERT INTO chess.move(gameId, playerId, userMove)
+      VALUES (${gameId}, ${playerId}, '${userMove}');`;
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async setWinner(winnerId: number, gameId: number): Promise<Boolean> {
+    try {
+      const request = `
+      UPDATE chess.game
+      SET isOver = true,
+        winnerId = ${winnerId}
+      WHERE id = ${gameId};`;
+
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
       return false;
     }
   }
