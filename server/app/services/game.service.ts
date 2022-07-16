@@ -8,6 +8,18 @@ export default class GameService {
 
   constructor(private PgService: PostgreSQLService) {}
 
+  // Reset
+  async resetDatabase(): Promise<Boolean> {
+    try {
+      const request = `
+      `;
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   // Users
   async addUser(sessionId: string): Promise<Boolean> {
     try {
@@ -44,6 +56,16 @@ export default class GameService {
       return true;
     } catch (e) {
       return false;
+    }
+  }
+
+  async getGame(gameId: string): Promise<Array<Object>> {
+    try {
+      const request = `SELECT * FROM chess.game WHERE gameId='${gameId}';`;
+      const gameData = await this.PgService.query(request);
+      return gameData;
+    } catch (e) {
+      return null;
     }
   }
 
