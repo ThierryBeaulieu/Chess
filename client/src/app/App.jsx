@@ -1,20 +1,22 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import httpServer from './services/http.service';
-import MainPage from './screens/MainPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Training from './screens/Training';
-import Game from './screens/Game';
+import MainPage from '../screens/MainPage';
+import Training from '../screens/Training';
+import Game from '../screens/Game';
+import GameManager from '../services/GameManager.service';
 
 function App() {
-  const [data, setData] = useState({ members: ['bonjour', 'hello'] });
-
-  async function fetchData() {
-    setData(await httpServer.GET(''));
-  }
+  const gameManager = new GameManager();
+  const [sessionId, setSessionId] = useState(async () => {
+    return await gameManager.getSessionId();
+  });
 
   useEffect(() => {
-    fetchData();
+    async function setSession() {
+      sessionStorage.setItem('sessionId', await sessionId);
+    }
+    setSession();
   }, []);
 
   return (
@@ -25,13 +27,6 @@ function App() {
         <Route exact path='/training' element={<Training />}></Route>
       </Routes>
     </BrowserRouter>
-    /*
-    <div>
-      {data.members.map((member, i) => (
-        <p key={i}>{member}</p>
-      ))}
-    </div>
-    */
   );
 }
 
