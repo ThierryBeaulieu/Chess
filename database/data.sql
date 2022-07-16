@@ -1,53 +1,59 @@
 -- validating database by including generic values
 -- DO NOT USE IN PRODUCTION
 
-INSERT INTO chess.player (fname, lname, score)
-VALUES ('Simon', 'Langlois', 0);
+INSERT INTO chess.user (sessionId)
+VALUES ('42asd');
 
-INSERT INTO chess.player (fname, lname, score)
-VALUES ('Renée', 'Debois', 2882);
+INSERT INTO chess.user (sessionId)
+VALUES ('23asd');
+
+INSERT INTO chess.player (id, fname, lname, score)
+VALUES ('42asd','Simon', 'Langlois', 0);
+
+INSERT INTO chess.player (id, fname, lname, score)
+VALUES ('23asd','Renée', 'Debois', 2882);
 
 -- first game
 INSERT INTO chess.game (playerAId, playerBId)
-VALUES (1, 2);
+VALUES ('42asd', '23asd');
 
 -- second game
 INSERT INTO chess.game (playerAId, playerBId)
-VALUES (1, 2);
+VALUES ('42asd', '23asd');
 
 -- players are playing the first game
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (1, 1, 'acg');
+VALUES (1, '42asd', 'acg');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (1, 2, 'acsdfg');
+VALUES (1, '42asd', 'acsdfg');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (1, 1, 'kjsd');
+VALUES (1, '42asd', 'kjsd');
 
 UPDATE chess.game
 SET isOver = true,
-	winnerId = 1
-WHERE playerAId = 1 AND playerBId = 2 AND id = 1;
+	winnerId = '42asd'
+WHERE playerAId = '42asd' AND playerBId = '23asd' AND id = 1;
 
 --players are playing the second game
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (2, 1, 'acg');
+VALUES (2, '42asd', 'acg');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (2, 2, 'acsdfg');
+VALUES (2, '42asd', 'acsdfg');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (2, 1, 'kjsd');
+VALUES (2, '42asd', 'kjsd');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (2, 1, 'abdc');
+VALUES (2, '42asd', 'abdc');
 
 INSERT INTO chess.move(gameId, playerId, userMove)
-VALUES (2, 2, 'wls');
+VALUES (2, '42asd', 'wls');
 
 UPDATE chess.game
 SET isOver = true,
-	winnerId = 2
-WHERE playerAId = 1 AND playerBId = 2 AND id = 2;
+	winnerId = '23asd'
+WHERE playerAId = '42asd' AND playerBId = '23asd' AND id = 2;
 
