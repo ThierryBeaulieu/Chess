@@ -1,5 +1,5 @@
 import { Service } from 'typedi';
-import { Client, Pool } from 'pg';
+import { Pool } from 'pg';
 
 @Service()
 export default class PostgreSQLService {

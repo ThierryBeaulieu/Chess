@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import { Service } from 'typedi';
 import PostgreSQLService from './postgreSQL.service';
 
