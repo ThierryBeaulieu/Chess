@@ -8,10 +8,11 @@ export default class GameService {
 
   constructor(private PgService: PostgreSQLService) {}
 
-  async createGame(playerAId: number, playerBId: number): Promise<Boolean> {
+  // Users
+  async addUser(sessionId: string): Promise<Boolean> {
     try {
-      const request = `INSERT INTO chess.game (playerAId, playerBId)
-      VALUES (${playerAId}, ${playerBId});`;
+      const request = `INSERT INTO chess.user (sessionId)
+      VALUES ('${sessionId}');`;
       await this.PgService.query(request);
       return true;
     } catch (e) {
@@ -19,15 +20,58 @@ export default class GameService {
     }
   }
 
-  // TODO: Retourner le playerId
+  async getUser(sessionId: string): Promise<Array<Object>> {
+    try {
+      const request = `INSERT INTO chess.user (sessionId)
+      VALUES ('${sessionId}');`;
+      const userData = await this.PgService.query(request);
+      return userData;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Games
+  async createGame(
+    gameId: string,
+    playerAId: string,
+    playerBId: string,
+  ): Promise<Boolean> {
+    try {
+      const request = `INSERT INTO chess.game (gameId, playerAId, playerBId)
+      VALUES ('${gameId}', '${playerAId}', '${playerBId}');`;
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async setWinner(winnerId: string, gameId: string): Promise<Boolean> {
+    try {
+      const request = `
+      UPDATE chess.game
+      SET isOver = true,
+        winnerId = '${winnerId}'
+      WHERE gameId = '${gameId}';`;
+
+      await this.PgService.query(request);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Players
   async addPlayer(
+    playerId: string,
     firstName: string,
     lastName: string,
     score: number,
   ): Promise<Boolean> {
     try {
-      const request = `INSERT INTO chess.player (fname, lname, score)
-      VALUES ('${firstName}', '${lastName}', ${score});`;
+      const request = `INSERT INTO chess.player (playerId, fname, lname, score)
+      VALUES ('${playerId}', '${firstName}', '${lastName}', ${score});`;
       await this.PgService.query(request);
       return true;
     } catch (e) {
@@ -35,8 +79,7 @@ export default class GameService {
     }
   }
 
-  // TODO: à tester
-  async getPlayer(playerId: number): Promise<Array<Object>> {
+  async getPlayer(playerId: string): Promise<Array<Object>> {
     try {
       const request = `SELECT * FROM chess.player WHERE playerId=${playerId};`;
       const playersInfo = await this.PgService.query(request);
@@ -46,14 +89,15 @@ export default class GameService {
     }
   }
 
+  // Moves
   async makeMove(
-    gameId: number,
-    playerId: number,
+    gameId: string,
+    playerId: string,
     userMove: string,
   ): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.move(gameId, playerId, userMove)
-      VALUES (${gameId}, ${playerId}, '${userMove}');`;
+      VALUES ('${gameId}', '${playerId}', '${userMove}');`;
       await this.PgService.query(request);
       return true;
     } catch (e) {
@@ -61,28 +105,14 @@ export default class GameService {
     }
   }
 
-  async getPlayersMove(gameId: number): Promise<Array<Object>> {
+  async getPlayersMove(gameId: string): Promise<Array<Object>> {
     try {
-      const request = `SELECT usermove, playerid FROM chess.move WHERE gameid=${gameId};`;
+      const request = `SELECT * FROM chess.move WHERE gameId='${gameId}';`;
       const usermove: Array<Object> = await this.PgService.query(request);
       return usermove;
     } catch (e) {
+      console.log(e);
       return null;
-    }
-  }
-
-  async setWinner(winnerId: number, gameId: number): Promise<Boolean> {
-    try {
-      const request = `
-      UPDATE chess.game
-      SET isOver = true,
-        winnerId = ${winnerId}
-      WHERE id = ${gameId};`;
-
-      await this.PgService.query(request);
-      return true;
-    } catch (e) {
-      return false;
     }
   }
 }
