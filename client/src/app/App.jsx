@@ -1,10 +1,10 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './screens/MainPage';
-import Training from './screens/Training';
-import Game from './screens/Game';
-import GameManager from './services/GameManager.service';
+import MainPage from '../screens/MainPage';
+import Training from '../screens/Training';
+import Game from '../screens/Game';
+import GameManager from '../services/GameManager.service';
 
 function App() {
   const gameManager = new GameManager();
