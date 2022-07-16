@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import Training from '../pages/Training';
@@ -8,7 +8,7 @@ import GameManager from '../services/GameManager.service';
 import { CookiesProvider, useCookies } from 'react-cookie';
 
 function App() {
-  const gameManager = new GameManager();
+  const [gameManager] = useState(new GameManager());
   const [cookies, setCookie] = useCookies(['user']);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
       }
     }
     setCookies();
-  }, [setCookie, cookies]);
+  }, [setCookie, cookies, gameManager]);
 
   return (
     <CookiesProvider>
