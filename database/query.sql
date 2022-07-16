@@ -12,3 +12,6 @@ SELECT * FROM chess.game WHERE gameId='game1';
 
 -- 4.move Asking for the moves made during a game
 SELECT * FROM chess.move WHERE gameId='game1';
+
+-- 5.verify history of insertion
+SELECT * FROM chess.history;
