@@ -10,19 +10,16 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 function App() {
   const gameManager = new GameManager();
   const [cookies, setCookie] = useCookies(['user']);
-  const [sessionId] = useState(async () => {
-    return await gameManager.getSessionId();
-  });
 
   useEffect(() => {
     async function setCookies() {
-      console.log(cookies);
-      if (cookies) {
-        setCookie('sessionId', await sessionId, { path: '/' });
+      if (cookies.sessionId === null || cookies.sessionId === undefined) {
+        console.log(cookies);
+        setCookie('sessionId', await gameManager.getSessionId(), { path: '/' });
       }
     }
     setCookies();
-  }, [sessionId, setCookie, cookies]);
+  }, [setCookie, cookies]);
 
   return (
     <CookiesProvider>
