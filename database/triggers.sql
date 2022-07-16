@@ -1,5 +1,3 @@
-SET search_path = chess;
-
 CREATE OR REPLACE FUNCTION insertNewMove()
 RETURNS TRIGGER AS $$
     BEGIN
@@ -34,7 +32,36 @@ END;
 $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER trig1
- before insert 
+ BEFORE INSERT 
     ON chess.move
    FOR EACH ROW
 EXECUTE PROCEDURE insertNewMove();
+
+
+DROP TABLE IF EXISTS chess.history CASCADE;
+
+CREATE TABLE chess.history (
+	id SERIAL PRIMARY KEY,
+	dateAdded DATE NOT NULL,
+	timeAdded TIME NOT NULL,
+	sessionIdAdded VARCHAR(24) NOT NULL
+);
+
+CREATE OR REPLACE FUNCTION addSessionId()
+RETURNS TRIGGER AS $addSessionId$
+BEGIN
+INSERT INTO chess.history(dateAdded, timeAdded, sessionIdAdded)
+VALUES(current_date, current_time, NEW.sessionId);
+RETURN NEW;
+END;
+$addSessionId$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER trig2
+BEFORE INSERT
+	ON chess.user
+   FOR EACH ROW
+EXECUTE FUNCTION addSessionId();
+
+
+
+
