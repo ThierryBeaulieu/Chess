@@ -55,5 +55,5 @@ VALUES ('game2', '42asd', 'wls');
 UPDATE chess.game
 SET isOver = true,
 	winnerId = '23asd'
-WHERE playerAId = '42asd' AND playerBId = '23asd' AND gameId = 'game2';
+WHERE gameId = 'game2';
 
