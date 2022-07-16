@@ -7,24 +7,16 @@ import Game from './screens/Game';
 import GameManager from './services/GameManager.service';
 
 function App() {
-  const [sessionId, setSessionId] = useState('defaultSessionId');
-
-  async function updateSessionId() {
-    const gameManager = new GameManager();
-    try {
-      const fetchedSessionId = gameManager.getSessionId();
-      console.log(fetchedSessionId);
-      setSessionId(fetchedSessionId);
-    } catch (e) {}
-  }
-  function handleSessionId() {
-    sessionStorage.clear();
-    updateSessionId();
-    sessionStorage.setItem('sessionId', sessionId);
-  }
+  const gameManager = new GameManager();
+  const [sessionId, setSessionId] = useState(async () => {
+    return await gameManager.getSessionId();
+  });
 
   useEffect(() => {
-    handleSessionId();
+    async function setSession() {
+      sessionStorage.setItem('sessionId', await sessionId);
+    }
+    setSession();
   }, []);
 
   return (

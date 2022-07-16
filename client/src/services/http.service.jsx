@@ -3,13 +3,8 @@ const HTTP_SERVER = {
 
   async GET(endpoint) {
     try {
-      const data = fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`).then(
-        (response) => {
-          console.log(response.body.json());
-        },
-      );
-      console.log(await data);
-      return data;
+      const data = await fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`);
+      return data.json();
     } catch (e) {
       return null;
     }
