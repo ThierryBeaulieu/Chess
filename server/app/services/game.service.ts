@@ -127,7 +127,7 @@ export default class GameService {
     }
   }
 
-  async getPlayersMove(gameId: string): Promise<Array<Object>> {
+  async getMove(gameId: string): Promise<Array<Object>> {
     try {
       const request = `SELECT * FROM chess.move WHERE gameId='${gameId}';`;
       const usermove: Array<Object> = await this.PgService.query(request);

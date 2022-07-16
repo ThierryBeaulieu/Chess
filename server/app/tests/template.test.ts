@@ -67,7 +67,7 @@ describe('Game server', () => {
     );
     expect(moveState2).toBe(false);
 
-    const playersMove = await gameService.getPlayersMove(gameId);
+    const playersMove = await gameService.getMove(gameId);
     const stubDataForMove = [
       {
         gameid: gameId,
@@ -78,7 +78,7 @@ describe('Game server', () => {
     ];
     expect(playersMove).toStrictEqual(stubDataForMove);
 
-    const secondPlayersMove = await gameService.getPlayersMove(badGameId);
+    const secondPlayersMove = await gameService.getMove(badGameId);
     expect(secondPlayersMove).toStrictEqual([]);
 
     // Updates
