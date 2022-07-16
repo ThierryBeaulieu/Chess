@@ -1,4 +1,4 @@
-class Cookie {
+export default class Cookie {
   private static CHARACTERS =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

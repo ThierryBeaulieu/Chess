@@ -2,13 +2,13 @@ import { Service } from 'typedi';
 import PostgreSQLService from './postgreSQL.service';
 
 @Service()
-export default class GameService {
+class GameService {
   public DEFAULT_SCORE: number = 1200;
 
   constructor(private PgService: PostgreSQLService) {}
 
   // Users
-  async addUser(sessionId: string): Promise<Boolean> {
+  async addUser(sessionId: String): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.user (sessionId)
       VALUES ('${sessionId}');`;
@@ -19,7 +19,7 @@ export default class GameService {
     }
   }
 
-  async getUser(sessionId: string): Promise<Array<Object>> {
+  async getUser(sessionId: String): Promise<Array<Object>> {
     try {
       const request = `INSERT INTO chess.user (sessionId)
       VALUES ('${sessionId}');`;
@@ -32,9 +32,9 @@ export default class GameService {
 
   // Games
   async createGame(
-    gameId: string,
-    playerAId: string,
-    playerBId: string,
+    gameId: String,
+    playerAId: String,
+    playerBId: String,
   ): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.game (gameId, playerAId, playerBId)
@@ -46,7 +46,7 @@ export default class GameService {
     }
   }
 
-  async getGame(gameId: string): Promise<Array<Object>> {
+  async getGame(gameId: String): Promise<Array<Object>> {
     try {
       const request = `SELECT * FROM chess.game WHERE gameId='${gameId}';`;
       const gameData = await this.PgService.query(request);
@@ -56,7 +56,7 @@ export default class GameService {
     }
   }
 
-  async setWinner(winnerId: string, gameId: string): Promise<Boolean> {
+  async setWinner(winnerId: String, gameId: String): Promise<Boolean> {
     try {
       const request = `
       UPDATE chess.game
@@ -73,9 +73,9 @@ export default class GameService {
 
   // Players
   async addPlayer(
-    playerId: string,
-    firstName: string,
-    lastName: string,
+    playerId: String,
+    firstName: String,
+    lastName: String,
     score: number,
   ): Promise<Boolean> {
     try {
@@ -88,7 +88,7 @@ export default class GameService {
     }
   }
 
-  async getPlayer(playerId: string): Promise<Array<Object>> {
+  async getPlayer(playerId: String): Promise<Array<Object>> {
     try {
       const request = `SELECT * FROM chess.player WHERE playerId=${playerId};`;
       const playersInfo = await this.PgService.query(request);
@@ -100,9 +100,9 @@ export default class GameService {
 
   // Moves
   async makeMove(
-    gameId: string,
-    playerId: string,
-    userMove: string,
+    gameId: String,
+    playerId: String,
+    userMove: String,
   ): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.move(gameId, playerId, userMove)
@@ -114,14 +114,15 @@ export default class GameService {
     }
   }
 
-  async getMove(gameId: string): Promise<Array<Object>> {
+  async getMove(gameId: String): Promise<Array<Object>> {
     try {
       const request = `SELECT * FROM chess.move WHERE gameId='${gameId}';`;
       const usermove: Array<Object> = await this.PgService.query(request);
       return usermove;
     } catch (e) {
-      console.log(e);
       return null;
     }
   }
 }
+
+export default GameService;
