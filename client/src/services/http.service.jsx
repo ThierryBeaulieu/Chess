@@ -1,11 +1,18 @@
-
-
 const HTTP_SERVER = {
-  SERVER_LOCAL_PATH: 'http://localhost:5001/',
+  SERVER_LOCAL_PATH: 'http://localhost:3000',
 
   async GET(endpoint) {
-    const promise = await fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`);
-    return promise.json();
+    try {
+      const data = fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`).then(
+        (response) => {
+          console.log(response.body.json());
+        },
+      );
+      console.log(await data);
+      return data;
+    } catch (e) {
+      return null;
+    }
   },
 };
 

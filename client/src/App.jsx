@@ -1,20 +1,30 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import httpServer from './services/http.service';
-import MainPage from './screens/MainPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainPage from './screens/MainPage';
 import Training from './screens/Training';
 import Game from './screens/Game';
+import GameManager from './services/GameManager.service';
 
 function App() {
-  const [data, setData] = useState({ members: ['bonjour', 'hello'] });
+  const [sessionId, setSessionId] = useState('defaultSessionId');
 
-  async function fetchData() {
-    setData(await httpServer.GET(''));
+  async function updateSessionId() {
+    const gameManager = new GameManager();
+    try {
+      const fetchedSessionId = gameManager.getSessionId();
+      console.log(fetchedSessionId);
+      setSessionId(fetchedSessionId);
+    } catch (e) {}
+  }
+  function handleSessionId() {
+    sessionStorage.clear();
+    updateSessionId();
+    sessionStorage.setItem('sessionId', sessionId);
   }
 
   useEffect(() => {
-    fetchData();
+    handleSessionId();
   }, []);
 
   return (
@@ -25,13 +35,6 @@ function App() {
         <Route exact path='/training' element={<Training />}></Route>
       </Routes>
     </BrowserRouter>
-    /*
-    <div>
-      {data.members.map((member, i) => (
-        <p key={i}>{member}</p>
-      ))}
-    </div>
-    */
   );
 }
 

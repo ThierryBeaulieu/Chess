@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const resetQuery = `
 DROP SCHEMA IF EXISTS chess CASCADE;
 CREATE SCHEMA chess;
@@ -109,5 +111,4 @@ BEFORE INSERT
    FOR EACH ROW
 EXECUTE FUNCTION addSessionId();
 `;
-
-export default resetQuery;
+exports.default = resetQuery;
