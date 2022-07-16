@@ -1,3 +1,5 @@
+SET search_path = chess;
+
 CREATE OR REPLACE FUNCTION insertNewMove()
 RETURNS TRIGGER AS $$
     BEGIN

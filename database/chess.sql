@@ -1,6 +1,9 @@
 DROP SCHEMA IF EXISTS chess CASCADE;
 CREATE SCHEMA chess;
 
+SET search_path = chess;
+
+
 CREATE TABLE chess.user (
 	sessionId VARCHAR(24),
 	loginDate DATE,
