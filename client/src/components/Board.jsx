@@ -71,7 +71,6 @@ export default class Board extends React.Component {
           xmlns='http://www.w3.org/2000/svg'
         >
           {this.tiles.map((tile) => {
-            console.log(tile.color);
             return (
               <rect
                 className={tile.color}
