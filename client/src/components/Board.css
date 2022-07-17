@@ -5,3 +5,7 @@
 .white {
     fill: lightgray;
 }
+
+.board {
+    width: 60%;
+}
