@@ -1,4 +1,6 @@
 const resetQuery = `
+-- to manually shutdown port 5343
+
 DROP SCHEMA IF EXISTS chess CASCADE;
 CREATE SCHEMA chess;
 
@@ -44,6 +46,7 @@ CREATE TABLE chess.move (
 	FOREIGN KEY (gameId) REFERENCES chess.game(gameId) ON UPDATE CASCADE ON DELETE RESTRICT,
 	PRIMARY KEY (gameId, playerId, turn)
 );
+
 
 CREATE OR REPLACE FUNCTION insertNewMove()
 RETURNS TRIGGER AS $$
@@ -108,6 +111,7 @@ BEFORE INSERT
 	ON chess.user
    FOR EACH ROW
 EXECUTE FUNCTION addSessionId();
+
 `;
 
 export default resetQuery;

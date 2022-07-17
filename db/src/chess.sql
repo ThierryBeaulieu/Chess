@@ -1,3 +1,5 @@
+-- to manually shutdown port 5343
+
 DROP SCHEMA IF EXISTS chess CASCADE;
 CREATE SCHEMA chess;
 

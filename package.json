@@ -6,7 +6,8 @@
   "scripts": {
     "preinstall": "cd server && npm install && cd .. && cd client && npm install",
     "server": "cd server && npm run dev",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "db": "docker-compose up"
   },
   "repository": {
     "type": "git",

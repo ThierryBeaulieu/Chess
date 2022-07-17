@@ -14,7 +14,6 @@ function App() {
   useEffect(() => {
     async function setCookies() {
       if (cookies.sessionId === null || cookies.sessionId === undefined) {
-        console.log(cookies);
         setCookie('sessionId', await gameManager.getSessionId(), { path: '/' });
       }
     }
