@@ -4,16 +4,11 @@ services:
     image: postgres:14.1-alpine
     restart: always
     environment:
+      - POSTGRES_DB=Chess
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=Chess
     ports:
       - '5432:5432'
     container_name: chessdb
-    volumes: 
-      - ./db:/var/lib/postgres/data
-      - ./db/chess.sql:/docker-entrypoint-initdb.d/chess.sql
-      - ./db/triggers.sql:/docker-entrypoint-initdb.d/triggers.sql
-volumes:
-  db:
-    driver: local
+    build: ./db
+      
