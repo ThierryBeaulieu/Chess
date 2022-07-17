@@ -33,6 +33,7 @@ class Tile {
 }
 
 export default class Board extends React.Component {
+  windowsWidth;
   tiles;
   NB_TILES;
   SVG_WIDTH;
@@ -65,11 +66,7 @@ export default class Board extends React.Component {
   render() {
     return (
       <>
-        <svg
-          className='board'
-          viewBox='0 0 100 100'
-          xmlns='http://www.w3.org/2000/svg'
-        >
+        <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
           {this.tiles.map((tile) => {
             return (
               <rect
