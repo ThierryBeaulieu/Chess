@@ -61,7 +61,3 @@ BEFORE INSERT
 	ON chess.user
    FOR EACH ROW
 EXECUTE FUNCTION addSessionId();
-
-
-
-

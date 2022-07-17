@@ -24,9 +24,9 @@ class CookieController {
         const sessionId = Cookie.generateSessionId(DEFAULT_SESSION_ID_SIZE);
         gameService.addUser(sessionId);
         console.log(`[USER SESSIONID SENT: ${sessionId}]`);
-        res.status(200).send(sessionId);
+        res.status(200).json(sessionId);
       } catch (e) {
-        res.status(500).send();
+        res.status(500).send(null);
       }
     });
   }

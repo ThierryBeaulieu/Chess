@@ -10,7 +10,7 @@ If you wish to install this project, you can clone it on your computer with:
 git clone https://github.com/ThierryBeaulieu/Chess
 ```
 
-Once that the project is clone on your computer, you will need to make sur that you have the latest version of [Node.js](https://nodejs.org/en/download/). You will also need to install [PostgreSQL](https://www.postgresql.org/download/) to run the database locally.
+Once that the project is clone on your computer, you will need to make sur that you have the latest version of [Node.js](https://nodejs.org/en/download/). You will also need to install [Docker](https://docs.docker.com/get-docker/) so that you can run the database locally.
 
 After proceeding to the installation, you will now need to install the dependencies. For that, simple enter the following command line:
 
@@ -18,18 +18,14 @@ After proceeding to the installation, you will now need to install the dependenc
 Chess> npm install
 ```
 
-Once that this is done ✔️, you should now be able to start the database, followed by the server and the client.
+Once that this is done ✔️, you will now need to sequentially start the database, the server and then, the client.
 
 ## Start the database
 
-There are several ways to run the database. The only thing that matters are the parameters used to link the database to the server. These are the parameters:
+Having installed Docker, you should be able to create your own local container of the database. All you need is to run docker locally and enter the following command line argument in your terminal:
 
-```js
-    host: 'localhost',
-    user: 'postgres',
-    port: 5432,
-    password: 'postgres',
-    database: 'Chess',
+```bat
+Chess> npm run db
 ```
 
 ## Start the server
