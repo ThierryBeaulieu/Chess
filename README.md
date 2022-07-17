@@ -22,7 +22,7 @@ Once that this is done ✔️, you will now need to sequentially start the datab
 
 ## Start the database
 
-Having installed Docker, you should be able to create your own local container of the database. All you need is to enter the following command line argument in your terminal:
+Having installed Docker, you should be able to create your own local container of the database. All you need is to run docker locally and enter the following command line argument in your terminal:
 
 ```bat
 Chess> npm run db
