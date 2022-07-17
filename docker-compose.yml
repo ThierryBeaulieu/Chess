@@ -9,6 +9,7 @@ services:
       - POSTGRES_DB=Chess
     ports:
       - '5432:5432'
+    container_name: chessdb
     volumes: 
       - ./db:/var/lib/postgres/data
       - ./db/chess.sql:/docker-entrypoint-initdb.d/chess.sql
