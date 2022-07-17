@@ -1,77 +1,86 @@
-export function drawBoard(canvas, context) {
-  new Board(canvas, context);
-}
+import React from 'react';
+import './Board.css';
 
-class Piece {
-  type;
-
-  constructor(type) {
-    this.type = type;
-  }
-}
+const colorOptions = {
+  white: 'white',
+  black: 'black',
+};
 
 class Tile {
-  xIndex;
-  yIndex;
-  piece;
+  x;
+  y;
+  WIDTH;
+  HEIGHT;
+  color;
+  id;
 
-  constructor(x, y, piece) {
-    this.xIndex = x;
-    this.yIndex = y;
-    this.piece = piece;
+  constructor(i, j, WIDTH, HEIGHT) {
+    this.x = i * WIDTH;
+    this.y = j * WIDTH;
+    this.HEIGHT = HEIGHT;
+    this.WIDTH = WIDTH;
+    this.id = WIDTH * j + i;
+    this.setColor(i, j);
+  }
+
+  setColor(i, j) {
+    if ((i + j) % 2 === 0) {
+      this.color = colorOptions.white;
+    } else {
+      this.color = colorOptions.black;
+    }
   }
 }
 
-class Board {
-  TILES_PER_ROW = 8;
-
-  canvas;
-  ctx;
-
-  maxWidth;
-  maxHeight;
-
-  tileWidth;
-  tileHeight;
-
-  indexWidth;
-  indexHeight;
-
+export default class Board extends React.Component {
   tiles;
+  NB_TILES;
+  SVG_WIDTH;
+  TILE_WIDTH;
+  TILE_HEIGHT;
 
-  constructor(canvas, context) {
-    this.canvas = canvas;
-    this.ctx = context;
-
-    this.defineDimensions();
-    this.initializeTiles();
+  constructor() {
+    super();
+    this.NB_TILES = 8;
+    this.SVG_WIDTH = 100;
+    this.TILE_WIDTH = this.SVG_WIDTH / this.NB_TILES;
+    this.TILE_HEIGHT = this.TILE_WIDTH;
+    this.tiles = [];
+    this.initialize();
   }
 
-  initializeTiles() {
-    for (let i = 0; i < this.TILES_PER_ROW; i++) {
-      for (let j = 0; i < this.TILES_PER_ROW; j++) {
-        this.tiles[i][j] = new Tile(i, j);
+  initialize() {
+    for (let i = 0; i < this.NB_TILES; i++) {
+      for (let j = 0; j < this.NB_TILES; j++) {
+        this.tiles[this.NB_TILES * i + j] = new Tile(
+          i,
+          j,
+          this.TILE_WIDTH,
+          this.TILE_HEIGHT,
+        );
       }
     }
   }
 
-  defineDimensions() {
-    this.maxWidth = this.canvas.width;
-    this.maxHeight = this.maxWidth;
-
-    this.indexWidth = this.maxWidth / 20;
-    this.indexHeight = this.indexWidth;
-
-    this.tileWidth = (this.maxWidth - this.indexWidth) / 8;
-    this.tileHeight = this.tileWidth;
-  }
-
-  drawTile(x, y, width, height, color) {
-    this.ctx.fillStyle = `${color}`;
-    this.ctx.fillRect(x, y, width, height);
-  }
-
-  drawTiles() {
-    this.drawTile(10, 10, this.tileWidth, this.tileHeight, '#222228');
+  render() {
+    return (
+      <>
+        <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+          {this.tiles.map((tile) => {
+            console.log(tile.color);
+            return (
+              <rect
+                className={tile.color}
+                x={tile.x}
+                y={tile.y}
+                width={this.TILE_WIDTH}
+                height={this.TILE_WIDTH}
+                key={tile.id}
+              />
+            );
+          })}
+        </svg>
+      </>
+    );
   }
 }

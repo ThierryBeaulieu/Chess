@@ -1,11 +1,11 @@
 import React from 'react';
-import Canvas from '../components/Canvas';
+import Board from '../components/Board';
 import './Game.css';
 
 export default function Game() {
   return (
     <div className='wrapper'>
-      <Canvas />
+      <Board />
     </div>
   );
 }
