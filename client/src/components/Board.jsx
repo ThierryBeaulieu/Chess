@@ -66,7 +66,12 @@ export default class Board extends React.Component {
   render() {
     return (
       <>
-        <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+        <svg
+          width='80vh'
+          height='80vh'
+          viewBox='0 0 100 100'
+          xmlns='http://www.w3.org/2000/svg'
+        >
           {this.tiles.map((tile) => {
             return (
               <rect

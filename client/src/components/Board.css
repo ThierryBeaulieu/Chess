@@ -5,3 +5,8 @@
 .white {
     fill: lightgray;
 }
+
+.board {
+    height: 60vh;
+    width: 60vw;
+}
