@@ -33,7 +33,8 @@ function useWindowDimensions() {
 }
 
 export default function Game() {
-  const { windowHeight, windowWidth } = useWindowDimensions();
+  const windowHeight = window.innerHeight * 0.5;
+  const windowWidth = window.innerWidth * 0.5;
 
   return (
     <div>
