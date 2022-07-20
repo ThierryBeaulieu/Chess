@@ -1,6 +1,6 @@
 import HTTP_SERVER from './http.service';
 
-export default class GameManager {
+export default class GameService {
   sessionId;
   latestMove;
   adversaryMove;

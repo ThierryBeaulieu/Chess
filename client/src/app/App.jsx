@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import Training from '../pages/Training';
 import Game from '../pages/Game';
-import GameManager from '../services/GameManager.service';
+import GameManager from '../services/Game.service';
 import { CookiesProvider, useCookies } from 'react-cookie';
 
 function App() {
