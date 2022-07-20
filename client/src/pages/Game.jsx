@@ -6,9 +6,12 @@ import UnifiedBoard from '../components/UnifiedBoard';
 import './Game.css';
 
 export default function Game() {
+  const boardWidth = window.width;
+  const boardHeight = window.height;
+
   return (
-    <div className='wrapper'>
-      <UnifiedBoard />
+    <div>
+      <UnifiedBoard width={boardWidth} height={boardHeight} />
     </div>
   );
 }
