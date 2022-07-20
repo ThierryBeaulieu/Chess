@@ -3,15 +3,41 @@ import Board from '../components/Board';
 import Pawn from '../components/Pieces/Pawn';
 import AlternateBoard from '../components/AlternateBoard';
 import UnifiedBoard from '../components/UnifiedBoard';
+import { useState, useEffect } from 'react';
+
 import './Game.css';
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions(),
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
 export default function Game() {
-  const boardWidth = window.width;
-  const boardHeight = window.height;
+  const { windowHeight, windowWidth } = useWindowDimensions();
 
   return (
     <div>
-      <UnifiedBoard width={boardWidth} height={boardHeight} />
+      <UnifiedBoard width={windowHeight} height={windowWidth} />
     </div>
   );
 }
