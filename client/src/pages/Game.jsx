@@ -33,12 +33,13 @@ function useWindowDimensions() {
 }
 
 export default function Game() {
-  const windowHeight = window.innerHeight * 0.5;
-  const windowWidth = window.innerWidth * 0.5;
-
+  const { width, height } = useWindowDimensions();
+  let windowSize = { width: width * 0.7, height: height * 0.7 };
+  // TODO: Use directly the width and the height property inside the unified board
+  // object.
   return (
     <div>
-      <UnifiedBoard width={windowHeight} height={windowWidth} />
+      <UnifiedBoard windowDimensions={windowSize} />
     </div>
   );
 }
