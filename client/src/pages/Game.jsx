@@ -4,11 +4,13 @@ import Board from '../components/Board';
 import './Game.css';
 
 export default function Game() {
-  const containerDims = 250;
+  const containerDims = undefined;
 
   return (
     <div>
-      <Board style={{ height: containerDims, width: containerDims }} />
+      <Board
+        style={{ maxHeight: 500, height: containerDims, width: containerDims }}
+      />
     </div>
   );
 }
