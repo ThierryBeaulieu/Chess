@@ -23,8 +23,6 @@ export default function AlternateBoard() {
       <title>board</title>
       <defs>
         <image
-          // width={determineWindowSize()}
-          // height={determineWindowSize()}
           width='100%'
           height='100%'
           id='img1'
