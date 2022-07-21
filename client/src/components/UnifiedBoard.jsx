@@ -23,8 +23,10 @@ export default function AlternateBoard() {
       <title>board</title>
       <defs>
         <image
-          width={determineWindowSize()}
-          height={determineWindowSize()}
+          // width={determineWindowSize()}
+          // height={determineWindowSize()}
+          width='100%'
+          height='100%'
           id='img1'
           href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAMgAQMAAADhvpQrAAAAAXNSR0IB2cksfwAAAAZQTFRFAFx739/fcqPYAAAAAVxJREFUeJzt2kENgEAQA8BzgH+XOIBvBdBHyfTX7CZjoOdEridSOkAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBLKKZLnz7cMDBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgf0Ay2+tBCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAukiW7fUgBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgXSSzvR6EQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAiki2TZXg9CIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCATSRTLb60EIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUC6SJbt9SAEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCBV5AWz8azWX0fzrAAAAABJRU5ErkJggg=='
         />
