@@ -1,9 +1,13 @@
 import React from 'react';
 import Pawn from './pieces/Pawn';
+import useWindowDimensions from './tools/WindowSizeHandler';
 
-export default () => {
-  const cellSize = 100;
+export default ({ style }) => {
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const columns = 8;
+  const cellSize =
+    Math.min(style?.width || windowWidth, style?.height || windowHeight) /
+      columns || 100;
 
   return (
     <div

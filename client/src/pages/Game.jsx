@@ -1,12 +1,14 @@
 import React from 'react';
-import UnifiedBoard from '../components/Board';
+import Board from '../components/Board';
 
 import './Game.css';
 
 export default function Game() {
+  const containerDims = 250;
+
   return (
     <div>
-      <UnifiedBoard />
+      <Board style={{ height: containerDims, width: containerDims }} />
     </div>
   );
 }
