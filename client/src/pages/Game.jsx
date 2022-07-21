@@ -1,11 +1,14 @@
 import React from 'react';
-import Canvas from '../components/Canvas';
+import Board from '../components/Board';
+
 import './Game.css';
 
 export default function Game() {
+  const containerDims = 600;
+
   return (
-    <div className='wrapper'>
-      <Canvas />
+    <div>
+      <Board style={{ height: containerDims, width: containerDims }} />
     </div>
   );
 }

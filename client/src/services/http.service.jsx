@@ -6,7 +6,22 @@ const HTTP_SERVER = {
       const data = await fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`);
       return data.json();
     } catch (e) {
-      return null;
+      return undefined;
+    }
+  },
+
+  async POST(endpoint, data) {
+    try {
+      const response = await fetch(`${this.SERVER_LOCAL_PATH}/${endpoint}`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'content-type': 'application/json',
+        },
+      });
+      return response.json();
+    } catch (e) {
+      return undefined;
     }
   },
 };
