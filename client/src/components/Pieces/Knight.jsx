@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BlackKnight({ height, width }) {
+export default function BlackKnight({ height, width }) {
   return (
     <svg
       version='1.2'
@@ -23,5 +23,3 @@ function BlackKnight({ height, width }) {
     </svg>
   );
 }
-
-export default BlackKnight;

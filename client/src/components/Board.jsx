@@ -2,7 +2,7 @@ import React from 'react';
 import Pawn from './Pieces/Pawn';
 import useWindowDimensions from './tools/WindowSizeHandler';
 
-export default ({ style }) => {
+export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const columns = 8;
   const cellSize =
@@ -35,4 +35,4 @@ export default ({ style }) => {
         .flat()}
     </div>
   );
-};
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BlackBishop({ height, width }) {
+export default function BlackBishop({ height, width }) {
   return (
     <svg
       version='1.2'
@@ -9,7 +9,7 @@ function BlackBishop({ height, width }) {
       width={width || '400'}
       height={height || '400'}
     >
-      <title>WhiteBishop</title>
+      <title>BlackBishop</title>
       <defs>
         <image
           width='183'
@@ -23,5 +23,3 @@ function BlackBishop({ height, width }) {
     </svg>
   );
 }
-
-export default BlackBishop;

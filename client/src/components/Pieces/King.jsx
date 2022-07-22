@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BlackKing({ height, width }) {
+export default function BlackKing({ height, width }) {
   return (
     <svg
       version='1.2'
@@ -30,5 +30,3 @@ function BlackKing({ height, width }) {
     </svg>
   );
 }
-
-export default BlackKing;
