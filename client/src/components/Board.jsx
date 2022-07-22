@@ -1,5 +1,5 @@
 import React from 'react';
-import Pawn from './pieces/Pawn';
+import Pawn from './Pieces/Pawn';
 import useWindowDimensions from './tools/WindowSizeHandler';
 
 export default ({ style }) => {

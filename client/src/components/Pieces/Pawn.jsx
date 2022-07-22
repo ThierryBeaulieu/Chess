@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ height, width }) => {
+function Pawn({ height, width }) {
   return (
     <svg
       version='1.2'
@@ -21,4 +21,6 @@ export default ({ height, width }) => {
       <use id='Layer 3' href='#img1' x='91' y='60' />
     </svg>
   );
-};
+}
+
+export default Pawn;
