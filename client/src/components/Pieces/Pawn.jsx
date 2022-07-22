@@ -24,7 +24,7 @@ export default function WhitePawn({ height, width }) {
   );
 }
 
-function BlackPawn({ height, width }) {
+export function BlackPawn({ height, width }) {
   return (
     <svg
       version='1.2'

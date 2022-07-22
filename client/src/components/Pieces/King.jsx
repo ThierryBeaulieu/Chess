@@ -31,7 +31,7 @@ export default function BlackKing({ height, width }) {
   );
 }
 
-function WhiteKing({ height, width }) {
+export function WhiteKing({ height, width }) {
   return (
     <svg
       version='1.2'

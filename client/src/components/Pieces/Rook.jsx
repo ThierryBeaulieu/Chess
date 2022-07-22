@@ -24,7 +24,7 @@ export default function BlackRook({ height, width }) {
   );
 }
 
-function WhiteRook({ height, width }) {
+export function WhiteRook({ height, width }) {
   return (
     <svg
       version='1.2'

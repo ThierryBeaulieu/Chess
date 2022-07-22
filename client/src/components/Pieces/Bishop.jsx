@@ -24,7 +24,7 @@ export default function BlackBishop({ height, width }) {
   );
 }
 
-function WhiteBishop({ height, width }) {
+export function WhiteBishop({ height, width }) {
   return (
     <svg
       version='1.2'

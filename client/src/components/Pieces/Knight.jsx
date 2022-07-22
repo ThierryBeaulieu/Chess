@@ -24,7 +24,7 @@ export default function BlackKnight({ height, width }) {
   );
 }
 
-function WhiteKnignt({ height, width }) {
+export function WhiteKnignt({ height, width }) {
   return (
     <svg
       version='1.2'

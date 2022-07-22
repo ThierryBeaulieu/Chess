@@ -1,5 +1,7 @@
 import React from 'react';
 import Pawn from './Pieces/Pawn';
+import King from './Pieces/King';
+import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import useWindowDimensions from './tools/WindowSizeHandler';
 
 export default function Board({ style }) {
@@ -28,7 +30,7 @@ export default function Board({ style }) {
                 backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
               }}
             >
-              <Pawn height={cellSize} width={cellSize} />
+              <WhiteQueen height={cellSize} width={cellSize} />
             </div>
           )),
         )

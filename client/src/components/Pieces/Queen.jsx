@@ -24,7 +24,7 @@ export default function BlackQueen({ height, width }) {
   );
 }
 
-function WhiteQueen({ height, width }) {
+export function WhiteQueen({ height, width }) {
   return (
     <svg
       version='1.2'
