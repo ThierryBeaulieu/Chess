@@ -1,7 +1,9 @@
 import React from 'react';
-import Pawn from './Pieces/Pawn';
-import King from './Pieces/King';
+import { WhitePawn, BlackPawn } from './Pieces/Pawn';
+import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
+import { WhiteKnight, BlackKnight } from './Pieces/Queen';
+import { WhiteRook, BlackRook } from './Pieces/Queen';
 import useWindowDimensions from './tools/WindowSizeHandler';
 
 export default function Board({ style }) {
@@ -10,6 +12,10 @@ export default function Board({ style }) {
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       columns || 100;
+
+  const getPiece = () => {
+    return <WhiteQueen height={cellSize} width={cellSize} />;
+  };
 
   return (
     <div
@@ -30,7 +36,7 @@ export default function Board({ style }) {
                 backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
               }}
             >
-              <WhiteQueen height={cellSize} width={cellSize} />
+              {getPiece()}
             </div>
           )),
         )
