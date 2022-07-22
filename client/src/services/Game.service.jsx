@@ -12,9 +12,7 @@ export default class GameService {
     await this.fetchSessionId();
     return this.sessionId;
   }
-  async fetchAdversaryMove() {
-    this.adversaryMove = await HTTP_SERVER.GET('api-game/lastAdversaryMove');
-  }
+
   async sendLatestMove(latestMove) {
     this.latestMove = await HTTP_SERVER.POST(
       'api-game/lastPersonnalMove',
