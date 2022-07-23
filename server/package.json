@@ -25,6 +25,7 @@
     "@types/jest": "^28.1.4",
     "@types/node": "^18.0.3",
     "@types/pg": "^8.6.5",
+    "@types/ws": "^8.5.3",
     "concurrently": "^7.2.2",
     "jest": "^28.1.2",
     "nodemon": "^2.0.19",
@@ -40,6 +41,7 @@
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.8.2",
-    "typedi": "^0.10.0"
+    "typedi": "^0.10.0",
+    "ws": "^8.8.1"
   }
 }
