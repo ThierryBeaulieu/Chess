@@ -7,7 +7,7 @@ export default function Game() {
   const containerDims = 600;
 
   return (
-    <div>
+    <div className='wrapper'>
       <Board style={{ height: containerDims, width: containerDims }} />
     </div>
   );
