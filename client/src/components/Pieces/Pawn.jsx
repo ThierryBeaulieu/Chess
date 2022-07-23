@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WhitePawn({ height, width }) {
+export function WhitePawn({ height, width }) {
   return (
     <svg
       version='1.2'

@@ -14,7 +14,7 @@ export default function Board({ style }) {
       columns || 100;
 
   const getPiece = () => {
-    return <WhiteQueen height={cellSize} width={cellSize} />;
+    return <BlackQueen height={cellSize} width={cellSize} />;
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BlackBishop({ height, width }) {
+export function BlackBishop({ height, width }) {
   return (
     <svg
       version='1.2'

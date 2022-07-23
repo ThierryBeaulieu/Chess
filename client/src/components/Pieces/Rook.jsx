@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BlackRook({ height, width }) {
+export function BlackRook({ height, width }) {
   return (
     <svg
       version='1.2'

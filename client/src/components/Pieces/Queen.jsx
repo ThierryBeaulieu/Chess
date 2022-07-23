@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BlackQueen({ height, width }) {
+export function BlackQueen({ height, width }) {
   return (
     <svg
       version='1.2'
