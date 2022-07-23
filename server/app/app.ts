@@ -3,7 +3,15 @@ import 'dotenv/config';
 import { Request, Response } from 'express';
 import CookieController from './controller/cookie.controller';
 import GameController from './controller/game.controller';
-//import WebSocket from 'ws';
+import WebSocket from 'ws';
+
+const server = new WebSocket.Server({ port: 8080 });
+
+server.on('connection', (socket) => {
+  socket.on('message', (message) => {
+    socket.send(`Roget that ${message}`);
+  });
+});
 
 const express = require('express');
 const cors = require('cors');
