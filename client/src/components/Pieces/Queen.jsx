@@ -3,7 +3,12 @@ import { useState } from 'react';
 import MousePosition from '../tools/MousePosition';
 
 export function BlackQueen({ height, width }) {
-  const [IsDrag, setIsDrag] = useState(false);
+  const [IsDrag, setIsDrag] = useState({
+    xPos: 0,
+    yPos: 0,
+    isDraged: false,
+  });
+
   const mousePos = MousePosition();
 
   const handleOnMouseMove = () => {
@@ -11,12 +16,22 @@ export function BlackQueen({ height, width }) {
   };
 
   const handleOnMouseUp = () => {
-    setIsDrag(false);
+    const isDraged = {
+      xPos: 0,
+      yPos: 0,
+      isDraged: false,
+    };
+    setIsDrag(isDraged);
     console.log('handle on mouse up');
   };
 
   const handleOnMouseDown = () => {
-    setIsDrag(true);
+    const isDraged = {
+      xPos: mousePos.x,
+      yPos: mousePos.y,
+      isDraged: true,
+    };
+    setIsDrag(isDraged);
     console.log('handle on mouse down');
   };
   return (
@@ -27,9 +42,12 @@ export function BlackQueen({ height, width }) {
       width={width || '400'}
       height={height || '400'}
       style={{
-        transform: IsDrag
-          ? `translate(${mousePos.x}px,${mousePos.y}px)`
+        transform: IsDrag.isDraged
+          ? `translate(${mousePos.x - IsDrag.xPos}px,${
+              mousePos.y - IsDrag.yPos
+            }px)`
           : 'translate(0)',
+        position: 'absolute',
       }}
       draggable='true'
       onMouseMove={handleOnMouseMove}
