@@ -1,9 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import MousePosition from '../tools/MousePosition';
 
 export function BlackQueen({ height, width }) {
+  const [IsDrag, setIsDrag] = useState(false);
   const mousePos = MousePosition();
 
+  const handleOnMouseMove = () => {
+    console.log('handle on mouse move');
+  };
+
+  const handleOnMouseUp = () => {
+    setIsDrag(false);
+    console.log('handle on mouse up');
+  };
+
+  const handleOnMouseDown = () => {
+    setIsDrag(true);
+    console.log('handle on mouse down');
+  };
   return (
     <svg
       version='1.2'
@@ -11,6 +26,15 @@ export function BlackQueen({ height, width }) {
       viewBox='0 0 400 400'
       width={width || '400'}
       height={height || '400'}
+      style={{
+        transform: IsDrag
+          ? `translate(${mousePos.x}px,${mousePos.y}px)`
+          : 'translate(0)',
+      }}
+      draggable='true'
+      onMouseMove={handleOnMouseMove}
+      onMouseUp={handleOnMouseUp}
+      onMouseDown={handleOnMouseDown}
     >
       <title>BlackQueen</title>
       <defs>
