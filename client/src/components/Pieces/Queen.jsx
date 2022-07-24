@@ -3,23 +3,27 @@ import { useState } from 'react';
 import MousePosition from '../tools/MousePosition';
 
 export function BlackQueen({ height, width }) {
+  const BLACK_QUEENS_NAME = 'blackQueen';
   const [IsDrag, setIsDrag] = useState({
     xPos: 0,
     yPos: 0,
     isDraged: false,
+    pieceBeingDrag: null,
   });
 
   const mousePos = MousePosition();
 
   const handleOnMouseMove = () => {
-    console.log('handle on mouse move');
+    console.log(`${IsDrag.pieceBeingDrag} on mouse move`);
   };
 
   const handleOnMouseUp = () => {
+    console.log(`${IsDrag.pieceBeingDrag} is being placed`);
     const isDraged = {
       xPos: 0,
       yPos: 0,
       isDraged: false,
+      pieceBeingDrag: null,
     };
     setIsDrag(isDraged);
     console.log('handle on mouse up');
@@ -30,6 +34,7 @@ export function BlackQueen({ height, width }) {
       xPos: mousePos.x,
       yPos: mousePos.y,
       isDraged: true,
+      pieceBeingDrag: BLACK_QUEENS_NAME,
     };
     setIsDrag(isDraged);
     console.log('handle on mouse down');
