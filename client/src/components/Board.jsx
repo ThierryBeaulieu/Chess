@@ -16,6 +16,7 @@ export default function Board({ style }) {
   const mousePos = MousePosition();
 
   // TODO: Verify if the use
+
   // If the user click once on a piece, he can choose where to place it
   // If the user drag the piece, he can place it somewhere else
   // If the user double-click on a piece, he can place it elsewhere
@@ -26,11 +27,17 @@ export default function Board({ style }) {
     currentItem: null,
   });
 
-  const getPiece = () => {
+  const getPiece = (indexX, indexY) => {
+    const index = {
+      x: indexX,
+      y: indexY,
+    };
+
     return (
       <BlackQueen
         height={cellSize}
         width={cellSize}
+        index={index}
         mousePos={mousePos}
         draggedItem={draggedItem}
         setDraggedItem={setDraggedItem}
@@ -57,7 +64,7 @@ export default function Board({ style }) {
                 backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
               }}
             >
-              {getPiece()}
+              {getPiece(i, j)}
             </div>
           )),
         )

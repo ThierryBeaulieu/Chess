@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export function BlackQueen({
   height,
   width,
+  index,
   mousePos,
   draggedItem,
   setDraggedItem,
@@ -16,6 +17,11 @@ export function BlackQueen({
 
   const handleOnMouseUp = () => {
     console.log(`Mouse up on ${draggedItem.currentItem}`);
+    if (isCurrentItemDragged) {
+      // The piece was lifted and then put down
+    } else {
+      // That mean that the pieces comes from somewhere else
+    }
     const newDraggedData = {
       posX: -1,
       posY: -1,
