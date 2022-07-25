@@ -1,4 +1,5 @@
 import React from 'react';
+import MousePosition from './tools/MousePosition';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
@@ -13,8 +14,12 @@ export default function Board({ style }) {
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       columns || 100;
 
+  const mousePos = MousePosition();
+  console.log(mousePos);
   const getPiece = () => {
-    return <BlackQueen height={cellSize} width={cellSize} />;
+    return (
+      <BlackQueen height={cellSize} width={cellSize} mousePos={mousePos} />
+    );
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import MousePosition from '../tools/MousePosition';
 
-export function BlackQueen({ height, width }) {
+export function BlackQueen({ height, width, mousePos }) {
   const BLACK_QUEENS_NAME = 'blackQueen';
   const [IsDrag, setIsDrag] = useState({
     xPos: 0,
@@ -10,8 +10,6 @@ export function BlackQueen({ height, width }) {
     isDraged: false,
     pieceBeingDrag: null,
   });
-
-  const mousePos = MousePosition();
 
   const handleOnMouseMove = () => {
     console.log(`${IsDrag.pieceBeingDrag} on mouse move`);
