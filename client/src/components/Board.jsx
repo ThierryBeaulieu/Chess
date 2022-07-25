@@ -4,7 +4,7 @@ import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import { WhiteKnight, BlackKnight } from './Pieces/Queen';
 import { WhiteRook, BlackRook } from './Pieces/Queen';
-import useWindowDimensions from './tools/WindowSizeHandler';
+import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
