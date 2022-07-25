@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MousePosition from './tools/MousePosition';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
@@ -13,12 +13,28 @@ export default function Board({ style }) {
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       columns || 100;
-
   const mousePos = MousePosition();
-  console.log(mousePos);
+
+  // TODO: Verify if the use
+  // If the user click once on a piece, he can choose where to place it
+  // If the user drag the piece, he can place it somewhere else
+  // If the user double-click on a piece, he can place it elsewhere
+
+  const [draggedItem, setDraggedItem] = useState({
+    posX: mousePos.x,
+    posY: mousePos.y,
+    currentItem: null,
+  });
+
   const getPiece = () => {
     return (
-      <BlackQueen height={cellSize} width={cellSize} mousePos={mousePos} />
+      <BlackQueen
+        height={cellSize}
+        width={cellSize}
+        mousePos={mousePos}
+        draggedItem={draggedItem}
+        setDraggedItem={setDraggedItem}
+      />
     );
   };
 

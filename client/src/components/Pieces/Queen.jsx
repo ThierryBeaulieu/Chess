@@ -1,42 +1,42 @@
-import React from 'react';
-import { useState } from 'react';
-import MousePosition from '../tools/MousePosition';
+import React, { useState } from 'react';
 
-export function BlackQueen({ height, width, mousePos }) {
+export function BlackQueen({
+  height,
+  width,
+  mousePos,
+  draggedItem,
+  setDraggedItem,
+}) {
+  const [isCurrentItemDragged, setIsCurrentItemDragged] = useState(false);
   const BLACK_QUEENS_NAME = 'blackQueen';
-  const [IsDrag, setIsDrag] = useState({
-    xPos: 0,
-    yPos: 0,
-    isDraged: false,
-    pieceBeingDrag: null,
-  });
 
   const handleOnMouseMove = () => {
-    console.log(`${IsDrag.pieceBeingDrag} on mouse move`);
+    console.log(`Dragging on ${draggedItem.currentItem}`);
   };
 
   const handleOnMouseUp = () => {
-    console.log(`${IsDrag.pieceBeingDrag} is being placed`);
-    const isDraged = {
-      xPos: 0,
-      yPos: 0,
-      isDraged: false,
-      pieceBeingDrag: null,
+    console.log(`Mouse up on ${draggedItem.currentItem}`);
+    const newDraggedData = {
+      posX: -1,
+      posY: -1,
+      currentItem: null,
     };
-    setIsDrag(isDraged);
-    console.log('handle on mouse up');
+    setIsCurrentItemDragged(false);
+    setDraggedItem(newDraggedData);
   };
 
   const handleOnMouseDown = () => {
-    const isDraged = {
-      xPos: mousePos.x,
-      yPos: mousePos.y,
-      isDraged: true,
-      pieceBeingDrag: BLACK_QUEENS_NAME,
+    console.log(`Mouse down on ${draggedItem.currentItem}`);
+
+    const newDraggedData = {
+      posX: mousePos.x,
+      posY: mousePos.y,
+      currentItem: BLACK_QUEENS_NAME,
     };
-    setIsDrag(isDraged);
-    console.log('handle on mouse down');
+    setDraggedItem(newDraggedData);
+    setIsCurrentItemDragged(true);
   };
+
   return (
     <svg
       version='1.2'
@@ -45,9 +45,9 @@ export function BlackQueen({ height, width, mousePos }) {
       width={width || '400'}
       height={height || '400'}
       style={{
-        transform: IsDrag.isDraged
-          ? `translate(${mousePos.x - IsDrag.xPos}px,${
-              mousePos.y - IsDrag.yPos
+        transform: isCurrentItemDragged
+          ? `translate(${mousePos.x - draggedItem.posX}px,${
+              mousePos.y - draggedItem.posY
             }px)`
           : 'translate(0)',
         position: 'absolute',
