@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MousePosition from './tools/MousePosition';
+import MousePosition from '../tools/MousePosition';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
