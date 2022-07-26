@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import MousePosition from './tools/MousePosition';
+import MousePosition from '../tools/MousePosition';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import { WhiteKnight, BlackKnight } from './Pieces/Queen';
 import { WhiteRook, BlackRook } from './Pieces/Queen';
+<<<<<<< HEAD
 import useWindowDimensions from './tools/WindowSizeHandler';
 import Tile from './Tile';
+=======
+import useWindowDimensions from '../tools/WindowSizeHandler';
+import Draggable from '../tools/Draggable';
+import Droppable from '../tools/Droppable';
+>>>>>>> 208e9e12364a310f6188468ddcc8cc025960e662
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -14,37 +20,21 @@ export default function Board({ style }) {
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       columns || 100;
-  const mousePos = MousePosition();
 
   // TODO: Verify if the use
 
   // If the user click once on a piece, he can choose where to place it
   // If the user drag the piece, he can place it somewhere else
   // If the user double-click on a piece, he can place it elsewhere
-
-  const [draggedItem, setDraggedItem] = useState({
-    posX: mousePos.x,
-    posY: mousePos.y,
-    currentItem: null,
-  });
-
-  const getPiece = (indexX, indexY) => {
-    const index = {
-      x: indexX,
-      y: indexY,
-    };
-
+  function getPiece(i, j) {
     return (
-      <BlackQueen
-        height={cellSize}
-        width={cellSize}
-        index={index}
-        mousePos={mousePos}
-        draggedItem={draggedItem}
-        setDraggedItem={setDraggedItem}
-      />
+      <Droppable id={`${i}, ${j}`}>
+        <Draggable id={`${i},${j}`}>
+          <BlackQueen height={cellSize} width={cellSize} />
+        </Draggable>
+      </Droppable>
     );
-  };
+  }
 
   const getTile = () => {
     return <Tile />;

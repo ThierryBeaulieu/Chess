@@ -1,48 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export function BlackQueen({
-  height,
-  width,
-  index,
-  mousePos,
-  draggedItem,
-  setDraggedItem,
-}) {
-  const [isCurrentItemDragged, setIsCurrentItemDragged] = useState(false);
-  const BLACK_QUEENS_NAME = 'blackQueen';
-
-  const handleOnMouseMove = () => {
-    console.log(`Dragging on ${draggedItem.currentItem}`);
-  };
-
-  const handleOnMouseUp = () => {
-    console.log(`Mouse up on ${draggedItem.currentItem}`);
-    if (isCurrentItemDragged) {
-      // The piece was lifted and then put down
-    } else {
-      // That mean that the pieces comes from somewhere else
-    }
-    const newDraggedData = {
-      posX: -1,
-      posY: -1,
-      currentItem: null,
-    };
-    setIsCurrentItemDragged(false);
-    setDraggedItem(newDraggedData);
-  };
-
-  const handleOnMouseDown = () => {
-    console.log(`Mouse down on ${draggedItem.currentItem}`);
-
-    const newDraggedData = {
-      posX: mousePos.x,
-      posY: mousePos.y,
-      currentItem: BLACK_QUEENS_NAME,
-    };
-    setDraggedItem(newDraggedData);
-    setIsCurrentItemDragged(true);
-  };
-
+export function BlackQueen({ height, width }) {
   return (
     <svg
       version='1.2'
@@ -50,18 +8,6 @@ export function BlackQueen({
       viewBox='0 0 400 400'
       width={width || '400'}
       height={height || '400'}
-      style={{
-        transform: isCurrentItemDragged
-          ? `translate(${mousePos.x - draggedItem.posX}px,${
-              mousePos.y - draggedItem.posY
-            }px)`
-          : 'translate(0)',
-        position: 'absolute',
-      }}
-      draggable='true'
-      onMouseMove={handleOnMouseMove}
-      onMouseUp={handleOnMouseUp}
-      onMouseDown={handleOnMouseDown}
     >
       <title>BlackQueen</title>
       <defs>
