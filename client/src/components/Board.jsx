@@ -6,6 +6,7 @@ import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import { WhiteKnight, BlackKnight } from './Pieces/Queen';
 import { WhiteRook, BlackRook } from './Pieces/Queen';
 import useWindowDimensions from './tools/WindowSizeHandler';
+import Tile from './Tile';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -45,6 +46,10 @@ export default function Board({ style }) {
     );
   };
 
+  const getTile = () => {
+    return <Tile />;
+  };
+
   return (
     <div
       style={{
@@ -64,7 +69,7 @@ export default function Board({ style }) {
                 backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
               }}
             >
-              {getPiece(i, j)}
+              {getTile()}
             </div>
           )),
         )

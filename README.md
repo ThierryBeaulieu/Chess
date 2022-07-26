@@ -12,7 +12,7 @@ git clone https://github.com/ThierryBeaulieu/Chess
 
 Once that the project is clone on your computer, you will need to make sur that you have the latest version of [Node.js](https://nodejs.org/en/download/). You will also need to install [Docker](https://docs.docker.com/get-docker/) so that you can run the database locally.
 
-After proceeding to the installation, you will now need to install the dependencies. For that, simple enter the following command line:
+After installing those external dependencies, select the root of the project and use the following command line to install the required packages:
 
 ```bat
 Chess> npm install
