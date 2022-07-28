@@ -20,19 +20,15 @@ class PlayerController {
       try {
         const playerData = req.body;
 
-        if (playerData.lenght > 0) {
-          const playerId = playerData.id;
-          const playerFname = playerData.fname;
-          const playerLname = playerData.lname;
+        const playerId = playerData.id;
+        const playerFname = playerData.fname;
+        const playerLname = playerData.lname;
 
-          gameService.addPlayer(playerId, playerFname, playerLname, null);
-          console.log(
-            `[PLAYER FNAME: ${playerData.fname} AND FNAME: ${playerData.lnames} SENT]`,
-          );
-          res.status(201);
-        } else {
-          res.status(404);
-        }
+        gameService.addPlayer(playerId, playerFname, playerLname, null);
+        console.log(
+          `[PLAYER FNAME: ${playerData.fname}, FNAME: ${playerData.lname} AND ID: ${playerData.id} SENT]`,
+        );
+        res.status(201);
       } catch (e) {
         //res.status(500).send(null);
       }

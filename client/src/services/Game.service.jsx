@@ -33,10 +33,11 @@ class GameService {
       lname: lname,
       id: id,
     };
-    const response = await HTTP_SERVER.POST(
-      'api-player/names',
-      this.playerInfo,
-    );
+    try {
+      await HTTP_SERVER.POST('api-player/names', this.playerInfo);
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/names');
+    }
   }
 
   async sendLatestMove(latestMove) {
