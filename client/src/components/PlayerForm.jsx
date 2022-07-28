@@ -16,13 +16,13 @@ export default function PlayerForm() {
     setLname(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    const playerId = gameService.getSessionId();
+  async function handleSubmit(event) {
+    const playerId = await gameService.getSessionId();
     console.log(playerId);
     gameService.setUserInfo(fname, lname, playerId);
     console.log(`This was submited (${fname}) and (${lname})`);
     event.preventDefault();
-  };
+  }
 
   return (
     <>
