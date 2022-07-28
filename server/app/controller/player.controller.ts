@@ -25,6 +25,7 @@ class PlayerController {
         const playerLname = playerData.lname;
 
         gameService.addPlayer(playerId, playerFname, playerLname, null);
+        console.log(playerData.id);
         console.log(
           `[PLAYER FNAME: ${playerData.fname}, FNAME: ${playerData.lname} AND ID: ${playerData.id} SENT]`,
         );

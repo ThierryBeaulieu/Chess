@@ -12,8 +12,9 @@ class GameService {
     this.latestMove = undefined;
     this.adversaryMove = undefined;
 
-    if (GameService.instance === null) {
+    if (GameService.instance == null) {
       GameService.instance = this;
+      console.log('Creating singleton');
     }
     return GameService.instance;
   }
@@ -25,14 +26,13 @@ class GameService {
     if (this.sessionId === undefined) {
       await this.fetchSessionId();
     }
-    console.log('This is');
     return this.sessionId;
   }
-  async setUserInfo(fname, lname, id) {
+  async setUserInfo(fname, lname, playerId) {
     this.playerInfo = {
       fname: fname,
       lname: lname,
-      id: id,
+      id: playerId,
     };
     try {
       await HTTP_SERVER.POST('api-player/names', this.playerInfo);
