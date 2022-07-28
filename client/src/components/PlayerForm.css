@@ -6,18 +6,30 @@
     width: 100%;
     height: 100%;
     top: 0;
-    padding-top: 10vh;
+    padding-top: 10vh;;
     background-color: var(--sky);
     position: absolute;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
 }
 
 .card-content{
-    width: 500px;
-    height: 300px;
+    width: 40vw;
+    height: 30vh;
     background-color: var(--YellowButtonBackGround);
     opacity: 0.8;
     border-radius: 5px;
     padding: 5vh;
+    color: var(--YellowButtonFont);
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.startButton {
+    width: 50vw;
+    display: flex;
+    justify-content: flex-end;
 }
