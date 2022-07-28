@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import Game from '../pages/Game';
+import PlayerForm from '../components/PlayerForm';
+
 import GameManager from '../services/Game.service';
 import { CookiesProvider, useCookies } from 'react-cookie';
 
@@ -25,6 +27,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<MainPage />}></Route>
           <Route exact path='/game' element={<Game />}></Route>
+          <Route exact path='/playerform' element={<PlayerForm />}></Route>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

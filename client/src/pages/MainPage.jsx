@@ -14,7 +14,7 @@ export default function MainPage() {
             <div className='MainTitle'>Chess .</div>
           </Link>
 
-          <Link to='/game'>
+          <Link to='/playerform'>
             <Button name='Play online' />
           </Link>
         </div>
