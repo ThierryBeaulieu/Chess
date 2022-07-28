@@ -17,7 +17,7 @@ export default function PlayerForm() {
   };
 
   const handleSubmit = (event) => {
-    gameService.setUserInfo(fname, lname, gameService.sessionId);
+    gameService.setUserInfo(fname, lname, gameService.getSessionId());
     console.log(`This was submited (${fname}) and (${lname})`);
     event.preventDefault();
   };

@@ -25,6 +25,7 @@ class GameService {
     if (this.sessionId === undefined) {
       await this.fetchSessionId();
     }
+    console.log('This is');
     return this.sessionId;
   }
   async setUserInfo(fname, lname, id) {
