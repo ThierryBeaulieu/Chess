@@ -2,11 +2,9 @@ import React from 'react';
 import './PlayerForm.css';
 import Button from '../components/Button';
 import { useState } from 'react';
-import GameService from '../services/Game.service';
+import gameService from '../services/Game.service';
 
 export default function PlayerForm() {
-  const gameService = new GameService();
-
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
 
@@ -19,7 +17,7 @@ export default function PlayerForm() {
   };
 
   const handleSubmit = (event) => {
-    gameService.setUserInfo(fname, lname);
+    gameService.setUserInfo(fname, lname, gameService.sessionId);
     console.log(`This was submited (${fname}) and (${lname})`);
     event.preventDefault();
   };

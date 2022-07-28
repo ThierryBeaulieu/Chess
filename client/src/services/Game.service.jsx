@@ -1,28 +1,42 @@
 import HTTP_SERVER from './http.service';
 
-export default class GameService {
+class GameService {
   playerInfo;
   sessionId;
   latestMove;
   adversaryMove;
 
+  constructor() {
+    this.playerInfo = undefined;
+    this.sessionId = undefined;
+    this.latestMove = undefined;
+    this.adversaryMove = undefined;
+
+    if (GameService.instance === null) {
+      GameService.instance = this;
+    }
+    return GameService.instance;
+  }
+
   async fetchSessionId() {
     this.sessionId = await HTTP_SERVER.GET('api-cookie/sessionId');
   }
   async getSessionId() {
-    await this.fetchSessionId();
+    if (this.sessionId === undefined) {
+      await this.fetchSessionId();
+    }
     return this.sessionId;
   }
-  async setUserInfo(fname, lname) {
+  async setUserInfo(fname, lname, id) {
     this.playerInfo = {
       fname: fname,
       lname: lname,
+      id: id,
     };
     const response = await HTTP_SERVER.POST(
       'api-player/names',
       this.playerInfo,
     );
-    return response;
   }
 
   async sendLatestMove(latestMove) {
@@ -32,3 +46,6 @@ export default class GameService {
     );
   }
 }
+
+const gameService = new GameService();
+export default gameService;

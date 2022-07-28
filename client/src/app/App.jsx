@@ -5,11 +5,11 @@ import MainPage from '../pages/MainPage';
 import Game from '../pages/Game';
 import PlayerForm from '../components/PlayerForm';
 
-import GameManager from '../services/Game.service';
+import gameService from '../services/Game.service';
 import { CookiesProvider, useCookies } from 'react-cookie';
 
 function App() {
-  const [gameManager] = useState(new GameManager());
+  const [gameManager] = useState(gameService);
   const [cookies, setCookie] = useCookies(['user']);
 
   useEffect(() => {

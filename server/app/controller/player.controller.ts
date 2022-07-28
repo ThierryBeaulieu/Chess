@@ -18,9 +18,21 @@ class PlayerController {
     const gameService = this.gameService;
     this.router.post('/names', function (req: Request, res: Response) {
       try {
-        console.log(req.body);
-        //console.log(`[USER SESSIONID SENT: ${sessionId}]`);
-        res.status(200);
+        const playerData = req.body;
+
+        if (playerData.lenght > 0) {
+          const playerId = playerData.id;
+          const playerFname = playerData.fname;
+          const playerLname = playerData.lname;
+
+          gameService.addPlayer(playerId, playerFname, playerLname, null);
+          console.log(
+            `[PLAYER FNAME: ${playerData.fname} AND FNAME: ${playerData.lnames} SENT]`,
+          );
+          res.status(201);
+        } else {
+          res.status(404);
+        }
       } catch (e) {
         //res.status(500).send(null);
       }
