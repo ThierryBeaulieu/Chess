@@ -17,10 +17,6 @@ export default function MainPage() {
           <Link to='/game'>
             <Button name='Play online' />
           </Link>
-
-          <Link to='/training'>
-            <Button name='Train yourself' secondary='true' />
-          </Link>
         </div>
       </div>
     </React.Fragment>
