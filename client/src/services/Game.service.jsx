@@ -22,17 +22,20 @@ class GameService {
   async fetchSessionId() {
     this.sessionId = await HTTP_SERVER.GET('api-cookie/sessionId');
   }
+
   async getSessionId() {
     if (this.sessionId === undefined) {
       await this.fetchSessionId();
     }
     return this.sessionId;
   }
+
   async setUserInfo(fname, lname, playerId) {
     this.playerInfo = {
       fname: fname,
       lname: lname,
       id: playerId,
+      score: null,
     };
     try {
       await HTTP_SERVER.POST('api-player/names', this.playerInfo);
