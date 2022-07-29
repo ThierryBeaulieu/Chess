@@ -1,44 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import MousePosition from '../../tools/MousePosition';
 
 export function BlackQueen({ height, width }) {
-  const BLACK_QUEENS_NAME = 'blackQueen';
-  const [IsDrag, setIsDrag] = useState({
-    xPos: 0,
-    yPos: 0,
-    isDraged: false,
-    pieceBeingDrag: null,
-  });
-
-  const mousePos = MousePosition();
-
-  const handleOnMouseMove = () => {
-    console.log(`${IsDrag.pieceBeingDrag} on mouse move`);
-  };
-
-  const handleOnMouseUp = () => {
-    console.log(`${IsDrag.pieceBeingDrag} is being placed`);
-    const isDraged = {
-      xPos: 0,
-      yPos: 0,
-      isDraged: false,
-      pieceBeingDrag: null,
-    };
-    setIsDrag(isDraged);
-    console.log('handle on mouse up');
-  };
-
-  const handleOnMouseDown = () => {
-    const isDraged = {
-      xPos: mousePos.x,
-      yPos: mousePos.y,
-      isDraged: true,
-      pieceBeingDrag: BLACK_QUEENS_NAME,
-    };
-    setIsDrag(isDraged);
-    console.log('handle on mouse down');
-  };
   return (
     <svg
       version='1.2'
@@ -46,18 +8,6 @@ export function BlackQueen({ height, width }) {
       viewBox='0 0 400 400'
       width={width || '400'}
       height={height || '400'}
-      style={{
-        transform: IsDrag.isDraged
-          ? `translate(${mousePos.x - IsDrag.xPos}px,${
-              mousePos.y - IsDrag.yPos
-            }px)`
-          : 'translate(0)',
-        position: 'absolute',
-      }}
-      draggable='true'
-      onMouseMove={handleOnMouseMove}
-      onMouseUp={handleOnMouseUp}
-      onMouseDown={handleOnMouseDown}
     >
       <title>BlackQueen</title>
       <defs>
