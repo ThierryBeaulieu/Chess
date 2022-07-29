@@ -31,7 +31,7 @@ class PlayerController {
           `[PLAYER FNAME: ${playerData.fname}, FNAME: ${playerData.lname} AND ID: ${playerData.id} SENT]`,
         );
         if (request === true) {
-          res.sendStatus(HTTP_STATE.CREATED);
+          res.status(HTTP_STATE.CREATED).json(playerData);
         } else {
           res.sendStatus(HTTP_STATE.BAD_REQUEST);
         }
@@ -47,7 +47,7 @@ class PlayerController {
         if (!playerData) {
           res.sendStatus(HTTP_STATE.BAD_REQUEST);
         } else {
-          res.json(playerData);
+          res.status(HTTP_STATE.OK).json(playerData);
         }
       } catch (e) {
         res.sendStatus(HTTP_STATE.SERVER_ERROR);

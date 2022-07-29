@@ -15,7 +15,7 @@ class GameService {
       const request = await HTTP_SERVER.GET('api-cookie/sessionId');
       return request;
     } catch (e) {
-      return undefined;
+      console.log('ERROR GET @ api-cookie/sessionId');
     }
   }
 
@@ -29,14 +29,11 @@ class GameService {
     try {
       const request = await HTTP_SERVER.POST('api-player/names', playerInfo);
       console.log(request);
-      if (request === undefined || request === null) {
-        return undefined;
-      } else {
+      if (request !== undefined && request !== null) {
         return request;
       }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/names');
-      return undefined;
     }
   }
 
@@ -45,12 +42,9 @@ class GameService {
       const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
       if (playerData !== null && playerData !== undefined) {
         return playerData;
-      } else {
-        return undefined;
       }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/playerid');
-      return undefined;
     }
   }
 
