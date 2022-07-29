@@ -33,7 +33,7 @@ class PlayerController {
         if (request === true) {
           res.status(HTTP_STATE.CREATED).json(playerData);
         } else {
-          res.sendStatus(HTTP_STATE.BAD_REQUEST);
+          res.sendStatus(HTTP_STATE.CONFLICT);
         }
       } catch (e) {
         res.sendStatus(HTTP_STATE.SERVER_ERROR);

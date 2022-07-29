@@ -84,10 +84,12 @@ class GameService {
       }
       const request = `INSERT INTO chess.player (playerId, fname, lname, score)
       VALUES ('${playerId}', '{${firstName}}', '{${lastName}}', ${score});`;
-      await this.PgService.query(request);
-      return true;
+      const requestState = await this.PgService.query(request);
+      if (requestState !== undefined) {
+        return true;
+      }
     } catch (e) {
-      return false;
+      return undefined;
     }
   }
 
