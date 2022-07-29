@@ -7,7 +7,7 @@ import gameService from '../services/Game.service';
 import { useCookies } from 'react-cookie';
 
 export default function MainPage() {
-  const [cookies, setCookie] = useCookies(['user']);
+  const [cookies] = useCookies(['user']);
 
   function verifyPlayerExist() {
     const playerId = cookies.sessionId;

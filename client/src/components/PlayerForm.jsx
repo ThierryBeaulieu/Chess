@@ -6,7 +6,7 @@ import gameService from '../services/Game.service';
 import { useCookies } from 'react-cookie';
 
 export default function PlayerForm() {
-  const [cookies, setCookie] = useCookies(['user']);
+  const [cookies] = useCookies(['user']);
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
 
