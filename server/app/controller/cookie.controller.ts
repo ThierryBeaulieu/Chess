@@ -2,7 +2,7 @@ import { Response, Request, Router } from 'express';
 import Cookie from '../classes/Tools/Cookie';
 import GameService from '../services/game.service';
 import Container from 'typedi';
-import HTTP_STATE from '@app/classes/Tools/httpState';
+import HTTP_STATE from '../classes/Tools/httpState';
 
 const cookieRouter = require('express').Router();
 

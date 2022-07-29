@@ -11,7 +11,12 @@ class GameService {
   }
 
   async fetchSessionId() {
-    return await HTTP_SERVER.GET('api-cookie/sessionId');
+    try {
+      const request = await HTTP_SERVER.GET('api-cookie/sessionId');
+      return request;
+    } catch (e) {
+      return undefined;
+    }
   }
 
   async setUserInfo(fname, lname, playerId) {
@@ -22,18 +27,30 @@ class GameService {
       score: null,
     };
     try {
-      await HTTP_SERVER.POST('api-player/names', playerInfo);
+      const request = await HTTP_SERVER.POST('api-player/names', playerInfo);
+      console.log(request);
+      if (request === undefined || request === null) {
+        return undefined;
+      } else {
+        return request;
+      }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/names');
+      return undefined;
     }
   }
 
   async getPlayerData(playerId) {
     try {
       const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
-      return playerData;
+      if (playerData !== null && playerData !== undefined) {
+        return playerData;
+      } else {
+        return undefined;
+      }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/playerid');
+      return undefined;
     }
   }
 
