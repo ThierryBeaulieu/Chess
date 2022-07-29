@@ -28,9 +28,10 @@ class GameService {
     }
   }
 
-  async getUserInfo(playerId) {
+  async getPlayerData(playerId) {
     try {
       const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
+      return playerData;
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/playerid');
     }
