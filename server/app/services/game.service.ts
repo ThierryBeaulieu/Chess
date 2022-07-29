@@ -7,6 +7,18 @@ class GameService {
 
   constructor(private PgService: PostgreSQLService) {}
 
+  // The SQL convetion is that for inserting ', you need to use ''.
+  private handleSingleParanthese(input: String): String {
+    let newInput: String = '';
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] === "'") {
+        newInput = newInput + "''";
+      } else {
+        newInput = newInput + input[i];
+      }
+    }
+    return newInput;
+  }
   // Users
   async addUser(sessionId: String): Promise<Boolean> {
     try {
@@ -78,12 +90,14 @@ class GameService {
     lastName: String,
     score: number,
   ): Promise<Boolean> {
+    firstName = this.handleSingleParanthese(firstName);
+    lastName = this.handleSingleParanthese(lastName);
     try {
       if (score == null) {
         score = this.DEFAULT_SCORE;
       }
       const request = `INSERT INTO chess.player (playerId, fname, lname, score)
-      VALUES ('${playerId}', '{${firstName}}', '{${lastName}}', ${score});`;
+      VALUES ('${playerId}', '${firstName}', '${lastName}', ${score});`;
       const requestState = await this.PgService.query(request);
       if (requestState !== undefined) {
         return true;
