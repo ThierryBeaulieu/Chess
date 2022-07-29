@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import { Request, Response } from 'express';
 import CookieController from './controller/cookie.controller';
+import PlayerController from './controller/player.controller';
 
 const express = require('express');
 const cors = require('cors');
@@ -13,11 +14,10 @@ app.use(cors());
 const cookieController = new CookieController();
 app.use('/api-cookie/', cookieController.getRouter());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
+const playerController = new PlayerController();
+app.use('/api-player/', playerController.getRouter());
 
-app.post('/', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 

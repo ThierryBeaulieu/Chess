@@ -1,0 +1,10 @@
+const HTTP_STATE = {
+  OK: 200,
+  CREATED: 201,
+  ACCEPTED: 202,
+  BAD_REQUEST: 400,
+  NOT_FOUND: 404,
+  SERVER_ERROR: 505,
+};
+
+export default HTTP_STATE;

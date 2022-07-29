@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import MousePosition from '../tools/MousePosition';
+import MousePosition from '../../tools/MousePosition';
 
 export function BlackQueen({ height, width }) {
   const BLACK_QUEENS_NAME = 'blackQueen';

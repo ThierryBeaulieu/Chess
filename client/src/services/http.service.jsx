@@ -19,7 +19,11 @@ const HTTP_SERVER = {
           'content-type': 'application/json',
         },
       });
-      return response.json();
+      if (response === undefined || response === null) {
+        return undefined;
+      } else {
+        return response.json();
+      }
     } catch (e) {
       return undefined;
     }

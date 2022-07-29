@@ -79,8 +79,11 @@ class GameService {
     score: number,
   ): Promise<Boolean> {
     try {
+      if (score == null) {
+        score = this.DEFAULT_SCORE;
+      }
       const request = `INSERT INTO chess.player (playerId, fname, lname, score)
-      VALUES ('${playerId}', '${firstName}', '${lastName}', ${score});`;
+      VALUES ('${playerId}', '{${firstName}}', '{${lastName}}', ${score});`;
       await this.PgService.query(request);
       return true;
     } catch (e) {
