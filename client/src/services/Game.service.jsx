@@ -28,6 +28,14 @@ class GameService {
     }
   }
 
+  async getUserInfo(playerId) {
+    try {
+      const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/playerid');
+    }
+  }
+
   async sendLatestMove(latestMove) {
     this.latestMove = await HTTP_SERVER.POST(
       'api-game/lastPersonnalMove',

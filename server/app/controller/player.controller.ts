@@ -16,6 +16,7 @@ class PlayerController {
 
   setRoutersPaths() {
     const gameService = this.gameService;
+
     this.router.post('/names', function (req: Request, res: Response) {
       try {
         const playerData = req.body;
@@ -32,6 +33,27 @@ class PlayerController {
         res.status(201);
       } catch (e) {
         //res.status(500).send(null);
+      }
+    });
+
+    /*
+      try {
+        const { id } = req.params;
+        const recipe = await this.recipesService.getRecipeById(id);
+        if (!recipe) res.status(HTTP_STATUS.NOT_FOUND).send();
+        else res.json(recipe);
+      } catch (error) {
+        res.status(HTTP_STATUS.SERVER_ERROR).send();
+      }
+    */
+    this.router.get('/:id', async function (req: Request, res: Response) {
+      try {
+        const playerId: String = req.params.id;
+        const playerData = await gameService.getPlayer(playerId);
+        if (!playerData) res.status(404).send();
+        else res.json(playerData);
+      } catch (e) {
+        res.status(500).send(null);
       }
     });
   }
