@@ -5,7 +5,7 @@ import MainPage from '../pages/MainPage';
 import Game from '../pages/Game';
 import PlayerForm from '../components/PlayerForm';
 
-import gameService from '../services/Game.service';
+import gameService from '../services/game.service';
 import { CookiesProvider, useCookies } from 'react-cookie';
 
 function App() {

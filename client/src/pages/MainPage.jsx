@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
 import ThreeScene from '../threejs/three-scene.jsx';
-import gameService from '../services/Game.service';
+import gameService from '../services/game.service';
 import { useCookies } from 'react-cookie';
 
 export default function MainPage() {
