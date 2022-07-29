@@ -1,6 +1,7 @@
 import { Response, Request, Router } from 'express';
 import GameService from '../services/game.service';
 import Container from 'typedi';
+import HTTP_STATE from '@app/classes/Tools/httpState';
 
 const userRouter = require('express').Router();
 
@@ -30,7 +31,7 @@ class PlayerController {
         console.log(
           `[PLAYER FNAME: ${playerData.fname}, FNAME: ${playerData.lname} AND ID: ${playerData.id} SENT]`,
         );
-        res.status(201);
+        res.status(HTTP_STATE.CREATED);
       } catch (e) {
         //res.status(500).send(null);
       }
@@ -50,10 +51,10 @@ class PlayerController {
       try {
         const playerId: String = req.params.id;
         const playerData = await gameService.getPlayer(playerId);
-        if (!playerData) res.status(404).send();
+        if (!playerData) res.status(HTTP_STATE.BAD_REQUEST).send();
         else res.json(playerData);
       } catch (e) {
-        res.status(500).send(null);
+        res.status(HTTP_STATE.SERVER_ERROR).send(null);
       }
     });
   }
