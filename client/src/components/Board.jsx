@@ -7,6 +7,9 @@ import { WhiteRook, BlackRook } from './Pieces/Queen';
 import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
+  const BLACK_TILE = '#895331';
+  const WHITE_TILE = '#ddc8a6';
+
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const columns = 8;
   const cellSize =
@@ -23,6 +26,8 @@ export default function Board({ style }) {
         display: 'grid',
         width: 'fit-content',
         gridTemplateColumns: `repeat(${columns}, auto)`,
+        border: '2px solid black',
+        borderRadius: '4px',
       }}
     >
       {Array.from(Array(columns).keys())
@@ -33,7 +38,7 @@ export default function Board({ style }) {
               style={{
                 height: cellSize,
                 width: cellSize,
-                backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
+                backgroundColor: (i + j) % 2 ? WHITE_TILE : BLACK_TILE,
               }}
             >
               {getPiece()}
