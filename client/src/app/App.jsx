@@ -15,7 +15,9 @@ function App() {
   useEffect(() => {
     async function setCookies() {
       if (cookies.sessionId === null || cookies.sessionId === undefined) {
-        setCookie('sessionId', await gameManager.getSessionId(), { path: '/' });
+        setCookie('sessionId', await gameManager.fetchSessionId(), {
+          path: '/',
+        });
       }
     }
     setCookies();
@@ -27,7 +29,11 @@ function App() {
         <Routes>
           <Route exact path='/' element={<MainPage />}></Route>
           <Route exact path='/game' element={<Game />}></Route>
-          <Route exact path='/playerform' element={<PlayerForm />}></Route>
+          <Route
+            exact
+            path='/playerform'
+            element={<PlayerForm activeCookie={cookies} />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

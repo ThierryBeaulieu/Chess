@@ -3,8 +3,10 @@ import './PlayerForm.css';
 import Button from '../components/Button';
 import { useState } from 'react';
 import gameService from '../services/Game.service';
+import { useCookies } from 'react-cookie';
 
 export default function PlayerForm() {
+  const [cookies, setCookie] = useCookies(['user']);
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
 
@@ -17,9 +19,8 @@ export default function PlayerForm() {
   };
 
   async function handleSubmit(event) {
-    const playerId = await gameService.getSessionId();
-    console.log(playerId);
-    gameService.setUserInfo(fname, lname, playerId);
+    const currentCookie = cookies.sessionId;
+    gameService.setUserInfo(fname, lname, currentCookie);
     console.log(`This was submited (${fname}) and (${lname})`);
     event.preventDefault();
   }

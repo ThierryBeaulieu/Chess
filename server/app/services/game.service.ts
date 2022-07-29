@@ -11,7 +11,7 @@ class GameService {
   async addUser(sessionId: String): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.user (sessionId)
-      VALUES ('${sessionId}');`;
+      VALUES ({${sessionId}');`;
       await this.PgService.query(request);
       return true;
     } catch (e) {
@@ -83,7 +83,7 @@ class GameService {
         score = this.DEFAULT_SCORE;
       }
       const request = `INSERT INTO chess.player (playerId, fname, lname, score)
-      VALUES ('${playerId}', '${firstName}', '${lastName}', ${score});`;
+      VALUES ('${playerId}', '{${firstName}}', '{${lastName}}', ${score});`;
       await this.PgService.query(request);
       return true;
     } catch (e) {

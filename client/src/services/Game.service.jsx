@@ -1,44 +1,28 @@
 import HTTP_SERVER from './http.service';
 
 class GameService {
-  playerInfo;
-  sessionId;
-  latestMove;
-  adversaryMove;
+  static myInstance = null;
 
-  constructor() {
-    this.playerInfo = undefined;
-    this.sessionId = undefined;
-    this.latestMove = undefined;
-    this.adversaryMove = undefined;
-
-    if (GameService.instance == null) {
-      GameService.instance = this;
-      console.log('Creating singleton');
+  static getInstance() {
+    if (GameService.myInstance == null) {
+      GameService.myInstance = new GameService();
     }
-    return GameService.instance;
+    return this.myInstance;
   }
 
   async fetchSessionId() {
-    this.sessionId = await HTTP_SERVER.GET('api-cookie/sessionId');
-  }
-
-  async getSessionId() {
-    if (this.sessionId === undefined) {
-      await this.fetchSessionId();
-    }
-    return this.sessionId;
+    return await HTTP_SERVER.GET('api-cookie/sessionId');
   }
 
   async setUserInfo(fname, lname, playerId) {
-    this.playerInfo = {
+    const playerInfo = {
       fname: fname,
       lname: lname,
       id: playerId,
       score: null,
     };
     try {
-      await HTTP_SERVER.POST('api-player/names', this.playerInfo);
+      await HTTP_SERVER.POST('api-player/names', playerInfo);
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/names');
     }
@@ -52,5 +36,6 @@ class GameService {
   }
 }
 
-const gameService = new GameService();
+const gameService = GameService.getInstance();
+Object.freeze(gameService);
 export default gameService;
