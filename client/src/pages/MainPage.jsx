@@ -3,8 +3,32 @@ import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
 import ThreeScene from '../threejs/three-scene.jsx';
+import gameService from '../services/Game.service';
+import { useCookies } from 'react-cookie';
 
 export default function MainPage() {
+  const [cookies] = useCookies(['user']);
+
+  function verifyPlayerExist() {
+    const playerId = cookies.sessionId;
+    if (playerId !== null && playerId !== undefined) {
+      const playerData = gameService.getPlayerData(playerId);
+      if (playerData !== null && playerData !== undefined) {
+        return (
+          <Link to='/game'>
+            <Button name='Play online' />
+          </Link>
+        );
+      }
+    }
+
+    return (
+      <Link to='/playerform'>
+        <Button name='Play online' />
+      </Link>
+    );
+  }
+
   return (
     <React.Fragment>
       <ThreeScene />
@@ -13,14 +37,7 @@ export default function MainPage() {
           <Link to='/'>
             <div className='MainTitle'>Chess .</div>
           </Link>
-
-          <Link to='/game'>
-            <Button name='Play online' />
-          </Link>
-
-          <Link to='/training'>
-            <Button name='Train yourself' secondary='true' />
-          </Link>
+          {verifyPlayerExist()}
         </div>
       </div>
     </React.Fragment>

@@ -1,16 +1,40 @@
 import HTTP_SERVER from './http.service';
 
-export default class GameService {
-  sessionId;
-  latestMove;
-  adversaryMove;
+class GameService {
+  static myInstance = null;
+
+  static getInstance() {
+    if (GameService.myInstance == null) {
+      GameService.myInstance = new GameService();
+    }
+    return this.myInstance;
+  }
 
   async fetchSessionId() {
-    this.sessionId = await HTTP_SERVER.GET('api-cookie/sessionId');
+    return await HTTP_SERVER.GET('api-cookie/sessionId');
   }
-  async getSessionId() {
-    await this.fetchSessionId();
-    return this.sessionId;
+
+  async setUserInfo(fname, lname, playerId) {
+    const playerInfo = {
+      fname: fname,
+      lname: lname,
+      id: playerId,
+      score: null,
+    };
+    try {
+      await HTTP_SERVER.POST('api-player/names', playerInfo);
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/names');
+    }
+  }
+
+  async getPlayerData(playerId) {
+    try {
+      const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
+      return playerData;
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/playerid');
+    }
   }
 
   async sendLatestMove(latestMove) {
@@ -20,3 +44,7 @@ export default class GameService {
     );
   }
 }
+
+const gameService = GameService.getInstance();
+Object.freeze(gameService);
+export default gameService;
