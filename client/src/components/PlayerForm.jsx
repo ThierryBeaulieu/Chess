@@ -24,7 +24,14 @@ export default function PlayerForm() {
     event.preventDefault();
     const currentCookie = cookies.sessionId;
     try {
-      await gameService.setUserInfo(fname, lname, currentCookie);
+      const requestState = await gameService.setUserInfo(
+        fname,
+        lname,
+        currentCookie,
+      );
+      if (requestState === undefined) {
+        alert('A player already exists');
+      }
     } catch (e) {}
     navigate('/game');
   }
