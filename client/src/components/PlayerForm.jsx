@@ -2,7 +2,7 @@ import React from 'react';
 import './PlayerForm.css';
 import Button from '../components/Button';
 import { useState } from 'react';
-import gameService from '../services/Game.service';
+import gameService from '../services/game.service';
 import { useCookies } from 'react-cookie';
 
 export default function PlayerForm() {

@@ -11,7 +11,12 @@ class GameService {
   }
 
   async fetchSessionId() {
-    return await HTTP_SERVER.GET('api-cookie/sessionId');
+    try {
+      const request = await HTTP_SERVER.GET('api-cookie/sessionId');
+      return request;
+    } catch (e) {
+      console.log('ERROR GET @ api-cookie/sessionId');
+    }
   }
 
   async setUserInfo(fname, lname, playerId) {
@@ -22,7 +27,10 @@ class GameService {
       score: null,
     };
     try {
-      await HTTP_SERVER.POST('api-player/names', playerInfo);
+      const request = await HTTP_SERVER.POST('api-player/names', playerInfo);
+      if (request !== undefined && request !== null) {
+        return request;
+      }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/names');
     }
@@ -31,17 +39,26 @@ class GameService {
   async getPlayerData(playerId) {
     try {
       const playerData = await HTTP_SERVER.GET(`api-player/${playerId}`);
-      return playerData;
+      if (playerData !== null && playerData !== undefined) {
+        return playerData;
+      }
     } catch (e) {
       console.log('ERROR SENDING POST @ api-player/playerid');
     }
   }
 
   async sendLatestMove(latestMove) {
-    this.latestMove = await HTTP_SERVER.POST(
-      'api-game/lastPersonnalMove',
-      latestMove,
-    );
+    try {
+      const request = await HTTP_SERVER.POST(
+        'api-game/lastPersonnalMove',
+        latestMove,
+      );
+      if (request !== null && request !== undefined) {
+        return request;
+      }
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/lastPersonnalMove');
+    }
   }
 }
 
