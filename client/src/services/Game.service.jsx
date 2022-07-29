@@ -28,7 +28,7 @@ class GameService {
     };
     try {
       const request = await HTTP_SERVER.POST('api-player/names', playerInfo);
-      if (request !== undefined && request !== null) {
+      if (request !== undefined) {
         return request;
       }
     } catch (e) {
@@ -53,7 +53,7 @@ class GameService {
         'api-game/lastPersonnalMove',
         latestMove,
       );
-      if (request !== null && request !== undefined) {
+      if (request !== undefined) {
         return request;
       }
     } catch (e) {

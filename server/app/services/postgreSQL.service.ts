@@ -19,8 +19,12 @@ export default class PostgreSQLService {
   }
 
   async query(userQuery: string): Promise<Array<Object>> {
-    const data = (await this.pool.query(userQuery)).rows;
-    return data;
+    try {
+      const data = (await this.pool.query(userQuery)).rows;
+      return data;
+    } catch (e) {
+      return undefined;
+    }
   }
 }
 

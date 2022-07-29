@@ -4,8 +4,10 @@ import Button from '../components/Button';
 import { useState } from 'react';
 import gameService from '../services/game.service';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function PlayerForm() {
+  const navigate = useNavigate();
   const [cookies] = useCookies(['user']);
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
@@ -19,10 +21,19 @@ export default function PlayerForm() {
   };
 
   async function handleSubmit(event) {
-    const currentCookie = cookies.sessionId;
-    gameService.setUserInfo(fname, lname, currentCookie);
-    console.log(`This was submited (${fname}) and (${lname})`);
     event.preventDefault();
+    const currentCookie = cookies.sessionId;
+    try {
+      const requestState = await gameService.setUserInfo(
+        fname,
+        lname,
+        currentCookie,
+      );
+      if (requestState === undefined) {
+        alert('A player already exists');
+      }
+    } catch (e) {}
+    navigate('/game');
   }
 
   return (
