@@ -28,7 +28,6 @@ class GameService {
     };
     try {
       const request = await HTTP_SERVER.POST('api-player/names', playerInfo);
-      console.log(request);
       if (request !== undefined && request !== null) {
         return request;
       }
@@ -49,10 +48,17 @@ class GameService {
   }
 
   async sendLatestMove(latestMove) {
-    this.latestMove = await HTTP_SERVER.POST(
-      'api-game/lastPersonnalMove',
-      latestMove,
-    );
+    try {
+      const request = await HTTP_SERVER.POST(
+        'api-game/lastPersonnalMove',
+        latestMove,
+      );
+      if (request !== null && request !== undefined) {
+        return request;
+      }
+    } catch (e) {
+      console.log('ERROR SENDING POST @ api-player/lastPersonnalMove');
+    }
   }
 }
 
