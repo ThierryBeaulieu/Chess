@@ -20,14 +20,18 @@ class CookieController {
 
   setRoutersPaths() {
     const gameService = this.gameService;
-    this.router.get('/sessionId', function (req: Request, res: Response) {
+    this.router.get('/sessionId', async function (req: Request, res: Response) {
       try {
         const sessionId = Cookie.generateSessionId(DEFAULT_SESSION_ID_SIZE);
-        gameService.addUser(sessionId);
+        const request = await gameService.addUser(sessionId);
         console.log(`[USER SESSIONID SENT: ${sessionId}]`);
-        res.status(HTTP_STATE.CREATED).json(sessionId);
+        if (request === true) {
+          res.status(HTTP_STATE.CREATED).json(sessionId);
+        } else {
+          res.sendStatus(HTTP_STATE.BAD_REQUEST);
+        }
       } catch (e) {
-        res.status(HTTP_STATE.SERVER_ERROR).send(null);
+        res.sendStatus(HTTP_STATE.SERVER_ERROR);
       }
     });
   }
