@@ -11,7 +11,7 @@ class GameService {
   async addUser(sessionId: String): Promise<Boolean> {
     try {
       const request = `INSERT INTO chess.user (sessionId)
-      VALUES ({${sessionId}');`;
+      VALUES ('${sessionId}');`;
       await this.PgService.query(request);
       return true;
     } catch (e) {

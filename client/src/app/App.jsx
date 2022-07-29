@@ -29,11 +29,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<MainPage />}></Route>
           <Route exact path='/game' element={<Game />}></Route>
-          <Route
-            exact
-            path='/playerform'
-            element={<PlayerForm activeCookie={cookies} />}
-          ></Route>
+          <Route exact path='/playerform' element={<PlayerForm />}></Route>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
