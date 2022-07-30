@@ -4,9 +4,13 @@ import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import { WhiteKnight, BlackKnight } from './Pieces/Queen';
 import { WhiteRook, BlackRook } from './Pieces/Queen';
+import { TestPiece } from './Pieces/TestPiece';
 import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
+  const BLACK_TILE = '#d0b08a';
+  const WHITE_TILE = '#944c18';
+
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const columns = 8;
   const cellSize =
@@ -14,7 +18,7 @@ export default function Board({ style }) {
       columns || 100;
 
   const getPiece = () => {
-    return <BlackQueen height={cellSize} width={cellSize} />;
+    return <TestPiece height={cellSize} width={cellSize} />;
   };
 
   return (
@@ -23,6 +27,7 @@ export default function Board({ style }) {
         display: 'grid',
         width: 'fit-content',
         gridTemplateColumns: `repeat(${columns}, auto)`,
+        //border: '3px solid black',
       }}
     >
       {Array.from(Array(columns).keys())
@@ -33,7 +38,7 @@ export default function Board({ style }) {
               style={{
                 height: cellSize,
                 width: cellSize,
-                backgroundColor: (i + j) % 2 ? '#005c7b' : '#dfdfdf',
+                backgroundColor: (i + j) % 2 ? WHITE_TILE : BLACK_TILE,
               }}
             >
               {getPiece()}
