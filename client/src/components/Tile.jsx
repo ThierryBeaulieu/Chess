@@ -36,14 +36,8 @@ export default function Tile({
 
   const handleCurrentTile = (piecesOnBoard) => {
     piecesOnBoard?.map((piece) => {
-      if (piece?.x === i && piece?.y === j) {
-        const currentPiece = {
-          name: piece.name,
-          x: piece.x,
-          y: piece.y,
-          isSelected: false,
-        };
-        setCurrentTile(currentPiece);
+      if (piece.x === i && piece.y === j) {
+        setCurrentTile(updatePiece(piece.name, piece.x, piece.y, false));
       }
     });
   };
@@ -71,6 +65,36 @@ export default function Tile({
     return translatePieceName(currentTile?.name);
   };
 
+  const isAPieceInCurrentTile = (piece) => {
+    return (
+      piece?.x === currentTile?.x &&
+      piece?.y === currentTile?.y &&
+      piece?.name === currentTile?.name
+    );
+  };
+
+  const updatePiece = (newName, posX, posY, selectedState) => {
+    return {
+      name: newName,
+      x: posX,
+      y: posY,
+      isSelected: selectedState,
+    };
+  };
+
+  const isCurrentTileEmpty = () => {
+    return currentTile === undefined;
+  };
+
+  const updateDeadPieces = (newDeadPiece) => {
+    const deadPiecesUpdated = [];
+    deadPieces.map((deadPiece) => {
+      deadPiecesUpdated.push(deadPiece);
+    });
+    deadPiecesUpdated.push(newDeadPiece);
+    setDeadPieces(deadPiecesUpdated);
+  };
+
   const handleOnClick = () => {
     // verify if other pieces were selected before
     const boardPiecesUpdated = [];
@@ -80,71 +104,33 @@ export default function Tile({
     piecesOnBoard.map((piece) => {
       if (piece?.isSelected === true) {
         isAPieceSelected = true;
-        // The piece selected is the current tile
-        if (piece?.x === currentTile?.x && piece?.y === currentTile?.y) {
-          const pieceInNewState = {
-            name: piece.name,
-            x: piece.x,
-            y: piece.y,
-            isSelected: false,
-          };
-          boardPiecesUpdated.push(pieceInNewState);
+        if (isAPieceInCurrentTile) {
+          boardPiecesUpdated.push(
+            updatePiece(piece.name, piece.x, piece.y, false),
+          );
         } else {
-          // The piece selected is different from the one we currently have
-          // The selected piece will take the place of the current piece
-          if (currentTile !== undefined) {
-            const pieceReplaced = {
-              name: piece.name,
-              x: currentTile.x,
-              y: currentTile.y,
-              isSelected: false,
-            };
-            // The piece that will be replace becomes a dead piece
-            deadPiece = currentTile;
-            boardPiecesUpdated.push(pieceReplaced);
-            // The old piece is not added
+          if (!isCurrentTileEmpty) {
+            updateDeadPieces(currentTile);
+            boardPiecesUpdated.push(
+              updatePiece(piece.name, currentTile.x, currentTile.y, false),
+            );
           } else {
-            const samePieceNewPosition = {
-              name: piece.name,
-              x: i,
-              y: j,
-              isSelected: false,
-            };
-            boardPiecesUpdated.push(samePieceNewPosition);
+            boardPiecesUpdated.push(updatePiece(piece.name, i, j, false));
           }
         }
-      } else {
-        if (
-          currentTile?.name !== piece.name ||
-          currentTile?.x !== piece.x ||
-          currentTile?.y !== piece.y
-        ) {
-          boardPiecesUpdated.push(piece);
-        }
       }
+    });
 
-      // set the currentPiece activates
-      if (!isAPieceSelected) {
-        if (currentTile !== undefined) {
-          const currentPieceActivated = {
-            name: currentTile.name,
-            x: currentTile.x,
-            y: currentTile.y,
-            isSelected: true,
-          };
-          boardPiecesUpdated.push(currentPieceActivated);
-        } else {
-          // we can't select a tile that doesn't contain any pieces
-        }
+    if (!isAPieceSelected) {
+      if (!isCurrentTileEmpty) {
+        console.log('no piece selected');
+
+        boardPiecesUpdated.push(
+          updatePiece(currentTile.name, currentTile.x, currentTile.y, true),
+        );
       }
-    });
+    }
     setPiecesOnBoard(boardPiecesUpdated);
-    const newDeadPieces = [];
-    deadPieces.map((piece) => {
-      newDeadPieces.push(piece);
-    });
-    newDeadPieces.push(deadPiece);
-    setDeadPieces(newDeadPieces);
   };
 
   const translatePieceName = (pieceName) => {
