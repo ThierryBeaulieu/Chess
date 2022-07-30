@@ -12,15 +12,15 @@ export default function Tile({
   i,
   j,
   cellSize,
-  currentPiece,
-  setCurrentPiece,
+  selectedTile,
+  setSelectedTile,
 }) {
   const YELLOW_TILE = '#e0de41';
   const BLACK_TILE = '#d0b08a';
   const WHITE_TILE = '#944c18';
 
-  const [isShown, setIsShown] = useState(false);
-  const [tileContent, setTileContent] = useState({
+  const [isMouseHovering, setIsMouseHovering] = useState(false);
+  const [currentTile, setCurrentTile] = useState({
     name: 'BlackQueen',
     x: i,
     y: j,
@@ -31,7 +31,7 @@ export default function Tile({
   });
 
   useEffect(() => {
-    if (isShown) {
+    if (isMouseHovering) {
       setTileColor({
         white: YELLOW_TILE,
         black: YELLOW_TILE,
@@ -42,7 +42,7 @@ export default function Tile({
         black: BLACK_TILE,
       });
     }
-  }, [setTileColor, isShown]);
+  }, [setTileColor, isMouseHovering]);
 
   const getPiece = (i, j) => {
     if (i === 2 && j === 2) {
@@ -52,23 +52,9 @@ export default function Tile({
     }
   };
 
-  const handleOnClick = (i, j) => {
-    if (currentPiece?.name !== undefined) {
-      setCurrentPiece({
-        name: tileContent?.name,
-        x: tileContent?.x,
-        y: tileContent?.y,
-      });
-      return;
-    }
-    if (currentPiece?.x === i && currentPiece?.y === j) {
-      setCurrentPiece({
-        name: undefined,
-        x: undefined,
-        y: undefined,
-      });
-      return;
-    }
+  const handleOnClick = () => {
+    // verify if there is already a tile selected
+    console.log();
   };
 
   const translatePieceName = (pieceName) => {
@@ -112,9 +98,9 @@ export default function Tile({
         width: cellSize,
         backgroundColor: (i + j) % 2 ? tileColor.white : tileColor.black,
       }}
-      onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
-      onClick={handleOnClick(i, j)}
+      onMouseEnter={() => setIsMouseHovering(true)}
+      onMouseLeave={() => setIsMouseHovering(false)}
+      onClick={handleOnClick}
     >
       {getPiece(i, j)}
     </div>

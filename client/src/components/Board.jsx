@@ -9,7 +9,7 @@ import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const [currentPiece, setCurrentPiece] = useState({
+  const [selectedTile, setSelectedTile] = useState({
     name: undefined,
     x: undefined,
     y: undefined,
@@ -36,8 +36,8 @@ export default function Board({ style }) {
               i={i}
               j={j}
               cellSize={cellSize}
-              currentPiece={currentPiece}
-              setCurrentPiece={setCurrentPiece}
+              selectedTile={selectedTile}
+              setSelectedTile={setSelectedTile}
             />
           )),
         )
