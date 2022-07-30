@@ -29,7 +29,22 @@ export default function Tile({
 
   useEffect(() => {
     handleTileColor(isMouseHovering, setTileColor);
-  }, [setTileColor, isMouseHovering]);
+    handleCurrentTile(piecesOnBoard);
+  }, [setTileColor, isMouseHovering, piecesOnBoard]);
+
+  const handleCurrentTile = (piecesOnBoard) => {
+    piecesOnBoard?.map((piece) => {
+      if (piece?.x === i && piece?.y === j) {
+        const currentPiece = {
+          name: piece.name,
+          x: piece.x,
+          y: piece.y,
+          isSelected: false,
+        };
+        setCurrentTile(currentPiece);
+      }
+    });
+  };
 
   const handleTileColor = (isMouseHovering, setTileColor) => {
     if (isMouseHovering) {
@@ -50,12 +65,8 @@ export default function Tile({
     }
   };
 
-  const getPiece = (i, j) => {
-    if (i === 2 && j === 2) {
-      return translatePieceName('BlackQueen');
-    } else {
-      return null;
-    }
+  const getPiece = () => {
+    return translatePieceName(currentTile?.name);
   };
 
   const handleOnClick = () => {};
