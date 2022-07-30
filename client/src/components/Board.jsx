@@ -25,7 +25,9 @@ export default function Board({ style }) {
     >
       {Array.from(Array(COLUMNS).keys())
         .map((_, i, arr) =>
-          arr.map((_, j) => <Tile i={i} j={j} cellSize={cellSize} />),
+          arr.map((_, j) => (
+            <Tile key={`${i}-${j}`} i={i} j={j} cellSize={cellSize} />
+          )),
         )
         .flat()}
     </div>

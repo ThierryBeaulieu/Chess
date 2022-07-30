@@ -15,7 +15,6 @@ export default function Tile({ i, j, cellSize }) {
       setBlackTile('#d0b08a');
       setWhiteTile('#944c18');
     }
-    console.log(isShown);
   }, [setBlackTile, setWhiteTile, isShown]);
 
   const getPiece = () => {
