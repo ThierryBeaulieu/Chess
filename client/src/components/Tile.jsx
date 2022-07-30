@@ -12,8 +12,8 @@ export default function Tile({
   i,
   j,
   cellSize,
-  selectedTile,
-  setSelectedTile,
+  piecesOnBoard,
+  setPiecesOnBoard,
 }) {
   const YELLOW_TILE = '#e0de41';
   const BLACK_TILE = '#d0b08a';
@@ -21,18 +21,17 @@ export default function Tile({
   const ORANGE_TILE = 'orange';
 
   const [isMouseHovering, setIsMouseHovering] = useState(false);
-  const [currentTile, setCurrentTile] = useState({
-    name: 'BlackQueen',
-    isSelected: false,
-    x: i,
-    y: j,
-  });
+  const [currentTile, setCurrentTile] = useState(undefined);
   const [tileColor, setTileColor] = useState({
     white: WHITE_TILE,
     black: BLACK_TILE,
   });
 
   useEffect(() => {
+    handleTileColor(isMouseHovering, setTileColor);
+  }, [setTileColor, isMouseHovering]);
+
+  const handleTileColor = (isMouseHovering, setTileColor) => {
     if (isMouseHovering) {
       setTileColor({
         white: YELLOW_TILE,
@@ -49,7 +48,7 @@ export default function Tile({
         black: BLACK_TILE,
       });
     }
-  }, [setTileColor, isMouseHovering]);
+  };
 
   const getPiece = (i, j) => {
     if (i === 2 && j === 2) {
@@ -59,27 +58,7 @@ export default function Tile({
     }
   };
 
-  const handleOnClick = () => {
-    // is a tile already selected
-    if (selectedTile === undefined) {
-      // if the currentTile contains a piece
-      // the selected tile becomes the currentile
-      if (currentTile !== undefined) {
-        setSelectedTile(currentTile);
-      }
-    }
-    // there is already a tile selected
-    // the currentTile becomes the selected tile
-    // if it's not already the selected tile.
-    else {
-      if (selectedTile !== currentTile) {
-        setCurrentTile(selectedTile);
-      } else {
-        setCurrentTile(undefined);
-      }
-      setSelectedTile(undefined);
-    }
-  };
+  const handleOnClick = () => {};
 
   const translatePieceName = (pieceName) => {
     switch (pieceName) {
