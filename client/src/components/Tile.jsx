@@ -8,30 +8,66 @@ import { WhiteRook, BlackRook } from './Pieces/Rook';
 import { WhiteKnight, BlackKnight } from './Pieces/Knight';
 import { WhiteBishop, BlackBishop } from './Pieces/Bishop';
 
-export default function Tile({ i, j, cellSize }) {
+export default function Tile({
+  i,
+  j,
+  cellSize,
+  currentPiece,
+  setCurrentPiece,
+}) {
   const YELLOW_TILE = '#e0de41';
   const BLACK_TILE = '#d0b08a';
   const WHITE_TILE = '#944c18';
 
   const [isShown, setIsShown] = useState(false);
-  const [blackTile, setBlackTile] = useState('#d0b08a');
-  const [whiteTile, setWhiteTile] = useState('#944c18');
+  const [tileContent, setTileContent] = useState({
+    name: 'BlackQueen',
+    x: i,
+    y: j,
+  });
+  const [tileColor, setTileColor] = useState({
+    white: WHITE_TILE,
+    black: BLACK_TILE,
+  });
 
   useEffect(() => {
     if (isShown) {
-      setBlackTile(YELLOW_TILE);
-      setWhiteTile(YELLOW_TILE);
+      setTileColor({
+        white: YELLOW_TILE,
+        black: YELLOW_TILE,
+      });
     } else {
-      setBlackTile(BLACK_TILE);
-      setWhiteTile(WHITE_TILE);
+      setTileColor({
+        white: WHITE_TILE,
+        black: BLACK_TILE,
+      });
     }
-  }, [setBlackTile, setWhiteTile, isShown]);
+  }, [setTileColor, isShown]);
 
   const getPiece = (i, j) => {
     if (i === 2 && j === 2) {
       return translatePieceName('BlackQueen');
     } else {
       return null;
+    }
+  };
+
+  const handleOnClick = (i, j) => {
+    if (currentPiece?.name !== undefined) {
+      setCurrentPiece({
+        name: tileContent?.name,
+        x: tileContent?.x,
+        y: tileContent?.y,
+      });
+      return;
+    }
+    if (currentPiece?.x === i && currentPiece?.y === j) {
+      setCurrentPiece({
+        name: undefined,
+        x: undefined,
+        y: undefined,
+      });
+      return;
     }
   };
 
@@ -74,10 +110,11 @@ export default function Tile({ i, j, cellSize }) {
       style={{
         height: cellSize,
         width: cellSize,
-        backgroundColor: (i + j) % 2 ? whiteTile : blackTile,
+        backgroundColor: (i + j) % 2 ? tileColor.white : tileColor.black,
       }}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
+      onClick={handleOnClick(i, j)}
     >
       {getPiece(i, j)}
     </div>

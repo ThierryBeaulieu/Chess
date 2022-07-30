@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Tile from './Tile';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
@@ -9,6 +9,11 @@ import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+  const [currentPiece, setCurrentPiece] = useState({
+    name: undefined,
+    x: undefined,
+    y: undefined,
+  });
 
   const COLUMNS = 8;
   const cellSize =
@@ -26,7 +31,14 @@ export default function Board({ style }) {
       {Array.from(Array(COLUMNS).keys())
         .map((_, i, arr) =>
           arr.map((_, j) => (
-            <Tile key={`${i}-${j}`} i={i} j={j} cellSize={cellSize} />
+            <Tile
+              key={`${i}-${j}`}
+              i={i}
+              j={j}
+              cellSize={cellSize}
+              currentPiece={currentPiece}
+              setCurrentPiece={setCurrentPiece}
+            />
           )),
         )
         .flat()}
