@@ -9,11 +9,7 @@ import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const [selectedTile, setSelectedTile] = useState({
-    name: undefined,
-    x: undefined,
-    y: undefined,
-  });
+  const [selectedTile, setSelectedTile] = useState(undefined);
 
   const COLUMNS = 8;
   const cellSize =

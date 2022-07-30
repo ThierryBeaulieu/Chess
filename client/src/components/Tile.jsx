@@ -42,7 +42,7 @@ export default function Tile({
         black: BLACK_TILE,
       });
     }
-  }, [setTileColor, isMouseHovering]);
+  }, [setTileColor, isMouseHovering, selectedTile]);
 
   const getPiece = (i, j) => {
     if (i === 2 && j === 2) {
@@ -54,7 +54,20 @@ export default function Tile({
 
   const handleOnClick = () => {
     // verify if there is already a tile selected
-    console.log();
+    console.log(currentTile);
+    console.log(selectedTile);
+    // is a tile already selected?
+    if (selectedTile === undefined) {
+      // if the currentTile contains a piece
+      // the selected tile becomes the currentile
+      if (currentTile !== undefined) {
+        selectedTile = currentTile;
+      }
+    }
+    // there is already a tile selected
+    // the currentTile becomes the
+    else {
+    }
   };
 
   const translatePieceName = (pieceName) => {
