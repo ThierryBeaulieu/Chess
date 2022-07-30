@@ -24,7 +24,7 @@ export function BlackKnight({ height, width }) {
   );
 }
 
-export function WhiteKnignt({ height, width }) {
+export function WhiteKnight({ height, width }) {
   return (
     <svg
       version='1.2'

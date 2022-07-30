@@ -5,7 +5,7 @@ import { WhiteQueen, BlackQueen } from './Pieces/Queen';
 import { WhitePawn, BlackPawn } from './Pieces/Pawn';
 import { WhiteKing, BlackKing } from './Pieces/King';
 import { WhiteRook, BlackRook } from './Pieces/Rook';
-import { WhiteKnight, BlackKnight } from './Pieces/King';
+import { WhiteKnight, BlackKnight } from './Pieces/Knight';
 import { WhiteBishop, BlackBishop } from './Pieces/Bishop';
 
 export default function Tile({ i, j, cellSize }) {
@@ -27,7 +27,15 @@ export default function Tile({ i, j, cellSize }) {
     }
   }, [setBlackTile, setWhiteTile, isShown]);
 
-  const getPiece = (pieceName) => {
+  const getPiece = (i, j) => {
+    if (i === 2 && j === 2) {
+      return translatePieceName('BlackQueen');
+    } else {
+      return null;
+    }
+  };
+
+  const translatePieceName = (pieceName) => {
     switch (pieceName) {
       case 'BlackPawn':
         return <BlackPawn height={cellSize} width={cellSize} />;
@@ -53,6 +61,8 @@ export default function Tile({ i, j, cellSize }) {
         return <WhiteRook height={cellSize} width={cellSize} />;
       case 'WhiteKnight':
         return <WhiteKnight height={cellSize} width={cellSize} />;
+      case 'TestPiece':
+        return <TestPiece height={cellSize} width={cellSize} />;
       default:
         return undefined;
     }
@@ -69,7 +79,7 @@ export default function Tile({ i, j, cellSize }) {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      {getPiece()}
+      {getPiece(i, j)}
     </div>
   );
 }
