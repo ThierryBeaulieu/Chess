@@ -9,6 +9,7 @@ import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+  const [deadPieces, setDeadPieces] = useState([]);
   const [piecesOnBoard, setPiecesOnBoard] = useState([
     {
       name: 'BlackQueen',
@@ -47,6 +48,8 @@ export default function Board({ style }) {
               cellSize={cellSize}
               piecesOnBoard={piecesOnBoard}
               setPiecesOnBoard={setPiecesOnBoard}
+              deadPieces={deadPieces}
+              setDeadPieces={setDeadPieces}
             />
           )),
         )

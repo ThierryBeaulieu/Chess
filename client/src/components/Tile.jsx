@@ -14,6 +14,8 @@ export default function Tile({
   cellSize,
   piecesOnBoard,
   setPiecesOnBoard,
+  deadPieces,
+  setDeadPieces,
 }) {
   const YELLOW_TILE = '#e0de41';
   const BLACK_TILE = '#d0b08a';
@@ -30,7 +32,7 @@ export default function Tile({
   useEffect(() => {
     handleTileColor(isMouseHovering, setTileColor);
     handleCurrentTile(piecesOnBoard);
-  }, [setTileColor, isMouseHovering, piecesOnBoard]);
+  }, [setTileColor, isMouseHovering, piecesOnBoard, setPiecesOnBoard]);
 
   const handleCurrentTile = (piecesOnBoard) => {
     piecesOnBoard?.map((piece) => {
@@ -69,7 +71,81 @@ export default function Tile({
     return translatePieceName(currentTile?.name);
   };
 
-  const handleOnClick = () => {};
+  const handleOnClick = () => {
+    // verify if other pieces were selected before
+    const boardPiecesUpdated = [];
+    let isAPieceSelected = false;
+    const deadPiece = undefined;
+
+    piecesOnBoard.map((piece) => {
+      if (piece?.isSelected === true) {
+        isAPieceSelected = true;
+        // The piece selected is the current tile
+        if (piece?.x === currentTile?.x && piece?.y === currentTile?.y) {
+          const pieceInNewState = {
+            name: piece.name,
+            x: piece.x,
+            y: piece.y,
+            isSelected: false,
+          };
+          boardPiecesUpdated.push(pieceInNewState);
+        } else {
+          // The piece selected is different from the one we currently have
+          // The selected piece will take the place of the current piece
+          if (currentTile !== undefined) {
+            const pieceReplaced = {
+              name: piece.name,
+              x: currentTile.x,
+              y: currentTile.y,
+              isSelected: false,
+            };
+            // The piece that will be replace becomes a dead piece
+            deadPiece = currentTile;
+            boardPiecesUpdated.push(pieceReplaced);
+            // The old piece is not added
+          } else {
+            const samePieceNewPosition = {
+              name: piece.name,
+              x: i,
+              y: j,
+              isSelected: false,
+            };
+            boardPiecesUpdated.push(samePieceNewPosition);
+          }
+        }
+      } else {
+        if (
+          currentTile?.name !== piece.name ||
+          currentTile?.x !== piece.x ||
+          currentTile?.y !== piece.y
+        ) {
+          boardPiecesUpdated.push(piece);
+        }
+      }
+
+      // set the currentPiece activates
+      if (!isAPieceSelected) {
+        if (currentTile !== undefined) {
+          const currentPieceActivated = {
+            name: currentTile.name,
+            x: currentTile.x,
+            y: currentTile.y,
+            isSelected: true,
+          };
+          boardPiecesUpdated.push(currentPieceActivated);
+        } else {
+          // we can't select a tile that doesn't contain any pieces
+        }
+      }
+    });
+    setPiecesOnBoard(boardPiecesUpdated);
+    const newDeadPieces = [];
+    deadPieces.map((piece) => {
+      newDeadPieces.push(piece);
+    });
+    newDeadPieces.push(deadPiece);
+    setDeadPieces(newDeadPieces);
+  };
 
   const translatePieceName = (pieceName) => {
     switch (pieceName) {
