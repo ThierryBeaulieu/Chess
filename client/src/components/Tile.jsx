@@ -18,10 +18,12 @@ export default function Tile({
   const YELLOW_TILE = '#e0de41';
   const BLACK_TILE = '#d0b08a';
   const WHITE_TILE = '#944c18';
+  const ORANGE_TILE = 'orange';
 
   const [isMouseHovering, setIsMouseHovering] = useState(false);
   const [currentTile, setCurrentTile] = useState({
     name: 'BlackQueen',
+    isSelected: false,
     x: i,
     y: j,
   });
@@ -36,13 +38,18 @@ export default function Tile({
         white: YELLOW_TILE,
         black: YELLOW_TILE,
       });
+    } else if (currentTile?.isSelected) {
+      setTileColor({
+        white: ORANGE_TILE,
+        black: ORANGE_TILE,
+      });
     } else {
       setTileColor({
         white: WHITE_TILE,
         black: BLACK_TILE,
       });
     }
-  }, [setTileColor, isMouseHovering, selectedTile]);
+  }, [setTileColor, isMouseHovering]);
 
   const getPiece = (i, j) => {
     if (i === 2 && j === 2) {
@@ -53,20 +60,24 @@ export default function Tile({
   };
 
   const handleOnClick = () => {
-    // verify if there is already a tile selected
-    console.log(currentTile);
-    console.log(selectedTile);
-    // is a tile already selected?
+    // is a tile already selected
     if (selectedTile === undefined) {
       // if the currentTile contains a piece
       // the selected tile becomes the currentile
       if (currentTile !== undefined) {
-        selectedTile = currentTile;
+        setSelectedTile(currentTile);
       }
     }
     // there is already a tile selected
-    // the currentTile becomes the
+    // the currentTile becomes the selected tile
+    // if it's not already the selected tile.
     else {
+      if (selectedTile !== currentTile) {
+        setCurrentTile(selectedTile);
+      } else {
+        setCurrentTile(undefined);
+      }
+      setSelectedTile(undefined);
     }
   };
 
