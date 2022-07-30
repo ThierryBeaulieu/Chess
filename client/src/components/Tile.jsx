@@ -9,8 +9,8 @@ export default function Tile({ i, j, cellSize }) {
 
   useEffect(() => {
     if (isShown) {
-      setBlackTile('orange');
-      setWhiteTile('orange');
+      setBlackTile('#e0de41');
+      setWhiteTile('#e0de41');
     } else {
       setBlackTile('#d0b08a');
       setWhiteTile('#944c18');
