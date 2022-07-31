@@ -43,8 +43,8 @@ export default function Board({ style }) {
           arr.map((_, j) => (
             <Tile
               key={`${i}-${j}`}
-              i={i}
-              j={j}
+              indexI={i}
+              indexJ={j}
               cellSize={cellSize}
               piecesOnBoard={piecesOnBoard}
               setPiecesOnBoard={setPiecesOnBoard}

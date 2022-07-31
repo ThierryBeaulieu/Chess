@@ -9,8 +9,8 @@ import { WhiteKnight, BlackKnight } from './Pieces/Knight';
 import { WhiteBishop, BlackBishop } from './Pieces/Bishop';
 
 export default function Tile({
-  i,
-  j,
+  indexI,
+  indexJ,
   cellSize,
   piecesOnBoard,
   setPiecesOnBoard,
@@ -37,7 +37,7 @@ export default function Tile({
   const handleCurrentTile = (piecesOnBoard) => {
     for (let k = 0; k < piecesOnBoard.length; k++) {
       const piece = piecesOnBoard[k];
-      if (piece?.x === i && piece?.y === j) {
+      if (piece?.x === indexI && piece?.y === indexJ) {
         setCurrentTile(updatePiece(piece.name, piece.x, piece.y, false));
         return;
       }
@@ -120,13 +120,17 @@ export default function Tile({
             );
             updateDeadPieces(currentTile);
           } else {
-            boardPiecesUpdated.push(updatePiece(piece.name, i, j, false));
+            boardPiecesUpdated.push(
+              updatePiece(piece.name, indexI, indexJ, false),
+            );
           }
         }
       } else {
         if (!isCurrentTileEmpty()) {
           if (currentTile?.x === piece?.x && currentTile?.y === piece?.y) {
-            boardPiecesUpdated.push(updatePiece(piece.name, i, j, true));
+            boardPiecesUpdated.push(
+              updatePiece(piece.name, indexI, indexJ, true),
+            );
           } else {
             boardPiecesUpdated.push(piece);
           }
@@ -174,17 +178,18 @@ export default function Tile({
 
   return (
     <div
-      key={`${i}-${j}`}
+      key={`${indexI}-${indexJ}`}
       style={{
         height: cellSize,
         width: cellSize,
-        backgroundColor: (i + j) % 2 ? tileColor.white : tileColor.black,
+        backgroundColor:
+          (indexI + indexJ) % 2 ? tileColor.white : tileColor.black,
       }}
       onMouseEnter={() => setIsMouseHovering(true)}
       onMouseLeave={() => setIsMouseHovering(false)}
       onClick={handleOnClick}
     >
-      {getPiece(i, j)}
+      {getPiece(indexI, indexJ)}
     </div>
   );
 }
