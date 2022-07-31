@@ -30,17 +30,19 @@ export default function Tile({
   });
 
   useEffect(() => {
-    console.log(piecesOnBoard);
     handleTileColor(isMouseHovering, setTileColor);
     handleCurrentTile(piecesOnBoard);
   }, [setTileColor, isMouseHovering, piecesOnBoard, setPiecesOnBoard]);
 
   const handleCurrentTile = (piecesOnBoard) => {
-    piecesOnBoard?.map((piece) => {
-      if (piece.x === i && piece.y === j) {
+    for (let k = 0; k < piecesOnBoard.length; k++) {
+      const piece = piecesOnBoard[k];
+      if (piece?.x === i && piece?.y === j) {
         setCurrentTile(updatePiece(piece.name, piece.x, piece.y, false));
+        return;
       }
-    });
+    }
+    setCurrentTile(undefined);
   };
 
   const handleTileColor = (isMouseHovering, setTileColor) => {
