@@ -105,12 +105,11 @@ export default function Tile({
   const handleOnClick = () => {
     // verify if other pieces were selected before
     const boardPiecesUpdated = [];
-    let isAPieceSelected = false;
 
-    piecesOnBoard.map((piece) => {
+    for (let k = 0; k < piecesOnBoard.length; k++) {
+      const piece = piecesOnBoard[k];
       if (isSelected(piece)) {
-        isAPieceSelected = true;
-        if (isThisPieceInCurrentTile()) {
+        if (isThisPieceInCurrentTile(piece)) {
           boardPiecesUpdated.push(
             updatePiece(piece.name, piece.x, piece.y, false),
           );
@@ -124,17 +123,16 @@ export default function Tile({
             boardPiecesUpdated.push(updatePiece(piece.name, i, j, false));
           }
         }
-      }
-    });
-
-    if (!isAPieceSelected) {
-      if (!isCurrentTileEmpty()) {
-        boardPiecesUpdated.push(
-          updatePiece(currentTile.name, currentTile.x, currentTile.y, true),
-        );
+      } else {
+        if (!isCurrentTileEmpty()) {
+          if (currentTile?.x === piece?.x && currentTile?.y === piece?.y) {
+            boardPiecesUpdated.push(updatePiece(piece.name, i, j, true));
+          }
+        } else {
+          // can't select an empty tile
+        }
       }
     }
-
     setPiecesOnBoard(boardPiecesUpdated);
   };
 
