@@ -127,8 +127,11 @@ export default function Tile({
         if (!isCurrentTileEmpty()) {
           if (currentTile?.x === piece?.x && currentTile?.y === piece?.y) {
             boardPiecesUpdated.push(updatePiece(piece.name, i, j, true));
+          } else {
+            boardPiecesUpdated.push(piece);
           }
         } else {
+          boardPiecesUpdated.push(piece);
           // can't select an empty tile
         }
       }
