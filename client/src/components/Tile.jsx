@@ -1,12 +1,13 @@
 import React from 'react';
-import { TestPiece } from './Pieces/TestPiece';
 import { useEffect, useState } from 'react';
-import { WhiteQueen, BlackQueen } from './Pieces/Queen';
-import { WhitePawn, BlackPawn } from './Pieces/Pawn';
-import { WhiteKing, BlackKing } from './Pieces/King';
-import { WhiteRook, BlackRook } from './Pieces/Rook';
-import { WhiteKnight, BlackKnight } from './Pieces/Knight';
-import { WhiteBishop, BlackBishop } from './Pieces/Bishop';
+import getPiece from './Pieces/getPiece';
+
+const TILE_COLOR = {
+  YELLOW: '#e0de41',
+  BLACK: '#d0b08a',
+  WHITE: '#944c18',
+  ORANGE: 'orange',
+};
 
 export default function Tile({
   indexI,
@@ -14,167 +15,60 @@ export default function Tile({
   cellSize,
   piecesOnBoard,
   setPiecesOnBoard,
-  deadPieces,
   setDeadPieces,
 }) {
-  const YELLOW_TILE = '#e0de41';
-  const BLACK_TILE = '#d0b08a';
-  const WHITE_TILE = '#944c18';
-  const ORANGE_TILE = 'orange';
+  const initCurrentPiece = () => {
+    const boardPieces = piecesOnBoard.pieces;
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].x === indexI && boardPieces[i].y === indexJ) {
+        const piece = {
+          name: boardPieces[i].name,
+          x: boardPieces[i].x,
+          y: boardPieces[i].y,
+          isSelected:
+            boardPieces[i]?.isSelected !== undefined
+              ? boardPieces[i].isSelected
+              : false,
+        };
+        return piece;
+      }
+    }
+  };
 
   const [isMouseHovering, setIsMouseHovering] = useState(false);
-  const [currentTile, setCurrentTile] = useState(undefined);
+  const [currentPiece, setCurrentPiece] = useState(initCurrentPiece());
   const [tileColor, setTileColor] = useState({
-    white: WHITE_TILE,
-    black: BLACK_TILE,
+    white: TILE_COLOR.WHITE,
+    black: TILE_COLOR.BLACK,
   });
 
   useEffect(() => {
-    handleTileColor(isMouseHovering, setTileColor);
-    handleCurrentTile(piecesOnBoard);
-  }, [setTileColor, isMouseHovering, piecesOnBoard, setPiecesOnBoard]);
-
-  const handleCurrentTile = (piecesOnBoard) => {
-    for (let k = 0; k < piecesOnBoard.length; k++) {
-      const piece = piecesOnBoard[k];
-      if (piece?.x === indexI && piece?.y === indexJ) {
-        setCurrentTile(updatePiece(piece.name, piece.x, piece.y, false));
-        return;
+    const handleTileColor = () => {
+      if (currentPiece?.isSelected) {
+        setTileColor({
+          white: TILE_COLOR.ORANGE,
+          black: TILE_COLOR.ORANGE,
+        });
+      } else if (isMouseHovering) {
+        setTileColor({
+          white: TILE_COLOR.YELLOW,
+          black: TILE_COLOR.YELLOW,
+        });
+      } else {
+        setTileColor({
+          white: TILE_COLOR.WHITE,
+          black: TILE_COLOR.BLACK,
+        });
       }
-    }
-    setCurrentTile(undefined);
-  };
-
-  const handleTileColor = (isMouseHovering, setTileColor) => {
-    if (isMouseHovering) {
-      setTileColor({
-        white: YELLOW_TILE,
-        black: YELLOW_TILE,
-      });
-    } else if (currentTile?.isSelected) {
-      setTileColor({
-        white: ORANGE_TILE,
-        black: ORANGE_TILE,
-      });
-    } else {
-      setTileColor({
-        white: WHITE_TILE,
-        black: BLACK_TILE,
-      });
-    }
-  };
-
-  const getPiece = () => {
-    return translatePieceName(currentTile?.name);
-  };
-
-  const isThisPieceInCurrentTile = (piece) => {
-    return (
-      piece?.x === currentTile?.x &&
-      piece?.y === currentTile?.y &&
-      piece?.name === currentTile?.name
-    );
-  };
-
-  const updatePiece = (newName, posX, posY, selectedState) => {
-    return {
-      name: newName,
-      x: posX,
-      y: posY,
-      isSelected: selectedState,
     };
-  };
+    handleTileColor();
+  }, [isMouseHovering, currentPiece]);
 
   const isCurrentTileEmpty = () => {
-    return currentTile === undefined;
+    return currentPiece === undefined;
   };
 
-  const updateDeadPieces = (newDeadPiece) => {
-    const deadPiecesUpdated = [];
-    deadPieces.map((deadPiece) => {
-      deadPiecesUpdated.push(deadPiece);
-    });
-    deadPiecesUpdated.push(newDeadPiece);
-    setDeadPieces(deadPiecesUpdated);
-  };
-
-  const isSelected = (piece) => {
-    return piece?.isSelected === true;
-  };
-
-  const handleOnClick = () => {
-    // verify if other pieces were selected before
-    const boardPiecesUpdated = [];
-
-    for (let k = 0; k < piecesOnBoard.length; k++) {
-      const piece = piecesOnBoard[k];
-      if (isSelected(piece)) {
-        if (isThisPieceInCurrentTile(piece)) {
-          boardPiecesUpdated.push(
-            updatePiece(piece.name, piece.x, piece.y, false),
-          );
-        } else {
-          if (!isCurrentTileEmpty()) {
-            boardPiecesUpdated.push(
-              updatePiece(piece.name, currentTile.x, currentTile.y, false),
-            );
-            updateDeadPieces(currentTile);
-          } else {
-            boardPiecesUpdated.push(
-              updatePiece(piece.name, indexI, indexJ, false),
-            );
-          }
-        }
-      } else {
-        if (!isCurrentTileEmpty()) {
-          if (currentTile?.x === piece?.x && currentTile?.y === piece?.y) {
-            boardPiecesUpdated.push(
-              updatePiece(piece.name, indexI, indexJ, true),
-            );
-          } else {
-            boardPiecesUpdated.push(piece);
-          }
-        } else {
-          boardPiecesUpdated.push(piece);
-          // can't select an empty tile
-        }
-      }
-    }
-    setPiecesOnBoard(boardPiecesUpdated);
-  };
-
-  const translatePieceName = (pieceName) => {
-    switch (pieceName) {
-      case 'BlackPawn':
-        return <BlackPawn height={cellSize} width={cellSize} />;
-      case 'BlackQueen':
-        return <BlackQueen height={cellSize} width={cellSize} />;
-      case 'BlackKing':
-        return <BlackKing height={cellSize} width={cellSize} />;
-      case 'BlackBishop':
-        return <BlackBishop height={cellSize} width={cellSize} />;
-      case 'BlackRook':
-        return <BlackRook height={cellSize} width={cellSize} />;
-      case 'BlackKnight':
-        return <BlackKnight height={cellSize} width={cellSize} />;
-      case 'WhitePawn':
-        return <WhitePawn height={cellSize} width={cellSize} />;
-      case 'WhiteQueen':
-        return <WhiteQueen height={cellSize} width={cellSize} />;
-      case 'WhiteKing':
-        return <WhiteKing height={cellSize} width={cellSize} />;
-      case 'WhiteBishop':
-        return <WhiteBishop height={cellSize} width={cellSize} />;
-      case 'WhiteRook':
-        return <WhiteRook height={cellSize} width={cellSize} />;
-      case 'WhiteKnight':
-        return <WhiteKnight height={cellSize} width={cellSize} />;
-      case 'TestPiece':
-        return <TestPiece height={cellSize} width={cellSize} />;
-      default:
-        return undefined;
-    }
-  };
+  const handleOnClick = () => {};
 
   return (
     <div
@@ -189,7 +83,7 @@ export default function Tile({
       onMouseLeave={() => setIsMouseHovering(false)}
       onClick={handleOnClick}
     >
-      {getPiece(indexI, indexJ)}
+      {getPiece(currentPiece?.name, cellSize, cellSize)}
     </div>
   );
 }

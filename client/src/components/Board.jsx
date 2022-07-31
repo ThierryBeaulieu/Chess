@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
-import { WhitePawn, BlackPawn } from './Pieces/Pawn';
-import { WhiteKing, BlackKing } from './Pieces/King';
-import { WhiteQueen, BlackQueen } from './Pieces/Queen';
-import { WhiteKnight, BlackKnight } from './Pieces/Queen';
-import { WhiteRook, BlackRook } from './Pieces/Queen';
 import useWindowDimensions from '../tools/WindowSizeHandler';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const [deadPieces, setDeadPieces] = useState([]);
-  const [piecesOnBoard, setPiecesOnBoard] = useState([
-    {
-      name: 'BlackQueen',
-      x: 0,
-      y: 0,
-      isSelected: false,
-    },
-    {
-      name: 'BlackKing',
-      x: 0,
-      y: 1,
-      isSelected: false,
-    },
-  ]);
+  const [deadPieces, setDeadPieces] = useState({ pieces: [] });
+  const [piecesOnBoard, setPiecesOnBoard] = useState({
+    pieces: [
+      {
+        name: 'BlackQueen',
+        x: 0,
+        y: 0,
+        isSelected: false,
+      },
+      {
+        name: 'BlackKing',
+        x: 0,
+        y: 1,
+        isSelected: false,
+      },
+    ],
+    isAPieceSelected: false,
+  });
 
   const COLUMNS = 8;
   const cellSize =
