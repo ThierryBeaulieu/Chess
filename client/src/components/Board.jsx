@@ -1,27 +1,12 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
 import useWindowDimensions from '../tools/WindowSizeHandler';
+import fetchPieces from './Pieces/fetchPieces';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const [deadPieces, setDeadPieces] = useState({ pieces: [] });
-  const [piecesOnBoard, setPiecesOnBoard] = useState({
-    pieces: [
-      {
-        name: 'BlackQueen',
-        x: 0,
-        y: 0,
-        isSelected: false,
-      },
-      {
-        name: 'BlackKing',
-        x: 0,
-        y: 1,
-        isSelected: false,
-      },
-    ],
-    isAPieceSelected: false,
-  });
+  const [piecesOnBoard, setPiecesOnBoard] = useState(fetchPieces());
 
   const COLUMNS = 8;
   const cellSize =
