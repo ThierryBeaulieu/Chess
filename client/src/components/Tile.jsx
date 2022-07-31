@@ -30,6 +30,7 @@ export default function Tile({
   });
 
   useEffect(() => {
+    console.log(piecesOnBoard);
     handleTileColor(isMouseHovering, setTileColor);
     handleCurrentTile(piecesOnBoard);
   }, [setTileColor, isMouseHovering, piecesOnBoard, setPiecesOnBoard]);
@@ -65,7 +66,7 @@ export default function Tile({
     return translatePieceName(currentTile?.name);
   };
 
-  const isAPieceInCurrentTile = (piece) => {
+  const isThisPieceInCurrentTile = (piece) => {
     return (
       piece?.x === currentTile?.x &&
       piece?.y === currentTile?.y &&
@@ -95,25 +96,28 @@ export default function Tile({
     setDeadPieces(deadPiecesUpdated);
   };
 
+  const isSelected = (piece) => {
+    return piece?.isSelected === true;
+  };
+
   const handleOnClick = () => {
     // verify if other pieces were selected before
     const boardPiecesUpdated = [];
     let isAPieceSelected = false;
-    const deadPiece = undefined;
 
     piecesOnBoard.map((piece) => {
-      if (piece?.isSelected === true) {
+      if (isSelected(piece)) {
         isAPieceSelected = true;
-        if (isAPieceInCurrentTile) {
+        if (isThisPieceInCurrentTile()) {
           boardPiecesUpdated.push(
             updatePiece(piece.name, piece.x, piece.y, false),
           );
         } else {
-          if (!isCurrentTileEmpty) {
-            updateDeadPieces(currentTile);
+          if (!isCurrentTileEmpty()) {
             boardPiecesUpdated.push(
               updatePiece(piece.name, currentTile.x, currentTile.y, false),
             );
+            updateDeadPieces(currentTile);
           } else {
             boardPiecesUpdated.push(updatePiece(piece.name, i, j, false));
           }
@@ -122,14 +126,13 @@ export default function Tile({
     });
 
     if (!isAPieceSelected) {
-      if (!isCurrentTileEmpty) {
-        console.log('no piece selected');
-
+      if (!isCurrentTileEmpty()) {
         boardPiecesUpdated.push(
           updatePiece(currentTile.name, currentTile.x, currentTile.y, true),
         );
       }
     }
+
     setPiecesOnBoard(boardPiecesUpdated);
   };
 
