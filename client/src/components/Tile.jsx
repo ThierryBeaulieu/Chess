@@ -17,24 +17,6 @@ export default function Tile({
   setPiecesOnBoard,
   setDeadPieces,
 }) {
-  const initCurrentPiece = () => {
-    const boardPieces = piecesOnBoard.pieces;
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].x === indexI && boardPieces[i].y === indexJ) {
-        const piece = {
-          name: boardPieces[i].name,
-          x: boardPieces[i].x,
-          y: boardPieces[i].y,
-          isSelected:
-            boardPieces[i]?.isSelected !== undefined
-              ? boardPieces[i].isSelected
-              : false,
-        };
-        return piece;
-      }
-    }
-  };
-
   const [isMouseHovering, setIsMouseHovering] = useState(false);
   const [currentPiece, setCurrentPiece] = useState(initCurrentPiece());
   const [tileColor, setTileColor] = useState({
@@ -69,6 +51,24 @@ export default function Tile({
   };
 
   const handleOnClick = () => {};
+
+  function initCurrentPiece() {
+    const boardPieces = piecesOnBoard.pieces;
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].x === indexI && boardPieces[i].y === indexJ) {
+        const piece = {
+          name: boardPieces[i].name,
+          x: boardPieces[i].x,
+          y: boardPieces[i].y,
+          isSelected:
+            boardPieces[i]?.isSelected !== undefined
+              ? boardPieces[i].isSelected
+              : false,
+        };
+        return piece;
+      }
+    }
+  }
 
   return (
     <div
