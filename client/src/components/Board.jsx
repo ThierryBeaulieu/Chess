@@ -5,7 +5,7 @@ import fetchPieces from './Pieces/fetchPieces';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const [deadPieces, setDeadPieces] = useState({ pieces: [] });
+  const [deadPieces, setDeadPieces] = useState([]);
   const [boardPieces, setBoardPieces] = useState(fetchPieces());
 
   const COLUMNS = 8;
@@ -43,9 +43,10 @@ export default function Board({ style }) {
   const movePiece = (index, newX, newY) => {
     if (!isTileEmpty(newX, newY)) {
       const newDeadPiece = getPiece(newX, newY);
-      setDeadPieces((prevDeadPieces) => ({
-        pieces: [...prevDeadPieces.pieces, newDeadPiece],
-      }));
+      setDeadPieces((prevDeadPieces) => [
+        ...prevDeadPieces.pieces,
+        newDeadPiece,
+      ]);
     }
 
     const boardPiecesUpdated = [];
@@ -77,10 +78,9 @@ export default function Board({ style }) {
               indexI={i}
               indexJ={j}
               cellSize={cellSize}
-              piecesOnBoard={boardPieces}
-              setPiecesOnBoard={setBoardPieces}
-              deadPieces={deadPieces}
-              setDeadPieces={setDeadPieces}
+              boardPieces={boardPieces}
+              movePiece={movePiece}
+              getSelectedPiece={getSelectedPiece}
             />
           )),
         )

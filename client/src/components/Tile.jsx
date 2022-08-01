@@ -9,7 +9,14 @@ const TILE_COLOR = {
   ORANGE: 'orange',
 };
 
-export default function Tile({ indexI, indexJ, cellSize, piecesOnBoard }) {
+export default function Tile({
+  indexI,
+  indexJ,
+  cellSize,
+  boardPieces,
+  movePiece,
+  getSelectedPiece,
+}) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
   const [currentPiece] = useState(initCurrentPiece());
   const [tileColor, setTileColor] = useState({
@@ -42,10 +49,9 @@ export default function Tile({ indexI, indexJ, cellSize, piecesOnBoard }) {
   const handleOnClick = () => {};
 
   function initCurrentPiece() {
-    const boardPieces = piecesOnBoard.pieces;
     for (let i = 0; i < boardPieces.length; i++) {
       if (boardPieces[i].x === indexI && boardPieces[i].y === indexJ) {
-        const piece = {
+        const pieces = {
           name: boardPieces[i].name,
           x: boardPieces[i].x,
           y: boardPieces[i].y,
@@ -54,7 +60,7 @@ export default function Tile({ indexI, indexJ, cellSize, piecesOnBoard }) {
               ? boardPieces[i].isSelected
               : false,
         };
-        return piece;
+        return pieces;
       }
     }
   }
