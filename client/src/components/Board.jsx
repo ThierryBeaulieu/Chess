@@ -6,12 +6,44 @@ import fetchPieces from './Pieces/fetchPieces';
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const [deadPieces, setDeadPieces] = useState({ pieces: [] });
-  const [piecesOnBoard, setPiecesOnBoard] = useState(fetchPieces());
+  const [boardPieces, setBoardPieces] = useState(fetchPieces());
 
   const COLUMNS = 8;
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       COLUMNS || 100;
+
+  const getSelectedPiece = () => {
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].isSelected === true) {
+        return boardPieces[i];
+      }
+    }
+    return undefined;
+  };
+
+  const isTileEmpty = (x, y) => {
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].x === x && boardPieces[i].y === y) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const movePiece = (index, newX, newY) => {
+    const boardPiecesUpdated = [];
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (i === index) {
+        boardPieces[i].x = newX;
+        boardPieces[i].y = newY;
+        boardPiecesUpdated.push(boardPieces[i]);
+      } else {
+        boardPiecesUpdated.push(boardPieces[i]);
+      }
+    }
+    setBoardPieces(boardPiecesUpdated);
+  };
 
   return (
     <div
@@ -29,8 +61,8 @@ export default function Board({ style }) {
               indexI={i}
               indexJ={j}
               cellSize={cellSize}
-              piecesOnBoard={piecesOnBoard}
-              setPiecesOnBoard={setPiecesOnBoard}
+              piecesOnBoard={boardPieces}
+              setPiecesOnBoard={setBoardPieces}
               deadPieces={deadPieces}
               setDeadPieces={setDeadPieces}
             />

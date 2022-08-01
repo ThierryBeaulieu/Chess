@@ -9,16 +9,9 @@ const TILE_COLOR = {
   ORANGE: 'orange',
 };
 
-export default function Tile({
-  indexI,
-  indexJ,
-  cellSize,
-  piecesOnBoard,
-  setPiecesOnBoard,
-  setDeadPieces,
-}) {
+export default function Tile({ indexI, indexJ, cellSize, piecesOnBoard }) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
-  const [currentPiece, setCurrentPiece] = useState(initCurrentPiece());
+  const [currentPiece] = useState(initCurrentPiece());
   const [tileColor, setTileColor] = useState({
     white: TILE_COLOR.WHITE,
     black: TILE_COLOR.BLACK,
@@ -45,10 +38,6 @@ export default function Tile({
     };
     handleTileColor();
   }, [isMouseHovering, currentPiece]);
-
-  const isCurrentTileEmpty = () => {
-    return currentPiece === undefined;
-  };
 
   const handleOnClick = () => {};
 
