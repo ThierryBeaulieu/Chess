@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tile from './Tile';
 import useWindowDimensions from '../tools/WindowSizeHandler';
 import fetchPieces from './Pieces/fetchPieces';
@@ -12,6 +12,10 @@ export default function Board({ style }) {
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       COLUMNS || 100;
+
+  useEffect(() => {
+    console.log(boardPieces);
+  }, [boardPieces]);
 
   const getSelectedPiece = () => {
     for (let i = 0; i < boardPieces.length; i++) {
@@ -38,6 +42,11 @@ export default function Board({ style }) {
       }
     }
     return undefined;
+  };
+
+  const resetAllSelectedPieces = () => {
+    const outOfRangeIndex = -1;
+    setSelectedPiece(outOfRangeIndex, outOfRangeIndex);
   };
 
   const setSelectedPiece = (x, y) => {
@@ -93,6 +102,7 @@ export default function Board({ style }) {
               movePiece={movePiece}
               getSelectedPiece={getSelectedPiece}
               setSelectedPiece={setSelectedPiece}
+              resetAllSelectedPieces={resetAllSelectedPieces}
             />
           )),
         )

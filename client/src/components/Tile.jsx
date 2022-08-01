@@ -17,6 +17,7 @@ export default function Tile({
   movePiece,
   getSelectedPiece,
   setSelectedPiece,
+  resetAllSelectedPieces,
 }) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
   const [currentPiece] = useState(initCurrentPiece());
@@ -60,8 +61,11 @@ export default function Tile({
         setSelectedPiece(indexI, indexJ);
       }
     } else if (selectedPiece.x === indexI && selectedPiece.y === indexJ) {
-      // This piece is currently already selected
+      resetAllSelectedPieces();
     } else {
+      console.log('Here');
+      movePiece(selectedPiece.x, selectedPiece.y, indexI, indexJ);
+      resetAllSelectedPieces();
     }
   };
 
