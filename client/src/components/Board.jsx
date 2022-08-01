@@ -31,7 +31,23 @@ export default function Board({ style }) {
     return true;
   };
 
+  const getPiece = (x, y) => {
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].x === x && boardPieces[i].y === y) {
+        return boardPieces[i];
+      }
+    }
+    return undefined;
+  };
+
   const movePiece = (index, newX, newY) => {
+    if (!isTileEmpty(newX, newY)) {
+      const newDeadPiece = getPiece(newX, newY);
+      setDeadPieces((prevDeadPieces) => ({
+        pieces: [...prevDeadPieces.pieces, newDeadPiece],
+      }));
+    }
+
     const boardPiecesUpdated = [];
     for (let i = 0; i < boardPieces.length; i++) {
       if (i === index) {
