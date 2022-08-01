@@ -16,6 +16,7 @@ export default function Tile({
   boardPieces,
   movePiece,
   getSelectedPiece,
+  setSelectedPiece,
 }) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
   const [currentPiece] = useState(initCurrentPiece());
@@ -46,7 +47,23 @@ export default function Tile({
     handleTileColor();
   }, [isMouseHovering, currentPiece]);
 
-  const handleOnClick = () => {};
+  const isCurrenTileEmpty = () => {
+    return currentPiece === undefined;
+  };
+
+  const handleOnClick = () => {
+    const selectedPiece = getSelectedPiece();
+
+    // no piece is selected right now
+    if (selectedPiece === undefined) {
+      if (!isCurrenTileEmpty()) {
+        setSelectedPiece(indexI, indexJ);
+      }
+    } else if (selectedPiece.x === indexI && selectedPiece.y === indexJ) {
+      // This piece is currently already selected
+    } else {
+    }
+  };
 
   function initCurrentPiece() {
     for (let i = 0; i < boardPieces.length; i++) {

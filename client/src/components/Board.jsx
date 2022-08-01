@@ -40,18 +40,29 @@ export default function Board({ style }) {
     return undefined;
   };
 
-  const movePiece = (index, newX, newY) => {
+  const setSelectedPiece = (x, y) => {
+    const boardPiecesUpdated = [];
+    for (let i = 0; i < boardPieces.length; i++) {
+      if (boardPieces[i].x === x && boardPieces[i].y === y) {
+        boardPieces[i].isSelected = true;
+        boardPiecesUpdated.push(boardPieces[i]);
+      } else {
+        boardPieces[i].isSelected = false;
+        boardPiecesUpdated.push(boardPieces[i]);
+      }
+    }
+    setBoardPieces((prevBoardPieces) => [...prevBoardPieces]);
+  };
+
+  const movePiece = (oldX, oldY, newX, newY) => {
     if (!isTileEmpty(newX, newY)) {
       const newDeadPiece = getPiece(newX, newY);
-      setDeadPieces((prevDeadPieces) => [
-        ...prevDeadPieces.pieces,
-        newDeadPiece,
-      ]);
+      setDeadPieces((prevDeadPieces) => [...prevDeadPieces, newDeadPiece]);
     }
 
     const boardPiecesUpdated = [];
     for (let i = 0; i < boardPieces.length; i++) {
-      if (i === index) {
+      if (boardPieces[i].x === oldX && boardPieces[i].y === oldY) {
         boardPieces[i].x = newX;
         boardPieces[i].y = newY;
         boardPiecesUpdated.push(boardPieces[i]);
@@ -81,6 +92,7 @@ export default function Board({ style }) {
               boardPieces={boardPieces}
               movePiece={movePiece}
               getSelectedPiece={getSelectedPiece}
+              setSelectedPiece={setSelectedPiece}
             />
           )),
         )
