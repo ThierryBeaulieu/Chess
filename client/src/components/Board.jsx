@@ -13,10 +13,6 @@ export default function Board({ style }) {
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       COLUMNS || 100;
 
-  useEffect(() => {
-    console.log(boardPieces);
-  }, [boardPieces]);
-
   const getSelectedPiece = () => {
     for (let i = 0; i < boardPieces.length; i++) {
       if (boardPieces[i].isSelected === true) {
