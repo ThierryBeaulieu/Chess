@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Tile from './Tile';
 import useWindowDimensions from '../tools/WindowSizeHandler';
 import fetchPieces from './Pieces/fetchPieces';
@@ -61,20 +61,52 @@ export default function Board({ style }) {
     setBoardPieces(boardPiecesUpdated);
   };
 
-  const movePiece = (oldX, oldY, newX, newY) => {
-    if (!isTileEmpty(newX, newY)) {
-      const newDeadPiece = getPiece(newX, newY);
-      setDeadPieces((prevDeadPieces) => [...prevDeadPieces, newDeadPiece]);
+  const removePiece = (x, y) => {
+    const boardPiecesUpdated = [];
+    let pieceToRemove = undefined;
+    for (let i = 0; i < boardPieces.length; i++) {
+      const piece = boardPieces[i];
+      if (piece.x !== x && piece.y !== y) {
+        boardPiecesUpdated.push(piece);
+        console.log('Here');
+      } else {
+        pieceToRemove = piece;
+      }
     }
+    console.log('removing a piece');
+    setBoardPieces(boardPiecesUpdated);
+    return pieceToRemove;
+  };
+
+  const addDeadPiece = (x, y) => {
+    if (!isTileEmpty(x, y)) {
+      const newDeadPiece = getPiece(x, y);
+      setDeadPieces([...deadPieces, newDeadPiece]);
+      removePiece(x, y);
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const movePiece = (oldX, oldY, newX, newY) => {
+    addDeadPiece(newX, newY);
+
+    console.log('dead');
+    console.log(deadPieces);
+    console.log('alive');
+    console.log(boardPieces);
 
     const boardPiecesUpdated = [];
     for (let i = 0; i < boardPieces.length; i++) {
       if (boardPieces[i].x === oldX && boardPieces[i].y === oldY) {
         boardPieces[i].x = newX;
         boardPieces[i].y = newY;
-        boardPiecesUpdated.push(boardPieces[i]);
+        const boardPieceUpdated = boardPieces[i];
+        boardPiecesUpdated.push(boardPieceUpdated);
       } else {
-        boardPiecesUpdated.push(boardPieces[i]);
+        const boardPieceUpdated = boardPieces[i];
+        boardPiecesUpdated.push(boardPieceUpdated);
       }
     }
     setBoardPieces(boardPiecesUpdated);
