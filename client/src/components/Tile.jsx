@@ -20,7 +20,7 @@ export default function Tile({
   resetAllSelectedPieces,
 }) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
-  const [currentPiece, setCurrentPiece] = useState(updatePieces());
+  const [currentPiece, setCurrentPiece] = useState(getCurrentPiece());
   const [tileColor, setTileColor] = useState({
     white: TILE_COLOR.WHITE,
     black: TILE_COLOR.BLACK,
@@ -68,7 +68,7 @@ export default function Tile({
     }
   };
 
-  function updatePieces() {
+  function getCurrentPiece() {
     for (let i = 0; i < boardPieces.length; i++) {
       if (boardPieces[i].x === indexI && boardPieces[i].y === indexJ) {
         const piece = {

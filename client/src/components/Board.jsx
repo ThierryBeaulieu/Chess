@@ -50,13 +50,16 @@ export default function Board({ style }) {
     for (let i = 0; i < boardPieces.length; i++) {
       if (boardPieces[i].x === x && boardPieces[i].y === y) {
         boardPieces[i].isSelected = true;
+        setBoardPieces(boardPieces);
         boardPiecesUpdated.push(boardPieces[i]);
       } else {
         boardPieces[i].isSelected = false;
+        setBoardPieces(boardPieces);
         boardPiecesUpdated.push(boardPieces[i]);
       }
     }
-    setBoardPieces((prevBoardPieces) => [...prevBoardPieces]);
+    setBoardPieces(boardPiecesUpdated);
+    console.log(boardPieces);
   };
 
   const movePiece = (oldX, oldY, newX, newY) => {
