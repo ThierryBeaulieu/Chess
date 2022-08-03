@@ -20,7 +20,7 @@ export default function Tile({
   resetAllSelectedPieces,
 }) {
   const [isMouseHovering, setIsMouseHovering] = useState(false);
-  const [currentPiece, setCurrentPiece] = useState(undefined);
+  const [currentPiece, setCurrentPiece] = useState(updatePieces());
   const [tileColor, setTileColor] = useState({
     white: TILE_COLOR.WHITE,
     black: TILE_COLOR.BLACK,
@@ -46,7 +46,7 @@ export default function Tile({
       }
     };
     handleTileColor();
-  }, [isMouseHovering]);
+  }, [isMouseHovering, currentPiece]);
 
   const isCurrenTileEmpty = () => {
     return currentPiece === undefined;
@@ -80,8 +80,7 @@ export default function Tile({
               ? boardPieces[i].isSelected
               : false,
         };
-        setCurrentPiece(piece);
-        return;
+        return piece;
       }
     }
   }
