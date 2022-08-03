@@ -68,12 +68,10 @@ export default function Board({ style }) {
       const piece = boardPieces[i];
       if (piece.x !== x && piece.y !== y) {
         boardPiecesUpdated.push(piece);
-        console.log('Here');
       } else {
         pieceToRemove = piece;
       }
     }
-    console.log('removing a piece');
     setBoardPieces(boardPiecesUpdated);
     return pieceToRemove;
   };
@@ -82,7 +80,7 @@ export default function Board({ style }) {
     if (!isTileEmpty(x, y)) {
       const newDeadPiece = getPiece(x, y);
       setDeadPieces([...deadPieces, newDeadPiece]);
-      removePiece(x, y);
+      console.log(removePiece(x, y));
       return true;
     } else {
       return false;
@@ -91,11 +89,6 @@ export default function Board({ style }) {
 
   const movePiece = (oldX, oldY, newX, newY) => {
     addDeadPiece(newX, newY);
-
-    console.log('dead');
-    console.log(deadPieces);
-    console.log('alive');
-    console.log(boardPieces);
 
     const boardPiecesUpdated = [];
     for (let i = 0; i < boardPieces.length; i++) {
@@ -109,6 +102,7 @@ export default function Board({ style }) {
         boardPiecesUpdated.push(boardPieceUpdated);
       }
     }
+
     setBoardPieces(boardPiecesUpdated);
   };
 
