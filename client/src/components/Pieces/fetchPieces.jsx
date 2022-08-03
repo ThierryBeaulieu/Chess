@@ -1,4 +1,4 @@
-const fetchPieces = () => {
+export const fetchPieces = () => {
   return [
     {
       name: 'BlackRook',
@@ -201,4 +201,25 @@ const fetchPieces = () => {
   ];
 };
 
-export default fetchPieces;
+export const fetchTestPieces = () => {
+  return [
+    {
+      name: 'BlackRook',
+      x: 0,
+      y: 0,
+      isSelected: false,
+    },
+    {
+      name: 'BlackKnight',
+      x: 0,
+      y: 1,
+      isSelected: false,
+    },
+    {
+      name: 'BlackBishop',
+      x: 0,
+      y: 2,
+      isSelected: false,
+    },
+  ];
+};
