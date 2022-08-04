@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import Tile from './Tile';
-import useWindowDimensions from '../tools/WindowSizeHandler';
-import { fetchPieces } from '../consts/Pieces';
-import { TILE_COLOR } from '../consts/TileColor';
+import React, { useState } from "react";
+import Tile from "./Tile";
+import useWindowDimensions from "../tools/WindowSizeHandler";
+import { fetchPieces } from "../consts/Pieces";
+import { TILE_COLOR } from "../consts/TileColor";
 
-import PiecesRegistry from '../services/PiecesRegistry';
-import { BlackPawn, WhitePawn } from './Pieces/Pawn';
-import { BlackQueen, WhiteQueen } from './Pieces/Queen';
-import { BlackKing, WhiteKing } from './Pieces/King';
-import { BlackBishop, WhiteBishop } from './Pieces/Bishop';
-import { BlackRook, WhiteRook } from './Pieces/Rook';
-import { BlackKnight, WhiteKnight } from './Pieces/Knight';
+import PiecesRegistry from "../services/PiecesRegistry";
+import { BlackPawn, WhitePawn } from "./Pieces/Pawn";
+import { BlackQueen, WhiteQueen } from "./Pieces/Queen";
+import { BlackKing, WhiteKing } from "./Pieces/King";
+import { BlackBishop, WhiteBishop } from "./Pieces/Bishop";
+import { BlackRook, WhiteRook } from "./Pieces/Rook";
+import { BlackKnight, WhiteKnight } from "./Pieces/Knight";
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -38,14 +38,14 @@ export default function Board({ style }) {
 
       setBoardPieces(
         boardPieces
-          .filter((piece) => piece === piece)
+          .filter((p) => p !== piece)
           .map((piece) => {
             if (piece.x === selected.x && piece.y === selected.y) {
               piece.x = x;
               piece.y = y;
             }
             return piece;
-          }),
+          })
       );
 
       setSelected(undefined);
@@ -60,18 +60,18 @@ export default function Board({ style }) {
   };
 
   const [factories, setFactories] = useState({
-    ['BlackPawn']: BlackPawn,
-    ['BlackQueen']: BlackQueen,
-    ['BlackKing']: BlackKing,
-    ['BlackBishop']: BlackBishop,
-    ['BlackRook']: BlackRook,
-    ['BlackKnight']: BlackKnight,
-    ['WhitePawn']: WhitePawn,
-    ['WhiteQueen']: WhiteQueen,
-    ['WhiteKing']: WhiteKing,
-    ['WhiteBishop']: WhiteBishop,
-    ['WhiteRook']: WhiteRook,
-    ['WhiteKnight']: WhiteKnight,
+    ["BlackPawn"]: BlackPawn,
+    ["BlackQueen"]: BlackQueen,
+    ["BlackKing"]: BlackKing,
+    ["BlackBishop"]: BlackBishop,
+    ["BlackRook"]: BlackRook,
+    ["BlackKnight"]: BlackKnight,
+    ["WhitePawn"]: WhitePawn,
+    ["WhiteQueen"]: WhiteQueen,
+    ["WhiteKing"]: WhiteKing,
+    ["WhiteBishop"]: WhiteBishop,
+    ["WhiteRook"]: WhiteRook,
+    ["WhiteKnight"]: WhiteKnight,
   });
 
   const value = {
@@ -85,8 +85,8 @@ export default function Board({ style }) {
     <PiecesRegistry.Provider value={value}>
       <div
         style={{
-          display: 'grid',
-          width: 'fit-content',
+          display: "grid",
+          width: "fit-content",
           gridTemplateColumns: `repeat(${COLUMNS}, auto)`,
         }}
       >
@@ -106,7 +106,7 @@ export default function Board({ style }) {
                   onClick={() => handleTileClick(i, j, piece)}
                 />
               );
-            }),
+            })
           )
           .flat()}
       </div>
