@@ -5,12 +5,6 @@ import { fetchPieces } from "../consts/Pieces";
 import { TILE_COLOR } from "../consts/TileColor";
 
 import PiecesRegistry from "../services/PiecesRegistry";
-import { BlackPawn, WhitePawn } from "./Pieces/Pawn";
-import { BlackQueen, WhiteQueen } from "./Pieces/Queen";
-import { BlackKing, WhiteKing } from "./Pieces/King";
-import { BlackBishop, WhiteBishop } from "./Pieces/Bishop";
-import { BlackRook, WhiteRook } from "./Pieces/Rook";
-import { BlackKnight, WhiteKnight } from "./Pieces/Knight";
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -31,7 +25,12 @@ export default function Board({ style }) {
     // TODO validate move
     const isValidMove = () => true;
 
-    if (selected !== undefined && isValidMove()) {
+    if (
+      selected !== undefined &&
+      selected.x !== x &&
+      selected.y !== y &&
+      isValidMove()
+    ) {
       if (piece !== undefined) {
         setDeadPieces([...deadPieces, piece]);
       }
@@ -39,12 +38,12 @@ export default function Board({ style }) {
       setBoardPieces(
         boardPieces
           .filter((p) => p !== piece)
-          .map((piece) => {
-            if (piece.x === selected.x && piece.y === selected.y) {
-              piece.x = x;
-              piece.y = y;
+          .map((p) => {
+            if (p.x === selected.x && p.y === selected.y) {
+              p.x = x;
+              p.y = y;
             }
-            return piece;
+            return p;
           })
       );
 
@@ -60,18 +59,18 @@ export default function Board({ style }) {
   };
 
   const [factories, setFactories] = useState({
-    ["BlackPawn"]: BlackPawn,
-    ["BlackQueen"]: BlackQueen,
-    ["BlackKing"]: BlackKing,
-    ["BlackBishop"]: BlackBishop,
-    ["BlackRook"]: BlackRook,
-    ["BlackKnight"]: BlackKnight,
-    ["WhitePawn"]: WhitePawn,
-    ["WhiteQueen"]: WhiteQueen,
-    ["WhiteKing"]: WhiteKing,
-    ["WhiteBishop"]: WhiteBishop,
-    ["WhiteRook"]: WhiteRook,
-    ["WhiteKnight"]: WhiteKnight,
+    BlackPawn: React.lazy(() => import("../components/Pieces/BlackPawn")),
+    BlackQueen: React.lazy(() => import("../components/Pieces/BlackQueen")),
+    BlackKing: React.lazy(() => import("../components/Pieces/BlackKing")),
+    BlackBishop: React.lazy(() => import("../components/Pieces/BlackBishop")),
+    BlackRook: React.lazy(() => import("../components/Pieces/BlackRook")),
+    BlackKnight: React.lazy(() => import("../components/Pieces/BlackKnight")),
+    WhitePawn: React.lazy(() => import("../components/Pieces/WhitePawn")),
+    WhiteQueen: React.lazy(() => import("../components/Pieces/WhiteQueen")),
+    WhiteKing: React.lazy(() => import("../components/Pieces/WhiteKing")),
+    WhiteBishop: React.lazy(() => import("../components/Pieces/WhiteBishop")),
+    WhiteRook: React.lazy(() => import("../components/Pieces/WhiteRook")),
+    WhiteKnight: React.lazy(() => import("../components/Pieces/WhiteKnight")),
   });
 
   const value = {
@@ -90,25 +89,23 @@ export default function Board({ style }) {
           gridTemplateColumns: `repeat(${COLUMNS}, auto)`,
         }}
       >
-        {Array.from(Array(COLUMNS).keys())
-          .map((_, j, arr) =>
-            arr.map((_, i) => {
-              const piece = getPieceAt(i, j);
-              const isSelected =
-                (selected?.x === i && selected?.y === j) || false;
-              return (
-                <Tile
-                  key={`${i}-${j}-${piece?.name}-${isSelected}`}
-                  color={(i + j) % 2 ? TILE_COLOR.WHITE : TILE_COLOR.BLACK}
-                  cellSize={cellSize}
-                  piece={piece}
-                  selected={isSelected}
-                  onClick={() => handleTileClick(i, j, piece)}
-                />
-              );
-            })
-          )
-          .flat()}
+        {Array.from(Array(COLUMNS).keys()).map((_, j, arr) =>
+          arr.map((_, i) => {
+            const piece = getPieceAt(i, j);
+            const isSelected =
+              (selected?.x === i && selected?.y === j) || false;
+            return (
+              <Tile
+                key={`${i}-${j}-${piece?.name}-${isSelected}`}
+                color={(i + j) % 2 ? TILE_COLOR.WHITE : TILE_COLOR.BLACK}
+                cellSize={cellSize}
+                piece={piece}
+                selected={isSelected}
+                onClick={() => handleTileClick(i, j, piece)}
+              />
+            );
+          })
+        )}
       </div>
     </PiecesRegistry.Provider>
   );

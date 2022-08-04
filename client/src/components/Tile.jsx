@@ -1,8 +1,8 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { TILE_COLOR } from '../consts/TileColor';
+import React, { Suspense } from "react";
+import { useEffect, useState } from "react";
+import { TILE_COLOR } from "../consts/TileColor";
 
-import usePiecesRegistry from '../hooks/usePiecesRegistry';
+import usePiecesRegistry from "../hooks/usePiecesRegistry";
 
 export default function Tile({
   piece,
@@ -20,9 +20,9 @@ export default function Tile({
         ? TILE_COLOR.YELLOW
         : isSelected
         ? TILE_COLOR.ORANGE
-        : undefined,
+        : undefined
     );
-  }, [isMouseHovering]);
+  }, [isMouseHovering, isSelected]);
 
   const { getPiece } = usePiecesRegistry();
   const Piece = getPiece(piece?.name);
@@ -38,7 +38,11 @@ export default function Tile({
       onMouseLeave={() => setIsMouseHovering(false)}
       onClick={() => handleOnClick()}
     >
-      {Piece && <Piece width={cellSize} height={cellSize} />}
+      {Piece && (
+        <Suspense fallback={<div>{piece?.name || "Loading..."}</div>}>
+          <Piece width={cellSize} height={cellSize} />
+        </Suspense>
+      )}
     </div>
   );
 }
