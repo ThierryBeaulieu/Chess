@@ -1,51 +1,115 @@
-import React from 'react';
-import { WhitePawn, BlackPawn } from './Pieces/Pawn';
-import { WhiteKing, BlackKing } from './Pieces/King';
-import { WhiteQueen, BlackQueen } from './Pieces/Queen';
-import { WhiteKnight, BlackKnight } from './Pieces/Queen';
-import { WhiteRook, BlackRook } from './Pieces/Queen';
-import { TestPiece } from './Pieces/TestPiece';
+import React, { useState } from 'react';
+import Tile from './Tile';
 import useWindowDimensions from '../tools/WindowSizeHandler';
+import { fetchPieces } from '../consts/Pieces';
+import { TILE_COLOR } from '../consts/TileColor';
+
+import PiecesRegistry from '../services/PiecesRegistry';
+import { BlackPawn, WhitePawn } from './Pieces/Pawn';
+import { BlackQueen, WhiteQueen } from './Pieces/Queen';
+import { BlackKing, WhiteKing } from './Pieces/King';
+import { BlackBishop, WhiteBishop } from './Pieces/Bishop';
+import { BlackRook, WhiteRook } from './Pieces/Rook';
+import { BlackKnight, WhiteKnight } from './Pieces/Knight';
 
 export default function Board({ style }) {
-  const BLACK_TILE = '#d0b08a';
-  const WHITE_TILE = '#944c18';
-
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  const columns = 8;
+  const [deadPieces, setDeadPieces] = useState([]);
+  const [boardPieces, setBoardPieces] = useState(fetchPieces());
+  const [selected, setSelected] = useState(undefined);
+
+  const COLUMNS = 8;
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
-      columns || 100;
+      COLUMNS || 100;
 
-  const getPiece = () => {
-    return <TestPiece height={cellSize} width={cellSize} />;
+  const getPieceAt = (x, y) => {
+    return boardPieces.filter((piece) => piece.x === x && piece.y === y)[0];
+  };
+
+  const handleTileClick = (x, y, piece) => {
+    // TODO validate move
+    const isValidMove = () => true;
+
+    if (selected !== undefined && isValidMove()) {
+      if (piece !== undefined) {
+        setDeadPieces([...deadPieces, piece]);
+      }
+
+      setBoardPieces(
+        boardPieces
+          .filter((piece) => piece === piece)
+          .map((piece) => {
+            if (piece.x === selected.x && piece.y === selected.y) {
+              piece.x = x;
+              piece.y = y;
+            }
+            return piece;
+          }),
+      );
+
+      setSelected(undefined);
+    } else if (
+      (selected?.x === x && selected?.y === y) ||
+      piece === undefined
+    ) {
+      setSelected(undefined);
+    } else {
+      setSelected({ x, y, piece });
+    }
+  };
+
+  const [factories, setFactories] = useState({
+    ['BlackPawn']: BlackPawn,
+    ['BlackQueen']: BlackQueen,
+    ['BlackKing']: BlackKing,
+    ['BlackBishop']: BlackBishop,
+    ['BlackRook']: BlackRook,
+    ['BlackKnight']: BlackKnight,
+    ['WhitePawn']: WhitePawn,
+    ['WhiteQueen']: WhiteQueen,
+    ['WhiteKing']: WhiteKing,
+    ['WhiteBishop']: WhiteBishop,
+    ['WhiteRook']: WhiteRook,
+    ['WhiteKnight']: WhiteKnight,
+  });
+
+  const value = {
+    factories,
+    registerFactory: (pieceName, factory) => {
+      setFactories({ ...factories, [pieceName]: factory });
+    },
   };
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        width: 'fit-content',
-        gridTemplateColumns: `repeat(${columns}, auto)`,
-        //border: '3px solid black',
-      }}
-    >
-      {Array.from(Array(columns).keys())
-        .map((_, i, arr) =>
-          arr.map((_, j) => (
-            <div
-              key={`${i}-${j}`}
-              style={{
-                height: cellSize,
-                width: cellSize,
-                backgroundColor: (i + j) % 2 ? WHITE_TILE : BLACK_TILE,
-              }}
-            >
-              {getPiece()}
-            </div>
-          )),
-        )
-        .flat()}
-    </div>
+    <PiecesRegistry.Provider value={value}>
+      <div
+        style={{
+          display: 'grid',
+          width: 'fit-content',
+          gridTemplateColumns: `repeat(${COLUMNS}, auto)`,
+        }}
+      >
+        {Array.from(Array(COLUMNS).keys())
+          .map((_, j, arr) =>
+            arr.map((_, i) => {
+              const piece = getPieceAt(i, j);
+              const isSelected =
+                (selected?.x === i && selected?.y === j) || false;
+              return (
+                <Tile
+                  key={`${i}-${j}-${piece?.name}-${isSelected}`}
+                  color={(i + j) % 2 ? TILE_COLOR.WHITE : TILE_COLOR.BLACK}
+                  cellSize={cellSize}
+                  piece={piece}
+                  selected={isSelected}
+                  onClick={() => handleTileClick(i, j, piece)}
+                />
+              );
+            }),
+          )
+          .flat()}
+      </div>
+    </PiecesRegistry.Provider>
   );
 }
