@@ -1,136 +1,115 @@
 import React, { useState } from 'react';
 import Tile from './Tile';
 import useWindowDimensions from '../tools/WindowSizeHandler';
-import { fetchPieces, fetchTestPieces } from './Pieces/fetchPieces';
+import { fetchPieces } from '../consts/Pieces';
+import { TILE_COLOR } from '../consts/TileColor';
+
+import PiecesRegistry from '../services/PiecesRegistry';
+import { BlackPawn, WhitePawn } from './Pieces/Pawn';
+import { BlackQueen, WhiteQueen } from './Pieces/Queen';
+import { BlackKing, WhiteKing } from './Pieces/King';
+import { BlackBishop, WhiteBishop } from './Pieces/Bishop';
+import { BlackRook, WhiteRook } from './Pieces/Rook';
+import { BlackKnight, WhiteKnight } from './Pieces/Knight';
 
 export default function Board({ style }) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const [deadPieces, setDeadPieces] = useState([]);
-  const [boardPieces, setBoardPieces] = useState(fetchTestPieces());
+  const [boardPieces, setBoardPieces] = useState(fetchPieces());
+  const [selected, setSelected] = useState(undefined);
 
   const COLUMNS = 8;
   const cellSize =
     Math.min(style?.width || windowWidth, style?.height || windowHeight) /
       COLUMNS || 100;
 
-  const getSelectedPiece = () => {
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].isSelected === true) {
-        return boardPieces[i];
+  const getPieceAt = (x, y) => {
+    return boardPieces.filter((piece) => piece.x === x && piece.y === y)[0];
+  };
+
+  const handleTileClick = (x, y, piece) => {
+    // TODO validate move
+    const isValidMove = () => true;
+
+    if (selected !== undefined && isValidMove()) {
+      if (piece !== undefined) {
+        setDeadPieces([...deadPieces, piece]);
       }
-    }
-    return undefined;
-  };
 
-  const isTileEmpty = (x, y) => {
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].x === x && boardPieces[i].y === y) {
-        return false;
-      }
-    }
-    return true;
-  };
+      setBoardPieces(
+        boardPieces
+          .filter((piece) => piece === piece)
+          .map((piece) => {
+            if (piece.x === selected.x && piece.y === selected.y) {
+              piece.x = x;
+              piece.y = y;
+            }
+            return piece;
+          }),
+      );
 
-  const getPiece = (x, y) => {
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].x === x && boardPieces[i].y === y) {
-        return boardPieces[i];
-      }
-    }
-    return undefined;
-  };
-
-  const resetAllSelectedPieces = () => {
-    const outOfRangeIndex = -1;
-    setSelectedPiece(outOfRangeIndex, outOfRangeIndex);
-  };
-
-  const setSelectedPiece = (x, y) => {
-    const boardPiecesUpdated = [];
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].x === x && boardPieces[i].y === y) {
-        boardPieces[i].isSelected = true;
-        const boardPieceUpdated = boardPieces[i];
-        boardPiecesUpdated.push(boardPieceUpdated);
-      } else {
-        boardPieces[i].isSelected = false;
-        const boardPieceUpdated = boardPieces[i];
-        boardPiecesUpdated.push(boardPieceUpdated);
-      }
-    }
-    setBoardPieces(boardPiecesUpdated);
-  };
-
-  const removePiece = (x, y) => {
-    const boardPiecesUpdated = [];
-    let pieceToRemove = undefined;
-    for (let i = 0; i < boardPieces.length; i++) {
-      const piece = boardPieces[i];
-      if (piece.x !== x && piece.y !== y) {
-        boardPiecesUpdated.push(piece);
-      } else {
-        pieceToRemove = piece;
-      }
-    }
-    setBoardPieces(boardPiecesUpdated);
-    return pieceToRemove;
-  };
-
-  const addDeadPiece = (x, y) => {
-    if (!isTileEmpty(x, y)) {
-      const newDeadPiece = getPiece(x, y);
-      setDeadPieces([...deadPieces, newDeadPiece]);
-      console.log(removePiece(x, y));
-      return true;
+      setSelected(undefined);
+    } else if (
+      (selected?.x === x && selected?.y === y) ||
+      piece === undefined
+    ) {
+      setSelected(undefined);
     } else {
-      return false;
+      setSelected({ x, y, piece });
     }
   };
 
-  const movePiece = (oldX, oldY, newX, newY) => {
-    addDeadPiece(newX, newY);
+  const [factories, setFactories] = useState({
+    ['BlackPawn']: BlackPawn,
+    ['BlackQueen']: BlackQueen,
+    ['BlackKing']: BlackKing,
+    ['BlackBishop']: BlackBishop,
+    ['BlackRook']: BlackRook,
+    ['BlackKnight']: BlackKnight,
+    ['WhitePawn']: WhitePawn,
+    ['WhiteQueen']: WhiteQueen,
+    ['WhiteKing']: WhiteKing,
+    ['WhiteBishop']: WhiteBishop,
+    ['WhiteRook']: WhiteRook,
+    ['WhiteKnight']: WhiteKnight,
+  });
 
-    const boardPiecesUpdated = [];
-    for (let i = 0; i < boardPieces.length; i++) {
-      if (boardPieces[i].x === oldX && boardPieces[i].y === oldY) {
-        boardPieces[i].x = newX;
-        boardPieces[i].y = newY;
-        const boardPieceUpdated = boardPieces[i];
-        boardPiecesUpdated.push(boardPieceUpdated);
-      } else {
-        const boardPieceUpdated = boardPieces[i];
-        boardPiecesUpdated.push(boardPieceUpdated);
-      }
-    }
-
-    setBoardPieces(boardPiecesUpdated);
+  const value = {
+    factories,
+    registerFactory: (pieceName, factory) => {
+      setFactories({ ...factories, [pieceName]: factory });
+    },
   };
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        width: 'fit-content',
-        gridTemplateColumns: `repeat(${COLUMNS}, auto)`,
-      }}
-    >
-      {Array.from(Array(COLUMNS).keys())
-        .map((_, i, arr) =>
-          arr.map((_, j) => (
-            <Tile
-              key={`${i}-${j}`}
-              indexI={i}
-              indexJ={j}
-              cellSize={cellSize}
-              boardPieces={boardPieces}
-              movePiece={movePiece}
-              getSelectedPiece={getSelectedPiece}
-              setSelectedPiece={setSelectedPiece}
-              resetAllSelectedPieces={resetAllSelectedPieces}
-            />
-          )),
-        )
-        .flat()}
-    </div>
+    <PiecesRegistry.Provider value={value}>
+      <div
+        style={{
+          display: 'grid',
+          width: 'fit-content',
+          gridTemplateColumns: `repeat(${COLUMNS}, auto)`,
+        }}
+      >
+        {Array.from(Array(COLUMNS).keys())
+          .map((_, j, arr) =>
+            arr.map((_, i) => {
+              const piece = getPieceAt(i, j);
+              const isSelected =
+                (selected?.x === i && selected?.y === j) || false;
+              return (
+                <Tile
+                  key={`${i}-${j}-${piece?.name}-${isSelected}`}
+                  color={(i + j) % 2 ? TILE_COLOR.WHITE : TILE_COLOR.BLACK}
+                  cellSize={cellSize}
+                  piece={piece}
+                  selected={isSelected}
+                  onClick={() => handleTileClick(i, j, piece)}
+                />
+              );
+            }),
+          )
+          .flat()}
+      </div>
+    </PiecesRegistry.Provider>
   );
 }
